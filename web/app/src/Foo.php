@@ -4,7 +4,7 @@
  * I belong to a file
  */
 
-namespace App\Acme;
+namespace App\Oscar;
 
 /**
  * I belong to a class
