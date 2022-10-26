@@ -1,6 +1,6 @@
 <?php
 
-namespace AppTest\Oscar;
+namespace AppTest\Oscar\Model;
 
 use App\Oscar\Models\Vehicle;
 use Faker\Factory;
@@ -19,16 +19,22 @@ class VehicleTest extends TestCase
     public function test__construct(): void
     {
         $vehicle =  new Vehicle(
-            $this->faker->text(10),
-            $this->faker->text(10),
-            $this->faker->text(10),
-            $this->faker->text(10),
+            $this->faker->city(),
+            $this->faker->randomLetter(),
+            $this->faker->randomLetter(),
+            $this->faker->unique()->randomDigit(),
             $this->faker->numberBetween(1950, 2022),
-            $this->faker->numberBetween(1, 5),
-            $this->faker->numberBetween(1, 20),
+            $this->faker->randomNumber(2),
+            $this->faker->randomNumber(1),
             $this->faker->text(5),
+            $this->faker->optional()->text(6),
+            $this->faker->optional()->text(5),
+            $this->faker->optional()->text(8),
+            $this->faker->numberBetween(0,1000000),
+            $this->faker->optional()->randomFloat(),
+            $this->faker->optional()->randomFloat(),
+            $this->faker->optional()->randomFloat()
         );
-        var_dump(gettype($vehicle));
-        $this->assertEquals($vehicle, Vehicle::class);
+        $this->assertInstanceOf(Vehicle::class, $vehicle);
     }
 }

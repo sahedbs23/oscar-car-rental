@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Oscar\Repositories;
+
+use App\Oscar\Lib\DB\DatabaseConnection;
 use App\Oscar\Models\Vehicle;
 
 class VehicleRepository
@@ -19,11 +22,11 @@ class VehicleRepository
      */
     public function all(): array
     {
-        $users = $this->connection->connection
+        $vehicles = $this->connection->connection
             ->query('SELECT * FROM vehicles');
         $collection = [];
-        foreach ($users as $user):
-            $collection[] = $this->toVehicle($user);
+        foreach ($vehicles as $vehicle):
+            $collection[] = $this->toVehicle($vehicle);
         endforeach;
         return $collection;
 
@@ -31,6 +34,39 @@ class VehicleRepository
 
     private function toVehicle(array $record): Vehicle
     {
-        return new Vehicle();
+        [
+            $location,
+            $car_brand,
+            $car_model,
+            $license_plate,
+            $car_year,
+            $number_of_door,
+            $number_of_seat,
+            $fuel_type,
+            $transmission,
+            $car_group,
+            $car_type,
+            $car_km,
+            $inside_height,
+            $inside_length,
+            $inside_width
+        ] = $record;
+        return new Vehicle(
+            $location,
+            $car_brand,
+            $car_model,
+            $license_plate,
+            $car_year,
+            $number_of_door,
+            $number_of_seat,
+            $fuel_type,
+            $transmission,
+            $car_group,
+            $car_type,
+            $car_km,
+            $inside_height,
+            $inside_length,
+            $inside_width
+        );
     }
 }
