@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"AppTest\\Acme\\FooTest::testGetName":0.036}}
+{"version":1,"defects":{"Warning":6,"AppTest\\Oscar\\VehicleTest::test__construct":4,"AppTest\\Oscar\\VehicleTest::testVehicle":3},"times":{"AppTest\\Oscar\\FooTest::testGetName":0.032,"Warning":0.007,"AppTest\\Oscar\\VehicleTest::test__construct":0.01,"AppTest\\Oscar\\VehicleTest::testVehicle":0.023}}
