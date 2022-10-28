@@ -11,5 +11,6 @@ $foo = new App\Oscar\Foo();
     </head>
     <body>
         <h1>Docker <?php echo $foo->getName(); ?></h1>
+    <?php echo  __DIR__; ?>
     </body>
 </html>
