@@ -2,6 +2,7 @@
 
 namespace App\Oscar\Services;
 
+use App\Oscar\Contracts\FileReaderInterface;
 use App\Oscar\Factory\FileReaderFactory;
 
 class FileService
@@ -13,11 +14,34 @@ class FileService
         $this->fileFactory = new FileReaderFactory();
     }
 
-    public function processFile()
+    /**
+     * Read the file content.
+     *
+     * @param string $fileType
+     * @param string $filePath
+     * @return iterable
+     */
+    public function readFileContent(string $fileType, string $filePath): iterable
     {
-        $this->fileFactory
-            ->create('csv')
-            ->read('');
+        return $this->fileFactory
+            ->create($fileType)
+            ->read($filePath)
+            ->toObject();
+    }
+
+    /**
+     * scan the provided directory and list all files.
+     *
+     * @param string $directory
+     * @return string[]
+     */
+    public function listFiles(string $directory): iterable
+    {
+        return [
+            __DIR__.'/../../data_source/source-1.csv',
+            __DIR__.'/../../data_source/source-2.json',
+            __DIR__.'/../../data_source/source-3.json',
+        ];
     }
 
 
@@ -26,7 +50,7 @@ class FileService
      * @param string $filename
      * @return string
      */
-    public function findFileExtention(string $filename)
+    public function findFileExtention(string $filename): string
     {
         return pathinfo($filename, PATHINFO_EXTENSION);
     }

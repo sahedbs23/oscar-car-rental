@@ -1,18 +1,3 @@
-Location,
-Car Brand,
-Car Model,
-License plate,
-Car year,
-Number of doors,
-Number of seats,
-Fuel type,
-Transmission,
-Car Type Group,
-Car Type
-
-
-
-
 Location,Car Brand,Car Model,License plate,Car year,Number of doors,Number of seats,Fuel type,Transmission,Car Type Group,Car Type
 Calahonda,Fiat,Panda,4379 KDH,2017,5,5,Petrol,Manual,Car,Small car
 Calahonda,Fiat,500C,1677 KGX,2018,3,4,Petrol,Automatic,Car,Luxury car
