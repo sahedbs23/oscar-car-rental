@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Oscar\Contracts;
+namespace App\Contracts;
 
 interface FileReaderInterface
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Oscar\Services;
+namespace App\Services;
 
-use App\Oscar\Contracts\FileReaderInterface;
+use App\Contracts\FileReaderInterface;
 use JsonException;
 
 class JsonFileReaderService implements FileReaderInterface

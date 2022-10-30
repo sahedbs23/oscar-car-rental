@@ -1,12 +1,11 @@
 <?php
 
-namespace AppTest\Oscar\Repositories;
+namespace Tests\Unit\Repositories;
 
 
-use App\Oscar\Models\Vehicle;
-use App\Oscar\Repositories\VehicleRepository;
+use App\Models\Vehicle;
+use App\Repositories\VehicleRepository;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 class VehicleRepositoryTest extends TestCase
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Oscar\Factory;
+namespace App\Factory;
 
-use App\Oscar\Contracts\FileReaderInterface;
-use App\Oscar\Services\CsvFileReaderService;
-use App\Oscar\Services\JsonFileReaderService;
+use App\Contracts\FileReaderInterface;
+use App\Services\CsvFileReaderService;
+use App\Services\JsonFileReaderService;
 use RuntimeException;
 
 class FileReaderFactory

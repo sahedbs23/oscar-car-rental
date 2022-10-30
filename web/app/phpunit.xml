@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" bootstrap="test/bootstrap.php" colors="true">
-  <coverage includeUncoveredFiles="false">
-    <include>
-      <directory suffix=".php">./src</directory>
-    </include>
-    <exclude>
-      <directory suffix=".php">./vendor</directory>
-    </exclude>
-    <report>
-      <html outputDirectory="./report/phpunit"/>
-      <text outputFile="php://stdout" showUncoveredFiles="false"/>
-    </report>
-  </coverage>
-  <testsuites>
-    <testsuite name="PHP Test suite">
-      <directory>./test/</directory>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">./app</directory>
+        </include>
+        <exclude>
+            <directory suffix=".php">./vendor</directory>
+        </exclude>
+        <report>
+            <html outputDirectory="./report/phpunit"/>
+            <text outputFile="php://stdout" showUncoveredFiles="false"/>
+        </report>
+    </coverage>
+    <testsuite name="Unit">
+        <directory >./tests/Unit</directory>
     </testsuite>
-  </testsuites>
-  <php>
-    <ini name="date.timezone" value="UTC"/>
-  </php>
-  <logging/>
+    <php>
+        <ini name="date.timezone" value="UTC"/>
+    </php>
+    <logging/>
 </phpunit>

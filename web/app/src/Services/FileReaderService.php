@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Oscar\Services;
+namespace App\Services;
 
-use App\Oscar\Factory\FileReaderFactory;
+use App\Factory\FileReaderFactory;
 
 class FileReaderService
 {

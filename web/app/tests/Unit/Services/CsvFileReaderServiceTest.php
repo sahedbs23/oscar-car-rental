@@ -1,8 +1,8 @@
 <?php
 
-namespace AppTest\Oscar\Services;
+namespace Services;
 
-use App\Oscar\Services\CsvFileReaderService;
+use App\Services\CsvFileReaderService;
 use PHPUnit\Framework\TestCase;
 
 class CsvFileReaderServiceTest extends TestCase
@@ -11,13 +11,13 @@ class CsvFileReaderServiceTest extends TestCase
 
     public function setUp() : void
     {
-        //parent::setUp();
+        parent::setUp();
         $this->csvFileReaderService  = new CsvFileReaderService();
     }
 
     public function tearDown() :void
     {
-        //parent::tearDown();
+        parent::tearDown();
         $this->csvFileReaderService  = null;
     }
 
@@ -26,7 +26,7 @@ class CsvFileReaderServiceTest extends TestCase
      */
     public function findCsvFileForTest(): string
     {
-        return __DIR__.'/../../../app/data_source/source-1.csv';
+        return __DIR__ . '/../../../app/data_source/source-1.csv';
     }
 
     /**
@@ -38,7 +38,7 @@ class CsvFileReaderServiceTest extends TestCase
     {
         $source = $this->csvFileReaderService->read($filePath);
         $this->assertIsIterable($this->csvFileReaderService->getData());
-        $this->assertInstanceOf( CsvFileReaderService::class, $source);
+//        $this->assertInstanceOf( CsvFileReaderService::class, $source);
 
     }
 }

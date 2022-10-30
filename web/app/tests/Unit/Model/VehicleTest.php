@@ -1,8 +1,8 @@
 <?php
 
-namespace AppTest\Oscar\Model;
+namespace Model;
 
-use App\Oscar\Models\Vehicle;
+use App\Models\Vehicle;
 use Faker\Factory;
 use Faker\Generator;
 use PHPUnit\Framework\TestCase;

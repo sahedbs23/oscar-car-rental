@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Oscar\Services;
+namespace App\Services;
 
 use JsonException;
 

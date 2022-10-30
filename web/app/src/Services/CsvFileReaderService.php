@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Oscar\Services;
+namespace App\Services;
 
-use App\Oscar\Contracts\FileReaderInterface;
+use App\Contracts\FileReaderInterface;
 
 class CsvFileReaderService implements FileReaderInterface
 {
@@ -92,14 +92,5 @@ class CsvFileReaderService implements FileReaderInterface
     {
         return $this->data;
     }
-
-    /**
-     * @return array
-     */
-    public function getFieldTemplate(): array
-    {
-        return $this->fieldTemplate;
-    }
-
 
 }

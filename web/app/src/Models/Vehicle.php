@@ -1,5 +1,5 @@
 <?php
-namespace App\Oscar\Models;
+namespace App\Models;
 
 class Vehicle
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Oscar\Repositories;
+namespace App\Repositories;
 
 use App\Oscar\Lib\DB\DatabaseConnection;
 use App\Oscar\Models\Vehicle;
