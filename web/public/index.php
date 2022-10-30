@@ -1,7 +1,12 @@
 <?php
 
 include '../app/vendor/autoload.php';
-$foo = new App\Oscar\Foo();
+//$foo = new App\Oscar\Foo();
+$app = new App\Oscar\Services\VehicleImportService();
+echo $app
+    ->readFiles()
+    ->toJson();
+exit();
 
 ?><!DOCTYPE html>
 <html>

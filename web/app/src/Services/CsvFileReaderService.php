@@ -11,22 +11,22 @@ class CsvFileReaderService implements FileReaderInterface
      */
     private array $data;
 
-    private array $fillableField = [
-        'location',
-        'car_brand',
-        'car_model',
-        'license_plate',
-        'car_year',
-        'number_of_doors',
-        'number_of_seats',
-        'fuel_type',
-        'transmission',
-        'car_type_group',
-        'car_type',
-        'car_km',
-        'inside_height',
-        'inside_length',
-        'inside_width'
+    private array $fieldTemplate = [
+        'location' => '',
+        'car_brand' => '',
+        'car_model' => '',
+        'license_plate' => '',
+        'car_year' => '',
+        'number_of_doors' => '',
+        'number_of_seats' => '',
+        'fuel_type' => '',
+        'transmission' => '',
+        'car_type_group' => '',
+        'car_type' => '',
+        'car_km' => 0,
+        'inside_height' => null,
+        'inside_length' => null,
+        'inside_width'=> null
     ];
 
     /**
@@ -53,11 +53,53 @@ class CsvFileReaderService implements FileReaderInterface
         return $this;
     }
 
-    public function toObject(): iterable
+    /**
+     * @inheritDoc
+     */
+    public function transform(): array
     {
-        foreach ($this->data as $key => $value):
-            var_dump($key, $value);
+        foreach ($this->data as $index => $value):
+           if ($index === 0){
+               continue;
+           }
+           $output[] = (object) $this->transformToArray($value);
         endforeach;
-        return [];
+        return $output ?? [];
     }
+
+    /**
+     * transform a csv row to template array.
+     * @param array $row
+     * @return array
+     */
+    private function transformToArray(array $row): array
+    {
+        $tempIndex = 0;
+        $rowArray = [];
+        foreach ($this->fieldTemplate as $fieldKey => $fieldValue) :
+            $fieldValue = array_key_exists($tempIndex, $row) ? trim($row[$tempIndex]) : $fieldValue;
+            $rowArray[$fieldKey] = $fieldValue;
+            $tempIndex++;
+        endforeach;
+
+        return $rowArray;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFieldTemplate(): array
+    {
+        return $this->fieldTemplate;
+    }
+
+
 }

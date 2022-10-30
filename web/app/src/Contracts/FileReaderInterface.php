@@ -13,9 +13,9 @@ interface FileReaderInterface
     public function read(string $filePath): static;
 
     /**
-     * convert the data to object.
+     * convert the data to iterable collections.
      *
-     * @return iterable
+     * @return array
      */
-    public function toObject() : iterable;
+    public function transform() : array;
 }

@@ -2,10 +2,9 @@
 
 namespace App\Oscar\Services;
 
-use App\Oscar\Contracts\FileReaderInterface;
 use App\Oscar\Factory\FileReaderFactory;
 
-class FileService
+class FileReaderService
 {
     private FileReaderFactory $fileFactory;
 
@@ -19,14 +18,14 @@ class FileService
      *
      * @param string $fileType
      * @param string $filePath
-     * @return iterable
+     * @return array
      */
-    public function readFileContent(string $fileType, string $filePath): iterable
+    public function readFileContent(string $fileType, string $filePath): array
     {
         return $this->fileFactory
             ->create($fileType)
             ->read($filePath)
-            ->toObject();
+            ->transform();
     }
 
     /**
@@ -35,7 +34,7 @@ class FileService
      * @param string $directory
      * @return string[]
      */
-    public function listFiles(string $directory): iterable
+    public static function listFiles(string $directory): iterable
     {
         return [
             __DIR__.'/../../data_source/source-1.csv',
