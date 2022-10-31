@@ -1,7 +1,8 @@
 <?php
 return [
-    /*
-     * Location of the json and csv file directory
-     */
-    'storage_location' => 'data_source'
+     //supported file type for import.
+    'supported_file_type' => [
+        'csv',
+        'json'
+    ]
 ];

@@ -56,7 +56,7 @@ class JsonFileReaderService implements FileReaderInterface
         return $collection ?? [];
     }
 
-    private function toObject(array $row): object
+    public function toObject(array $row): object
     {
         $obj = (object) $this->fieldTemplate;
 
@@ -64,5 +64,13 @@ class JsonFileReaderService implements FileReaderInterface
             $obj->{strtolower(str_replace(" ", "_", trim($key)))} = $value;
         endforeach;
         return $obj;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        return $this->data;
     }
 }

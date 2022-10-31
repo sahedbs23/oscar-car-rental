@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Repositories;
+namespace Tests\Repositories;
 
 
 use App\Models\Vehicle;

@@ -72,7 +72,7 @@ class CsvFileReaderService implements FileReaderInterface
      * @param array $row
      * @return array
      */
-    private function transformToArray(array $row): array
+    public function transformToArray(array $row): array
     {
         $tempIndex = 0;
         $rowArray = [];

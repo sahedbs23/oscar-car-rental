@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Factory;
+namespace Tests\Factory;
 
 use App\Factory\FileReaderFactory;
 use App\Services\CsvFileReaderService;

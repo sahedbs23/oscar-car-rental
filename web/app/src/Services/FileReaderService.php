@@ -6,7 +6,7 @@ use App\Factory\FileReaderFactory;
 
 class FileReaderService
 {
-    private FileReaderFactory $fileFactory;
+    public FileReaderFactory $fileFactory;
 
     public function __construct()
     {
@@ -34,7 +34,7 @@ class FileReaderService
      * @param string $directory
      * @return string[]
      */
-    public static function listFiles(string $directory): iterable
+    public  function listFiles(string $directory): iterable
     {
         return [
             __DIR__.'/../../data_source/source-1.csv',
@@ -49,7 +49,7 @@ class FileReaderService
      * @param string $filename
      * @return string
      */
-    public function findFileExtention(string $filename): string
+    public function findFileExtension(string $filename): string
     {
         return pathinfo($filename, PATHINFO_EXTENSION);
     }

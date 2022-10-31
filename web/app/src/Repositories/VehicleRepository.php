@@ -2,19 +2,19 @@
 
 namespace App\Repositories;
 
-use App\Oscar\Lib\DB\DatabaseConnection;
-use App\Oscar\Models\Vehicle;
+use App\Lib\DB\DatabaseConnection;
+use App\Models\Vehicle;
 
 class VehicleRepository
 {
     /**
-     * @var DatabaseConnection
+     * @var \PDO
      */
-    private DatabaseConnection $connection;
+    private ?\PDO $connection;
 
     public function __construct()
     {
-        $this->connection = new DatabaseConnection;
+        $this->connection =  DatabaseConnection::databaseManager();
     }
 
     /**
@@ -22,7 +22,7 @@ class VehicleRepository
      */
     public function all(): array
     {
-        $vehicles = $this->connection->connection
+        $vehicles = $this->connection
             ->query('SELECT * FROM vehicles');
         $collection = [];
         foreach ($vehicles as $vehicle):

@@ -1,6 +1,6 @@
 <?php
 
-namespace Model;
+namespace Tests\Model;
 
 use App\Models\Vehicle;
 use Faker\Factory;

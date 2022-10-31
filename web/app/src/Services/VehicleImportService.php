@@ -2,15 +2,20 @@
 
 namespace App\Services;
 
+use App\Helpers\ReadConfig;
 use JsonException;
 
 class VehicleImportService
 {
-    public array $vehicles;
+    /**
+     * @var array
+     */
+    private array $vehicles;
+
     /**
      * @var string[]
      */
-    private array $supportedFileType;
+    public array $supportedFileType;
 
     /**
      * @var FileReaderService
@@ -20,13 +25,13 @@ class VehicleImportService
     public function __construct()
     {
         $this->fileFactory = new FileReaderService();
-        $this->supportedFileType = ['csv', 'json'];
+        $this->supportedFileType = ReadConfig::config('file_system','supported_file_type');
     }
 
-    public function readFiles(): static
+    public function readFiles(string $directory = ''): static
     {
         $vehicleToMerge = [];
-        $files = FileReaderService::listFiles('');
+        $files = $this->fileFactory->listFiles($directory);
         foreach ($files as $filePath):
             $vehicleToMerge[] = $this->readFile($filePath);
         endforeach;
@@ -48,7 +53,7 @@ class VehicleImportService
         // File is readable and
         // File has exact file extension that we want.
         if ( $isReadable &&
-            in_array($extension = $this->fileFactory->findFileExtention($filePath), $this->supportedFileType, true)) {
+            in_array($extension = $this->fileFactory->findFileExtension($filePath), $this->supportedFileType, true)) {
             return $this->fileFactory->readFileContent($extension, $filePath);
         }
         return [];
@@ -60,5 +65,13 @@ class VehicleImportService
     public function toJson(): bool|string
     {
         return json_encode($this->vehicles, JSON_THROW_ON_ERROR);
+    }
+
+    /**
+     * @return array
+     */
+    public function getVehicles(): array
+    {
+        return $this->vehicles;
     }
 }
