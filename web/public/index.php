@@ -1,21 +1,21 @@
 <?php
 
 include '../app/vendor/autoload.php';
-//$foo = new App\Oscar\Foo();
-$app = new App\Services\VehicleImportService();
-echo $app
-    ->readFiles()
-    ->toJson();
-exit();
 
-?><!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Docker <?php echo $foo->getName(); ?></title>
-    </head>
-    <body>
-        <h1>Docker <?php echo $foo->getName(); ?></h1>
-    <?php echo  __DIR__; ?>
-    </body>
-</html>
+use App\Lib\Router;
+use App\Lib\Request;
+
+
+$router = new Router(new Request());
+
+
+$router->get('/', function (){
+    header('Content-type:Application/json');
+    echo (new \App\Services\VehicleImportService())->readFiles('')->toJson();
+});
+
+// Create a Vehicle.
+$router->post('/car', function($request) {
+    return  (new App\Http\Controller\CarController())->save($request);
+});
+
