@@ -2,7 +2,9 @@
 
 namespace App\Lib;
 
-class Response
+use App\Contracts\ResponseInterface;
+
+class Response implements ResponseInterface
 {
     public const HTTP_OK = 200;
 
@@ -10,22 +12,25 @@ class Response
 
     public const HTTP_NOT_FOUND = 404;
 
+    public const METHOD_NOT_ALLOWED = 405;
+
     public const HTTP_SERVER_ERROR = 500;
 
     public static $statusTexts = [
         200 => 'OK',
         201 => 'Created',
         404 => 'Not Found',
+        405 => 'Method Not Allowed',
         500 => 'Internal Server Error'
     ];
 
-    private array $headers;
+    private array $headers = [];
 
     private mixed $content;
 
     private int $statusCode;
 
-    private float|int $version;
+    private float $version;
 
     /**
      * Response Content
@@ -59,9 +64,9 @@ class Response
     }
 
     /**
-     * @return int|float
+     * @return float
      */
-    public function getProtocolVersion(): float|int
+    public function getProtocolVersion(): float
     {
         return $this->version;
     }
@@ -75,10 +80,10 @@ class Response
     }
 
     /**
-     * @param int|float $protocolVersion
+     * @param float $protocolVersion
      * @return  Response
      */
-    public function setProtocolVersion(int|float $protocolVersion): Response
+    public function setProtocolVersion(float $protocolVersion): Response
     {
         $this->version = $protocolVersion;
         return $this;
@@ -139,10 +144,7 @@ class Response
     }
 
     /**
-     * Sends the response to the output buffer.
-     *
-     * @param bool $send_headers Whether or not to send the defined HTTP headers
-     * @return  void
+     * @inheritDoc
      */
     public function send(bool $send_headers = false) :void
     {
@@ -166,20 +168,40 @@ class Response
     public function sendHeaders(): bool
     {
         if (!headers_sent()) {
-            header(
-                'HTTP/'.$this->getProtocolVersion() . ' ' . $this->getStatusCode(
-                ) . ' ' . static::$statusTexts[$this->getStatusCode()]
-            );
+            header($this->stringifyStatus());
             foreach ($this->headers as $name => $value) {
                 // Create the header
-                is_string($name) and $value = "{$name}: {$value}";
+               $value = $this->stringifyHeader($name, $value);
 
                 // Send it
-                header($value, true);
+                if ($value) {
+                    header($value, true) ;
+                }
             }
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     * @return string|null
+     */
+    public function stringifyHeader($key, $value)
+    {
+        is_string($key) and $value = "{$key}: {$value}";
+
+        return $value ?? null;
+    }
+
+    /**
+     * @return string
+     */
+    public function stringifyStatus()
+    {
+        return 'HTTP/'.$this->getProtocolVersion() . ' ' . $this->getStatusCode(
+        ) . ' ' . static::$statusTexts[$this->getStatusCode()];
     }
 
     /**

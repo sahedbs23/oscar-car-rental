@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Lib;
 
 use App\Contracts\RequestInterface;
+use App\Contracts\ResponseInterface;
 
 class Router
 {
     private RequestInterface $request;
+    private ResponseInterface $response;
 
     private array $supportedHttpMethods = array(
         "GET",
@@ -14,10 +17,12 @@ class Router
 
     /**
      * @param RequestInterface $request
+     * @param ResponseInterface $response
      */
-    public function __construct(RequestInterface $request)
+    public function __construct(RequestInterface $request, ResponseInterface $response)
     {
         $this->request = $request;
+        $this->response = $response;
     }
 
     /**
@@ -29,11 +34,9 @@ class Router
     {
         [$route, $method] = $args;
 
-        if(!in_array(strtoupper($name), $this->supportedHttpMethods, true))
-        {
+        if (!in_array(strtoupper($name), $this->supportedHttpMethods, true)) {
             $this->invalidMethodHandler();
         }
-
         $this->{strtolower($name)}[$this->formatRoute($route)] = $method;
     }
 
@@ -44,8 +47,7 @@ class Router
     private function formatRoute($route)
     {
         $result = rtrim($route, '/');
-        if ($result === '')
-        {
+        if ($result === '') {
             return '/';
         }
         return $result;
@@ -53,12 +55,16 @@ class Router
 
     private function invalidMethodHandler()
     {
-        header("{$this->request->serverProtocol} 405 Method Not Allowed");
+        $this->response->setStatusCode(Response::METHOD_NOT_ALLOWED)
+            ->setContent('Method Not Allowed')
+            ->send(true);
     }
 
-    private function defaultRequestHandler()
+    private function defaultRequestHandler(): void
     {
-        header("{$this->request->serverProtocol} 404 Not Found");
+        $this->response->setStatusCode(Response::HTTP_NOT_FOUND)
+            ->setContent('Route Not Found')
+            ->send(true);
     }
 
     /**
@@ -66,16 +72,17 @@ class Router
      */
     function resolve()
     {
-        $methodDictionary = $this->{strtolower($this->request->requestMethod)};
+        $requestMethod = strtolower($this->request->requestMethod);
+        $methodDictionary = property_exists($this, $requestMethod) ? $this->{$requestMethod} : [];
         $formatedRoute = $this->formatRoute($this->request->requestUri);
-        $method = $methodDictionary[strtok($formatedRoute, '?')];
+        $method = $methodDictionary[strtok($formatedRoute, '?')] ?? null;
 
-        if(is_null($method))
-        {
+        if (is_null($method)) {
             $this->defaultRequestHandler();
             return;
         }
-        call_user_func_array($method, array($this->request));
+
+        $method($this->request, $this->response);
     }
 
     public function __destruct()
