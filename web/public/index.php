@@ -2,25 +2,24 @@
 
 include '../app/vendor/autoload.php';
 
-use App\Lib\Router;
-use App\Lib\Request;
-use App\Lib\Response;
+use App\App;
 
-$request  = new Request();
-$response  = new Response();
+$app = App::run();
 
-$router = new Router($request, $response);
+//$app->get('/', function ($request){
+//    echo (new \App\Services\VehicleImportService())->readFiles('')->toJson();
+//});
 
-
-$router->get('/', function (Request $request){
-    echo (new \App\Services\VehicleImportService())->readFiles('')->toJson();
+$app->get('/cars', function ($request, $response){
+    (new \App\Http\Controller\CarController())->index($request, $response);
 });
 
 // Create a Vehicle.
-$router->get('/car', function($request, $response) {
-      (new App\Http\Controller\CarController())->index($request, $response);
+$app->get('/cars/:num', function( $request,  $response, $vehicleId) {
+      (new \App\Http\Controller\CarController())->view($request, $response, $vehicleId);
 });
-$router->post('/car', function(Request $request, Response $response) {
-      (new App\Http\Controller\CarController())->save($request, $response);
+
+$app->post('/cars', function( $request,  $response) {
+      (new \App\Http\Controller\CarController())->save($request, $response);
 });
 

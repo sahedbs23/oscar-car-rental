@@ -10,19 +10,14 @@ class CarController
 
     public function index(Request $request, Response $response)
     {
-        $response->send(true);
+        $content = json_encode($request->getParams(), JSON_THROW_ON_ERROR);
+        $response->setContent($content)->send(true);
     }
 
-    public function create()
+    public function view(Request $request, Response $response, mixed $id)
     {
+        $response->setContent($id)->setProtocolVersion(2.1)->send(true);
     }
-
-
-    public function view(int $id)
-    {
-    }
-
-
     /**
      * @param Request $request
      * @param Response $response
