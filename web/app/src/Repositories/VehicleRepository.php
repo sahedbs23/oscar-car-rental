@@ -21,16 +21,16 @@ class VehicleRepository extends BaseRepository
     /**
      * @return null|Vehicle
      */
-//    public function findOne() :?Vehicle
-//    {
-//        return null;
-//    }
+    public function findVehicle() :?Vehicle
+    {
+        return null;
+    }
 
     /**
      * @return Vehicle[]
      */
-//    public function findMany() : array
-//    {
+    public function findVehicles() : array
+    {
 //        $vehicles = $this->connection
 //            ->query('SELECT * FROM vehicles');
 //        $collection = [];
@@ -38,17 +38,18 @@ class VehicleRepository extends BaseRepository
 //            $collection[] = $this->toVehicle($vehicle);
 //        endforeach;
 //        return $collection;
-//    }
+        return [];
+    }
 
     /**
      * @param array $input
      * @return bool
      */
-//    public function create(array $input):bool
-//    {
-//        return true;
-//
-//    }
+    public function createVehicle(array $input):bool
+    {
+        return true;
+
+    }
 
     /**
      * @param array $record
