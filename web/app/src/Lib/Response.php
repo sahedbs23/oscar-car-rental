@@ -12,6 +12,8 @@ class Response implements ResponseInterface
 
     public const HTTP_NOT_FOUND = 404;
 
+    public const BAD_REQUEST = 400;
+
     public const METHOD_NOT_ALLOWED = 405;
 
     public const HTTP_SERVER_ERROR = 500;
@@ -19,6 +21,7 @@ class Response implements ResponseInterface
     public static $statusTexts = [
         200 => 'OK',
         201 => 'Created',
+        400 => 'Bad Request',
         404 => 'Not Found',
         405 => 'Method Not Allowed',
         500 => 'Internal Server Error'

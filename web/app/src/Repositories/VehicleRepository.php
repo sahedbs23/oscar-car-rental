@@ -2,36 +2,58 @@
 
 namespace App\Repositories;
 
-use App\Lib\DB\DatabaseConnection;
+use App\Repositories\BaseRepository;
 use App\Models\Vehicle;
 
-class VehicleRepository
+class VehicleRepository extends BaseRepository
 {
-    /**
-     * @var \PDO
-     */
-    private ?\PDO $connection;
+    public const TABLE_NAME = 'vehicles';
+
+    public const PK = 'id';
 
     public function __construct()
     {
-        $this->connection =  DatabaseConnection::databaseManager();
+        parent::__construct();
+        $this->setPrimaryKey(self::PK);
+        $this->setTable(self::TABLE_NAME);
     }
+
+    /**
+     * @return null|Vehicle
+     */
+//    public function findOne() :?Vehicle
+//    {
+//        return null;
+//    }
 
     /**
      * @return Vehicle[]
      */
-    public function all(): array
-    {
-        $vehicles = $this->connection
-            ->query('SELECT * FROM vehicles');
-        $collection = [];
-        foreach ($vehicles as $vehicle):
-            $collection[] = $this->toVehicle($vehicle);
-        endforeach;
-        return $collection;
+//    public function findMany() : array
+//    {
+//        $vehicles = $this->connection
+//            ->query('SELECT * FROM vehicles');
+//        $collection = [];
+//        foreach ($vehicles as $vehicle):
+//            $collection[] = $this->toVehicle($vehicle);
+//        endforeach;
+//        return $collection;
+//    }
 
-    }
+    /**
+     * @param array $input
+     * @return bool
+     */
+//    public function create(array $input):bool
+//    {
+//        return true;
+//
+//    }
 
+    /**
+     * @param array $record
+     * @return Vehicle
+     */
     private function toVehicle(array $record): Vehicle
     {
         [

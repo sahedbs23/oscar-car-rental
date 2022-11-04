@@ -4,6 +4,8 @@ namespace App\Lib;
 
 use App\Contracts\RequestInterface;
 use App\Contracts\ResponseInterface;
+use App\Exceptions\MethodNotAllowedException;
+use App\Exceptions\RouteNotFoundException;
 
 class Router
 {
@@ -26,14 +28,6 @@ class Router
     }
 
     /**
-     * Class Destructor.
-     */
-    public function __destruct()
-    {
-        $this->resolve();
-    }
-
-    /**
      * This function will be called when client call undefined method from this class.
      * Route->GET get methodnot exists in class. call __call method.
      * Router->POST POST method not defined in class. will call __call.
@@ -47,7 +41,7 @@ class Router
         [$route, $method] = $args;
 
         if (!in_array(strtoupper($name), $this->supportedHttpMethods, true)) {
-            $this->invalidMethodHandler();
+            throw new MethodNotAllowedException('Method Not Allowed', Response::METHOD_NOT_ALLOWED);
         }
         $this->{strtolower($name)}[$this->formatRoute($route)] = $method;
     }
@@ -68,7 +62,7 @@ class Router
     /**
      * Resolves a route
      */
-    private function resolve(): void
+    public function resolve(): void
     {
         $requestMethod = strtolower($this->request->requestMethod);
         $methodDictionary = property_exists($this, $requestMethod) ? $this->{$requestMethod} : [];
@@ -86,8 +80,7 @@ class Router
         }
 
         if (is_null($method)) {
-            $this->defaultRequestHandler();
-            return;
+            throw new RouteNotFoundException('Route Not Found', Response::HTTP_NOT_FOUND);
         }
 
         $method($this->request, $this->response);
@@ -121,29 +114,4 @@ class Router
         endforeach;
         return null;
     }
-
-    /**
-     * Send invalid HTTP method error response to client.
-     *
-     * @return void
-     */
-    private function invalidMethodHandler()
-    {
-        $this->response->setStatusCode(Response::METHOD_NOT_ALLOWED)
-            ->setContent('Method Not Allowed')
-            ->send(true);
-    }
-
-    /**
-     * Send Route not found error response to client.
-     *
-     * @return void
-     */
-    private function defaultRequestHandler(): void
-    {
-        $this->response->setStatusCode(Response::HTTP_NOT_FOUND)
-            ->setContent('Route Not Found')
-            ->send(true);
-    }
-
 }

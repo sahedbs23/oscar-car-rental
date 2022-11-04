@@ -1,14 +1,22 @@
 <?php
+
 return [
-    'host' => 'mysql',
 
-    'database' => 'test',
+    'default_connection' => 'mysql',
 
-    'port' => '3306',
+    'connection' => [
+        'mysql' => [
+            'host' => 'mysql',
 
-    'user' => 'root',
+            'database' => 'test',
 
-    'pass' => 'root',
+            'port' => '3306',
 
-    'charset' => 'utf8mb4',
+            'user' => 'root',
+
+            'pass' => 'root',
+
+            'charset' => 'utf8mb4'
+        ]
+    ]
 ];
