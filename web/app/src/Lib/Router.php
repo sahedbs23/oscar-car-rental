@@ -93,7 +93,7 @@ class Router
      * @param $routeLists
      * @return mixed|null
      */
-    private function match(string $url, $routeLists)
+    public function match(string $url, $routeLists)
     {
         foreach ($routeLists as $key => $route) :
             // deal with regex's groups
