@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/app/src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="_css/style.css" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/var/www/html/app/src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Lib/Response.php.html#7">App\Lib\Response</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Services/VehicleImportService.php.html#8">App\Services\VehicleImportService</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Http/Controller/CarController.php.html#11">App\Http\Controller\CarController</a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="Repositories/VehicleBrandRepository.php.html#5">App\Repositories\VehicleBrandRepository</a></td><td class="text-right">76%</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#13">App\Services\VehicleService</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Repositories/VehicleModelRepository.php.html#5">App\Repositories\VehicleModelRepository</a></td><td class="text-right">84%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Lib/Response.php.html#7">App\Lib\Response</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Services/VehicleImportService.php.html#8">App\Services\VehicleImportService</a></td><td class="text-right">17</td></tr>
+       <tr><td><a href="Http/Controller/CarController.php.html#11">App\Http\Controller\CarController</a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#13">App\Services\VehicleService</a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="Repositories/VehicleBrandRepository.php.html#5">App\Repositories\VehicleBrandRepository</a></td><td class="text-right">7</td></tr>
+       <tr><td><a href="Repositories/VehicleModelRepository.php.html#5">App\Repositories\VehicleModelRepository</a></td><td class="text-right">7</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controller/CarController.php.html#20"><abbr title="App\Http\Controller\CarController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controller/CarController.php.html#33"><abbr title="App\Http\Controller\CarController::view">view</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Response.php.html#152"><abbr title="App\Lib\Response::send">send</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Lib/Response.php.html#171"><abbr title="App\Lib\Response::sendHeaders">sendHeaders</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repositories/BaseRepository.php.html#148"><abbr title="App\Repositories\BaseRepository::fetch">fetch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VehicleImportService.php.html#35"><abbr title="App\Services\VehicleImportService::importDatFromSource">importDatFromSource</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VehicleImportService.php.html#101"><abbr title="App\Services\VehicleImportService::removeEmptyValueFromArray">removeEmptyValueFromArray</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#99"><abbr title="App\Services\VehicleService::searchCar">searchCar</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#108"><abbr title="App\Services\VehicleService::find">find</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repositories/BaseRepository.php.html#139"><abbr title="App\Repositories\BaseRepository::exists">exists</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Repositories/VehicleBrandRepository.php.html#23"><abbr title="App\Repositories\VehicleBrandRepository::createBrand">createBrand</abbr></a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#118"><abbr title="App\Services\VehicleService::saveCarFeatures">saveCarFeatures</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Repositories/VehicleModelRepository.php.html#23"><abbr title="App\Repositories\VehicleModelRepository::createModel">createModel</abbr></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#50"><abbr title="App\Services\VehicleService::storeCar">storeCar</abbr></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="Repositories/BaseRepository.php.html#205"><abbr title="App\Repositories\BaseRepository::update">update</abbr></a></td><td class="text-right">88%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Lib/Response.php.html#171"><abbr title="App\Lib\Response::sendHeaders">sendHeaders</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Lib/Response.php.html#152"><abbr title="App\Lib\Response::send">send</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Services/VehicleImportService.php.html#35"><abbr title="App\Services\VehicleImportService::importDatFromSource">importDatFromSource</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Repositories/VehicleBrandRepository.php.html#23"><abbr title="App\Repositories\VehicleBrandRepository::createBrand">createBrand</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Repositories/VehicleModelRepository.php.html#23"><abbr title="App\Repositories\VehicleModelRepository::createModel">createModel</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#118"><abbr title="App\Services\VehicleService::saveCarFeatures">saveCarFeatures</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Services/VehicleService.php.html#50"><abbr title="App\Services\VehicleService::storeCar">storeCar</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Repositories/BaseRepository.php.html#139"><abbr title="App\Repositories\BaseRepository::exists">exists</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Repositories/BaseRepository.php.html#205"><abbr title="App\Repositories\BaseRepository::update">update</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.18</a> using <a href="https://secure.php.net/" target="_top">PHP 8.1.4</a> and <a href="https://phpunit.de/">PHPUnit 9.5.26</a> at Sat Nov 5 18:53:05 UTC 2022.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js" type="text/javascript"></script>
+  <script src="_js/d3.min.js" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,2,2,2,3,22], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([9,0,0,0,0,0,0,1,2,3,2,111], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"Abstracts\/AbstractDatabaseConnection.php.html#7\">App\\Abstracts\\AbstractDatabaseConnection<\/a>"],[100,0,"<a href=\"Exceptions\/InvalidRuleException.php.html#5\">App\\Exceptions\\InvalidRuleException<\/a>"],[100,0,"<a href=\"Exceptions\/MethodNotAllowedException.php.html#5\">App\\Exceptions\\MethodNotAllowedException<\/a>"],[100,0,"<a href=\"Exceptions\/RouteNotFoundException.php.html#5\">App\\Exceptions\\RouteNotFoundException<\/a>"],[100,1,"<a href=\"Exceptions\/ValidationExceptions.php.html#8\">App\\Exceptions\\ValidationExceptions<\/a>"],[100,1,"<a href=\"Factory\/FileReaderFactory.php.html#10\">App\\Factory\\FileReaderFactory<\/a>"],[100,1,"<a href=\"Foo.php.html#12\">App\\Foo<\/a>"],[100,1,"<a href=\"Helpers\/Arr.php.html#5\">App\\Helpers\\Arr<\/a>"],[100,8,"<a href=\"Helpers\/ConfigDatabase.php.html#15\">App\\Helpers\\ConfigDatabase<\/a>"],[100,5,"<a href=\"Helpers\/DBCleanup.php.html#14\">App\\Helpers\\DBCleanup<\/a>"],[100,6,"<a href=\"Helpers\/ReadConfig.php.html#4\">App\\Helpers\\ReadConfig<\/a>"],[76.92307692307693,12,"<a href=\"Http\/Controller\/CarController.php.html#11\">App\\Http\\Controller\\CarController<\/a>"],[100,4,"<a href=\"Lib\/DB\/MysqlDatabaseConnection.php.html#9\">App\\Lib\\DB\\MysqlDatabaseConnection<\/a>"],[100,9,"<a href=\"Lib\/Request.php.html#8\">App\\Lib\\Request<\/a>"],[66.66666666666666,23,"<a href=\"Lib\/Response.php.html#7\">App\\Lib\\Response<\/a>"],[100,14,"<a href=\"Lib\/Router.php.html#10\">App\\Lib\\Router<\/a>"],[100,1,"<a href=\"Models\/Vehicle.php.html#4\">App\\Models\\Vehicle<\/a>"],[97.32142857142857,53,"<a href=\"Repositories\/BaseRepository.php.html#8\">App\\Repositories\\BaseRepository<\/a>"],[76.92307692307693,7,"<a href=\"Repositories\/VehicleBrandRepository.php.html#5\">App\\Repositories\\VehicleBrandRepository<\/a>"],[92.85714285714286,6,"<a href=\"Repositories\/VehicleFeaturesRepository.php.html#5\">App\\Repositories\\VehicleFeaturesRepository<\/a>"],[92.3076923076923,7,"<a href=\"Repositories\/VehicleLocationRepository.php.html#5\">App\\Repositories\\VehicleLocationRepository<\/a>"],[84.61538461538461,7,"<a href=\"Repositories\/VehicleModelRepository.php.html#5\">App\\Repositories\\VehicleModelRepository<\/a>"],[100,7,"<a href=\"Repositories\/VehicleRepository.php.html#7\">App\\Repositories\\VehicleRepository<\/a>"],[100,10,"<a href=\"Services\/CsvFileReaderService.php.html#7\">App\\Services\\CsvFileReaderService<\/a>"],[100,5,"<a href=\"Services\/FileReaderService.php.html#7\">App\\Services\\FileReaderService<\/a>"],[100,6,"<a href=\"Services\/JsonFileReaderService.php.html#8\">App\\Services\\JsonFileReaderService<\/a>"],[66.66666666666666,12,"<a href=\"Services\/VehicleImportService.php.html#8\">App\\Services\\VehicleImportService<\/a>"],[80.64516129032258,11,"<a href=\"Services\/VehicleService.php.html#13\">App\\Services\\VehicleService<\/a>"],[100,11,"<a href=\"Validation\/Rules\/Rules.php.html#5\">App\\Validation\\Rules\\Rules<\/a>"],[100,10,"<a href=\"Validation\/Validator.php.html#8\">App\\Validation\\Validator<\/a>"],[100,2,"<a href=\"Traits\/RequestTrait.php.html#5\">App\\Traits\\RequestTrait<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"Abstracts\/AbstractDatabaseConnection.php.html#20\">App\\Abstracts\\AbstractDatabaseConnection::__construct<\/a>"],[100,0,"<a href=\"Abstracts\/AbstractDatabaseConnection.php.html#56\">App\\Abstracts\\AbstractDatabaseConnection::connect<\/a>"],[100,0,"<a href=\"Abstracts\/AbstractDatabaseConnection.php.html#71\">App\\Abstracts\\AbstractDatabaseConnection::getConfig<\/a>"],[100,1,"<a href=\"Exceptions\/ValidationExceptions.php.html#16\">App\\Exceptions\\ValidationExceptions::__construct<\/a>"],[100,1,"<a href=\"Factory\/FileReaderFactory.php.html#16\">App\\Factory\\FileReaderFactory::create<\/a>"],[100,1,"<a href=\"Foo.php.html#17\">App\\Foo::getName<\/a>"],[100,1,"<a href=\"Helpers\/Arr.php.html#14\">App\\Helpers\\Arr::only<\/a>"],[100,1,"<a href=\"Helpers\/ConfigDatabase.php.html#25\">App\\Helpers\\ConfigDatabase::instance<\/a>"],[100,2,"<a href=\"Helpers\/ConfigDatabase.php.html#30\">App\\Helpers\\ConfigDatabase::insantiate<\/a>"],[100,1,"<a href=\"Helpers\/ConfigDatabase.php.html#40\">App\\Helpers\\ConfigDatabase::setUpBrands<\/a>"],[100,1,"<a href=\"Helpers\/ConfigDatabase.php.html#49\">App\\Helpers\\ConfigDatabase::setUpLocations<\/a>"],[100,1,"<a href=\"Helpers\/ConfigDatabase.php.html#58\">App\\Helpers\\ConfigDatabase::setUpCarModels<\/a>"],[100,1,"<a href=\"Helpers\/ConfigDatabase.php.html#67\">App\\Helpers\\ConfigDatabase::setupVehicle<\/a>"],[100,1,"<a href=\"Helpers\/ConfigDatabase.php.html#76\">App\\Helpers\\ConfigDatabase::vehicleInput<\/a>"],[100,1,"<a href=\"Helpers\/DBCleanup.php.html#19\">App\\Helpers\\DBCleanup::cleanVehicles<\/a>"],[100,1,"<a href=\"Helpers\/DBCleanup.php.html#27\">App\\Helpers\\DBCleanup::cleanbrands<\/a>"],[100,1,"<a href=\"Helpers\/DBCleanup.php.html#35\">App\\Helpers\\DBCleanup::cleanLocations<\/a>"],[100,1,"<a href=\"Helpers\/DBCleanup.php.html#43\">App\\Helpers\\DBCleanup::cleanCarModels<\/a>"],[100,1,"<a href=\"Helpers\/DBCleanup.php.html#51\">App\\Helpers\\DBCleanup::cleanCarFeatures<\/a>"],[100,6,"<a href=\"Helpers\/ReadConfig.php.html#17\">App\\Helpers\\ReadConfig::config<\/a>"],[100,1,"<a href=\"Http\/Controller\/CarController.php.html#15\">App\\Http\\Controller\\CarController::__construct<\/a>"],[0,1,"<a href=\"Http\/Controller\/CarController.php.html#20\">App\\Http\\Controller\\CarController::index<\/a>"],[0,1,"<a href=\"Http\/Controller\/CarController.php.html#33\">App\\Http\\Controller\\CarController::view<\/a>"],[100,8,"<a href=\"Http\/Controller\/CarController.php.html#50\">App\\Http\\Controller\\CarController::save<\/a>"],[100,1,"<a href=\"Http\/Controller\/CarController.php.html#105\">App\\Http\\Controller\\CarController::sendResponse<\/a>"],[100,1,"<a href=\"Lib\/DB\/MysqlDatabaseConnection.php.html#19\">App\\Lib\\DB\\MysqlDatabaseConnection::__construct<\/a>"],[100,2,"<a href=\"Lib\/DB\/MysqlDatabaseConnection.php.html#32\">App\\Lib\\DB\\MysqlDatabaseConnection::getConfig<\/a>"],[100,1,"<a href=\"Lib\/DB\/MysqlDatabaseConnection.php.html#45\">App\\Lib\\DB\\MysqlDatabaseConnection::connect<\/a>"],[100,1,"<a href=\"Lib\/Request.php.html#12\">App\\Lib\\Request::__construct<\/a>"],[100,3,"<a href=\"Lib\/Request.php.html#20\">App\\Lib\\Request::getParams<\/a>"],[100,3,"<a href=\"Lib\/Request.php.html#36\">App\\Lib\\Request::getBody<\/a>"],[100,2,"<a href=\"Lib\/Request.php.html#55\">App\\Lib\\Request::bootstrapSelf<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#45\">App\\Lib\\Response::__construct<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#56\">App\\Lib\\Response::getStatusCode<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#64\">App\\Lib\\Response::getContent<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#72\">App\\Lib\\Response::getProtocolVersion<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#80\">App\\Lib\\Response::getHeaders<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#89\">App\\Lib\\Response::setProtocolVersion<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#99\">App\\Lib\\Response::setContent<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#109\">App\\Lib\\Response::setStatusCode<\/a>"],[100,2,"<a href=\"Lib\/Response.php.html#122\">App\\Lib\\Response::setHeaders<\/a>"],[100,2,"<a href=\"Lib\/Response.php.html#138\">App\\Lib\\Response::setHeader<\/a>"],[0,3,"<a href=\"Lib\/Response.php.html#152\">App\\Lib\\Response::send<\/a>"],[0,4,"<a href=\"Lib\/Response.php.html#171\">App\\Lib\\Response::sendHeaders<\/a>"],[100,2,"<a href=\"Lib\/Response.php.html#194\">App\\Lib\\Response::stringifyHeader<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#204\">App\\Lib\\Response::stringifyStatus<\/a>"],[100,1,"<a href=\"Lib\/Response.php.html#215\">App\\Lib\\Response::__toString<\/a>"],[100,1,"<a href=\"Lib\/Router.php.html#24\">App\\Lib\\Router::__construct<\/a>"],[100,2,"<a href=\"Lib\/Router.php.html#39\">App\\Lib\\Router::__call<\/a>"],[100,2,"<a href=\"Lib\/Router.php.html#53\">App\\Lib\\Router::formatRoute<\/a>"],[100,5,"<a href=\"Lib\/Router.php.html#65\">App\\Lib\\Router::resolve<\/a>"],[100,4,"<a href=\"Lib\/Router.php.html#96\">App\\Lib\\Router::match<\/a>"],[100,1,"<a href=\"Models\/Vehicle.php.html#39\">App\\Models\\Vehicle::__construct<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#46\">App\\Repositories\\BaseRepository::__construct<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#55\">App\\Repositories\\BaseRepository::getTable<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#63\">App\\Repositories\\BaseRepository::getPk<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#71\">App\\Repositories\\BaseRepository::getCount<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#80\">App\\Repositories\\BaseRepository::setTable<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#90\">App\\Repositories\\BaseRepository::setPrimaryKey<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#102\">App\\Repositories\\BaseRepository::findAll<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#115\">App\\Repositories\\BaseRepository::findOne<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#128\">App\\Repositories\\BaseRepository::findById<\/a>"],[66.66666666666666,2,"<a href=\"Repositories\/BaseRepository.php.html#139\">App\\Repositories\\BaseRepository::exists<\/a>"],[0,1,"<a href=\"Repositories\/BaseRepository.php.html#148\">App\\Repositories\\BaseRepository::fetch<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#156\">App\\Repositories\\BaseRepository::lastSavedId<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#167\">App\\Repositories\\BaseRepository::query<\/a>"],[100,4,"<a href=\"Repositories\/BaseRepository.php.html#183\">App\\Repositories\\BaseRepository::save<\/a>"],[88.88888888888889,2,"<a href=\"Repositories\/BaseRepository.php.html#205\">App\\Repositories\\BaseRepository::update<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#227\">App\\Repositories\\BaseRepository::create<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#244\">App\\Repositories\\BaseRepository::delete<\/a>"],[100,4,"<a href=\"Repositories\/BaseRepository.php.html#266\">App\\Repositories\\BaseRepository::param<\/a>"],[100,5,"<a href=\"Repositories\/BaseRepository.php.html#284\">App\\Repositories\\BaseRepository::fields<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#304\">App\\Repositories\\BaseRepository::conditions<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#317\">App\\Repositories\\BaseRepository::where<\/a>"],[100,5,"<a href=\"Repositories\/BaseRepository.php.html#327\">App\\Repositories\\BaseRepository::find<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#359\">App\\Repositories\\BaseRepository::values<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#373\">App\\Repositories\\BaseRepository::insertQueryString<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#386\">App\\Repositories\\BaseRepository::updateWhere<\/a>"],[100,1,"<a href=\"Repositories\/BaseRepository.php.html#399\">App\\Repositories\\BaseRepository::updateQueryString<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#409\">App\\Repositories\\BaseRepository::orderBy<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#419\">App\\Repositories\\BaseRepository::limit<\/a>"],[100,2,"<a href=\"Repositories\/BaseRepository.php.html#428\">App\\Repositories\\BaseRepository::offset<\/a>"],[100,1,"<a href=\"Repositories\/VehicleBrandRepository.php.html#11\">App\\Repositories\\VehicleBrandRepository::__construct<\/a>"],[70,6,"<a href=\"Repositories\/VehicleBrandRepository.php.html#23\">App\\Repositories\\VehicleBrandRepository::createBrand<\/a>"],[100,1,"<a href=\"Repositories\/VehicleFeaturesRepository.php.html#11\">App\\Repositories\\VehicleFeaturesRepository::__construct<\/a>"],[90.9090909090909,5,"<a href=\"Repositories\/VehicleFeaturesRepository.php.html#25\">App\\Repositories\\VehicleFeaturesRepository::saveCarFeatures<\/a>"],[100,1,"<a href=\"Repositories\/VehicleLocationRepository.php.html#11\">App\\Repositories\\VehicleLocationRepository::__construct<\/a>"],[90,6,"<a href=\"Repositories\/VehicleLocationRepository.php.html#23\">App\\Repositories\\VehicleLocationRepository::createCarLocation<\/a>"],[100,1,"<a href=\"Repositories\/VehicleModelRepository.php.html#11\">App\\Repositories\\VehicleModelRepository::__construct<\/a>"],[80,6,"<a href=\"Repositories\/VehicleModelRepository.php.html#23\">App\\Repositories\\VehicleModelRepository::createModel<\/a>"],[100,1,"<a href=\"Repositories\/VehicleRepository.php.html#13\">App\\Repositories\\VehicleRepository::__construct<\/a>"],[100,1,"<a href=\"Repositories\/VehicleRepository.php.html#24\">App\\Repositories\\VehicleRepository::findVehicle<\/a>"],[100,3,"<a href=\"Repositories\/VehicleRepository.php.html#35\">App\\Repositories\\VehicleRepository::findVehicles<\/a>"],[100,2,"<a href=\"Repositories\/VehicleRepository.php.html#53\">App\\Repositories\\VehicleRepository::createVehicle<\/a>"],[100,3,"<a href=\"Services\/CsvFileReaderService.php.html#38\">App\\Services\\CsvFileReaderService::read<\/a>"],[100,3,"<a href=\"Services\/CsvFileReaderService.php.html#59\">App\\Services\\CsvFileReaderService::transform<\/a>"],[100,3,"<a href=\"Services\/CsvFileReaderService.php.html#75\">App\\Services\\CsvFileReaderService::transformToArray<\/a>"],[100,1,"<a href=\"Services\/CsvFileReaderService.php.html#91\">App\\Services\\CsvFileReaderService::getData<\/a>"],[100,1,"<a href=\"Services\/FileReaderService.php.html#11\">App\\Services\\FileReaderService::__construct<\/a>"],[100,1,"<a href=\"Services\/FileReaderService.php.html#23\">App\\Services\\FileReaderService::readFileContent<\/a>"],[100,1,"<a href=\"Services\/FileReaderService.php.html#37\">App\\Services\\FileReaderService::listFiles<\/a>"],[100,1,"<a href=\"Services\/FileReaderService.php.html#52\">App\\Services\\FileReaderService::findFileExtension<\/a>"],[100,1,"<a href=\"Services\/FileReaderService.php.html#63\">App\\Services\\FileReaderService::fileReadable<\/a>"],[100,1,"<a href=\"Services\/JsonFileReaderService.php.html#40\">App\\Services\\JsonFileReaderService::read<\/a>"],[100,2,"<a href=\"Services\/JsonFileReaderService.php.html#51\">App\\Services\\JsonFileReaderService::transform<\/a>"],[100,2,"<a href=\"Services\/JsonFileReaderService.php.html#59\">App\\Services\\JsonFileReaderService::toObject<\/a>"],[100,1,"<a href=\"Services\/JsonFileReaderService.php.html#72\">App\\Services\\JsonFileReaderService::getData<\/a>"],[100,1,"<a href=\"Services\/VehicleImportService.php.html#25\">App\\Services\\VehicleImportService::__construct<\/a>"],[0,3,"<a href=\"Services\/VehicleImportService.php.html#35\">App\\Services\\VehicleImportService::importDatFromSource<\/a>"],[100,2,"<a href=\"Services\/VehicleImportService.php.html#50\">App\\Services\\VehicleImportService::readFiles<\/a>"],[100,3,"<a href=\"Services\/VehicleImportService.php.html#66\">App\\Services\\VehicleImportService::readFile<\/a>"],[100,1,"<a href=\"Services\/VehicleImportService.php.html#84\">App\\Services\\VehicleImportService::toJson<\/a>"],[100,1,"<a href=\"Services\/VehicleImportService.php.html#92\">App\\Services\\VehicleImportService::getVehicles<\/a>"],[0,1,"<a href=\"Services\/VehicleImportService.php.html#101\">App\\Services\\VehicleImportService::removeEmptyValueFromArray<\/a>"],[100,1,"<a href=\"Services\/VehicleService.php.html#36\">App\\Services\\VehicleService::__construct<\/a>"],[87.5,4,"<a href=\"Services\/VehicleService.php.html#50\">App\\Services\\VehicleService::storeCar<\/a>"],[0,1,"<a href=\"Services\/VehicleService.php.html#99\">App\\Services\\VehicleService::searchCar<\/a>"],[0,1,"<a href=\"Services\/VehicleService.php.html#108\">App\\Services\\VehicleService::find<\/a>"],[75,4,"<a href=\"Services\/VehicleService.php.html#118\">App\\Services\\VehicleService::saveCarFeatures<\/a>"],[100,2,"<a href=\"Validation\/Rules\/Rules.php.html#13\">App\\Validation\\Rules\\Rules::string<\/a>"],[100,2,"<a href=\"Validation\/Rules\/Rules.php.html#29\">App\\Validation\\Rules\\Rules::numeric<\/a>"],[100,7,"<a href=\"Validation\/Rules\/Rules.php.html#44\">App\\Validation\\Rules\\Rules::required<\/a>"],[100,1,"<a href=\"Validation\/Validator.php.html#21\">App\\Validation\\Validator::__construct<\/a>"],[100,3,"<a href=\"Validation\/Validator.php.html#34\">App\\Validation\\Validator::vlaidate<\/a>"],[100,4,"<a href=\"Validation\/Validator.php.html#49\">App\\Validation\\Validator::applyRule<\/a>"],[100,1,"<a href=\"Validation\/Validator.php.html#68\">App\\Validation\\Validator::fails<\/a>"],[100,1,"<a href=\"Validation\/Validator.php.html#76\">App\\Validation\\Validator::message<\/a>"],[100,2,"<a href=\"Traits\/RequestTrait.php.html#13\">App\\Traits\\RequestTrait::toCamelCase<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>
