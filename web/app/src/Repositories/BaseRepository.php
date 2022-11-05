@@ -200,6 +200,7 @@ class BaseRepository extends MysqlDatabaseConnection
      *
      * @param $data
      * @return bool
+     * @throws \PDOException
      */
     public function update($data):bool
     {
@@ -221,6 +222,7 @@ class BaseRepository extends MysqlDatabaseConnection
      *
      * @param $data
      * @return bool
+     * @throws \PDOException
      */
     public function create($data) :bool
     {
@@ -268,7 +270,7 @@ class BaseRepository extends MysqlDatabaseConnection
         }
 
         foreach ($data as $k => $v) {
-            $tipo = is_int($v) ? PDO::PARAM_INT : PDO::PARAM_STR;
+            $tipo = is_numeric($v) ? PDO::PARAM_INT : PDO::PARAM_STR;
             $this->stmt->bindValue(":{$k}", $v, $tipo);
         }
     }

@@ -94,11 +94,13 @@ class VehicleService
 
     /**
      * @param array $params
-     * @return Vehicle[]|null
+     * @param int $limit
+     * @param int $offset
+     * @return array|null
      */
-    public function searchCar(array $params = []): ?array
+    public function searchCar(array $params = [], int $limit=10, int $offset=0): ?array
     {
-        return $this->repository->findVehicles($params);
+        return $this->repository->findVehicles($params, $limit, $offset);
     }
 
     /**
@@ -107,7 +109,7 @@ class VehicleService
      */
     public function find(int $id): ?array
     {
-        return $this->repository->findOne($id);
+        return $this->repository->findById($id);
     }
 
     /**

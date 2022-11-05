@@ -8,6 +8,8 @@ use App\Exceptions\MethodNotAllowedException;
 use App\Exceptions\RouteNotFoundException;
 use App\Exceptions\ValidationExceptions ;
 use App\Lib\Response;
+use App\Services\VehicleImportService;
+use App\Services\VehicleService;
 
 // Write Dedicated Error Handler.
 //TODO:: Register Global Error Handler
@@ -18,8 +20,9 @@ use App\Lib\Response;
 try {
     $app = App::run();
 
-    $app->get('/', function ($request, $response) {
-        $cars = (new \App\Services\VehicleImportService())->readFiles('')->toJson();
+    // Read cars from Data source
+    $app->get('/read-files', function ($request, $response) {
+        $cars = (new VehicleImportService())->readFiles('')->toJson();
         $response->setContent($cars)
             ->setHeaders([
                 'Content-type' => 'application/json',
@@ -28,15 +31,28 @@ try {
             ->send(true);
     });
 
+    // Import cars from data source.
+    $app->post('/write-files', function ($request, $response) {
+        (new VehicleImportService())->importDatFromSource('');
+        $cars = (new VehicleService())->searchCar([],30);
+        $response->setContent(json_encode($cars, JSON_THROW_ON_ERROR))
+            ->setHeaders([
+                'Content-type' => 'application/json'
+            ])
+            ->send(true);
+    });
+
+    // Search Cars
     $app->get('/cars', function ($request, $response) {
         (new CarController())->index($request, $response);
     });
 
-// Create a Vehicle.
+    // Read a specific Car
     $app->get('/cars/:num', function ($request, $response, $vehicleId) {
         (new CarController())->view($request, $response, $vehicleId);
     });
 
+    // Create a Vehicle.
     $app->post('/cars', function ($request, $response) {
         (new CarController())->save($request, $response);
     });

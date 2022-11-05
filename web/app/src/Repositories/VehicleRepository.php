@@ -47,19 +47,16 @@ class VehicleRepository extends BaseRepository
      *
      * @param array $input
      * @param bool $returnFull
-     * @return int|array|false
+     * @return int|array
+     * @throws \PDOException
      */
-    public function createVehicle(array $input, bool $returnFull = false): int|array|false
+    public function createVehicle(array $input, bool $returnFull = false): int|array
     {
-        $status = $this->create($input);
-        if ($returnFull && $status) {
-            return $this->findById($this->lastSavedId());
+        $this->create($input);
+        if ($returnFull) {
+            return $this->findVehicle($this->lastSavedId());
         }
-
-        if ($status) {
-            return $this->lastSavedId();
-        }
-        return false;
+        return $this->lastSavedId();
     }
 
 }

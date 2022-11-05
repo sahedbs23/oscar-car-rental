@@ -25,7 +25,26 @@ class VehicleImportService
     public function __construct()
     {
         $this->fileFactory = new FileReaderService();
-        $this->supportedFileType = ReadConfig::config('file_system','supported_file_type');
+        $this->supportedFileType = ReadConfig::config('file_system', 'supported_file_type');
+    }
+
+    /**
+     * @param string $directory
+     * @return void
+     */
+    public function importDatFromSource(string $directory = ''): void
+    {
+        $service = new VehicleService();
+        $files = $this->fileFactory->listFiles($directory);
+
+        //TODO:: Instead of loop Write insert many function.
+        foreach ($files as $filePath):
+            $fileContents = $this->readFile($filePath);
+            foreach ($fileContents as $content):
+                $arr = (array)$content;
+                $service->storeCar($this->removeEmptyValueFromArray($arr));
+            endforeach;
+        endforeach;
     }
 
     public function readFiles(string $directory = ''): static
@@ -52,7 +71,7 @@ class VehicleImportService
 
         // File is readable and
         // File has exact file extension that we want.
-        if ( $isReadable &&
+        if ($isReadable &&
             in_array($extension = $this->fileFactory->findFileExtension($filePath), $this->supportedFileType, true)) {
             return $this->fileFactory->readFileContent($extension, $filePath);
         }
@@ -73,5 +92,16 @@ class VehicleImportService
     public function getVehicles(): array
     {
         return $this->vehicles;
+    }
+
+    /**
+     * @param array $input
+     * @return array
+     */
+    private function removeEmptyValueFromArray(array $input):array
+    {
+        return array_filter($input, static function ($item) {
+            return !empty($item);
+        });
     }
 }

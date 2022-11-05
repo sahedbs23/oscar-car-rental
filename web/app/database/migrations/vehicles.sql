@@ -33,15 +33,35 @@ CREATE TABLE `car_models`
     `car_model` varchar(100) UNIQUE
 );
 
-CREATE TABLE `car_features` (
-                                `id` bigint PRIMARY KEY AUTO_INCREMENT,
-                                `vehicle_id` bigint unique ,
-                                `inside_height` float DEFAULT null,
-                                `inside_length` float DEFAULT null,
-                                `inside_width` float DEFAULT null
+CREATE TABLE `car_features`
+(
+    `id`            bigint PRIMARY KEY AUTO_INCREMENT,
+    `vehicle_id`    bigint unique,
+    `inside_height` float DEFAULT null,
+    `inside_length` float DEFAULT null,
+    `inside_width`  float DEFAULT null
 );
 
-ALTER TABLE `car_features` ADD FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`);
+CREATE TABLE `fuels`
+(
+    `id`   bigint PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(100) UNIQUE
+);
+
+CREATE TABLE `fuel_vehicle`
+(
+    `vehicle_id` bigint,
+    `fuel_id`    bigint
+);
+
+ALTER TABLE `fuel_vehicle`
+    ADD FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`);
+
+ALTER TABLE `fuel_vehicle`
+    ADD FOREIGN KEY (`fuel_id`) REFERENCES `fuels` (`id`);
+
+ALTER TABLE `car_features`
+    ADD FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`);
 
 ALTER TABLE `vehicles`
     ADD FOREIGN KEY (`location`) REFERENCES `car_locations` (`id`);
