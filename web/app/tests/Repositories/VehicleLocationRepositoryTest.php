@@ -27,7 +27,7 @@ class VehicleLocationRepositoryTest extends TestCase
     /**
      * @return void
      */
-    public function testCreateBrand():void
+    public function testCreateCarLocation():void
     {
         $locationName = $this->faker->text(90);
         $brandId = $this->repository->createCarLocation($locationName);
@@ -40,7 +40,7 @@ class VehicleLocationRepositoryTest extends TestCase
         $this->assertTrue($this->repository->delete(['id'=>$brandId]));
 
 
-        $res = $this->repository->createCarLocation($this->faker->text(120));
+        $res = $this->repository->createCarLocation($this->faker->realTextBetween(120, 150));
         $this->assertFalse($res);
 
     }

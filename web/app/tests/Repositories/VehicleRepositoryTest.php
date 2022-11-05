@@ -19,10 +19,10 @@ class VehicleRepositoryTest extends TestCase
         $this->repository = null;
     }
 
-    public function testCreate()
-    {
-        $this->repository->createVehicle(
-
-        );
-    }
+//    public function testCreate()
+//    {
+//        $this->repository->createVehicle(
+//
+//        );
+//    }
 }

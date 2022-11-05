@@ -5,19 +5,39 @@ namespace App\Http\Controller;
 use App\Exceptions\ValidationExceptions;
 use App\Lib\Request;
 use App\Lib\Response;
+use App\Services\VehicleService;
 use App\Validation\Validator;
 
 class CarController
 {
+    public VehicleService $service;
+
+    public function __construct()
+    {
+        $this->service = new VehicleService();
+    }
+
     public function index(Request $request, Response $response)
     {
         $content = json_encode($request->getParams(), JSON_THROW_ON_ERROR);
         $response->setContent($content)->send(true);
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param mixed $id
+     * @return void
+     * @throws \JsonException
+     */
     public function view(Request $request, Response $response, mixed $id)
     {
-        $response->setContent($id)->setProtocolVersion(2.1)->send(true);
+        $res = $this->service->find($id);
+        $response->setContent(json_encode($res, JSON_THROW_ON_ERROR))
+            ->setHeaders([
+                'Content-type' => 'application/json'
+            ])
+            ->send(true);
     }
 
     /**
@@ -63,10 +83,12 @@ class CarController
             throw new ValidationExceptions($validator->message(), Response::BAD_REQUEST);
         }
 
+        $content = $this->service->storeCar($input, false);
+
         $this->sendResponse(
             $response,
             Response::HTTP_CREATED,
-            json_encode($request->getBody(), JSON_THROW_ON_ERROR),
+            json_encode($content, JSON_THROW_ON_ERROR),
             [
                 'Content-type' => 'application/json'
             ]

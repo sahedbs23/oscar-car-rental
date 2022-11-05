@@ -21,7 +21,7 @@ class VehicleRepository extends BaseRepository
      * @param int $vehicleId
      * @return mixed
      */
-    public function findVehicle(int $vehicleId) :mixed
+    public function findVehicle(int $vehicleId): mixed
     {
         return $this->findById($vehicleId);
     }
@@ -32,27 +32,34 @@ class VehicleRepository extends BaseRepository
      * @param int $offset
      * @return array|false
      */
-    public function findVehicles(array $search = [], int $limit = 10, int $offset=0) : array|false
+    public function findVehicles(array $search = [], int $limit = 10, int $offset = 0): array|false
     {
-        $searchCriteria['limit']  = $limit;
-        $searchCriteria['offset']  = $offset;
-        if (is_array($search)  && !empty($search)){
+        $searchCriteria['limit'] = $limit;
+        $searchCriteria['offset'] = $offset;
+        if (is_array($search) && !empty($search)) {
             $searchCriteria['conditions'] = $search;
         }
         return $this->findAll($searchCriteria);
     }
 
     /**
+     * create a new Vehicle.
+     *
      * @param array $input
-     * @return mixed
+     * @param bool $returnFull
+     * @return int|array|false
      */
-    public function createVehicle(array $input):mixed
+    public function createVehicle(array $input, bool $returnFull = false): int|array|false
     {
-        $status =  $this->create($input);
-        if ($status){
+        $status = $this->create($input);
+        if ($returnFull && $status) {
             return $this->findById($this->lastSavedId());
         }
-        return null;
+
+        if ($status) {
+            return $this->lastSavedId();
+        }
+        return false;
     }
 
 }

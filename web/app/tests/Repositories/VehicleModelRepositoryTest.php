@@ -27,7 +27,7 @@ class VehicleModelRepositoryTest extends TestCase
     /**
      * @return void
      */
-    public function testCreateBrand():void
+    public function testCreateModel():void
     {
         $modelName = $this->faker->text(90);
         $model = $this->repository->createModel($modelName, true);

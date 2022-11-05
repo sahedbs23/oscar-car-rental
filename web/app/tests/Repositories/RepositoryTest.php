@@ -2,11 +2,14 @@
 
 namespace Repositories;
 
+use App\Helpers\ConfigDatabase;
+use App\Helpers\DBCleanup;
 use App\Repositories\BaseRepository;
 use App\Repositories\VehicleRepository;
 use Faker\Factory;
 use Faker\Generator;
 use PHPUnit\Framework\TestCase;
+
 
 class RepositoryTest extends TestCase
 {
@@ -21,42 +24,22 @@ class RepositoryTest extends TestCase
     {
         $this->repository = new BaseRepository();
         $this->faker = Factory::create();
-
-        $repo = new BaseRepository();
-        $repo->setTable('car_brands')
-            ->create([
-                'brand_name' => $this->faker->unique()->text(90)
-            ]);
-        $this->brandId = $repo->lastSavedId();
-
-        $repo = new BaseRepository();
-        $repo->setTable('car_locations')
-            ->create([
-                'location' => $this->faker->unique()->text(90)
-            ]);
-        $this->locationId = $repo->lastSavedId();
-
-        $repo = new BaseRepository();
-
-        $repo->setTable('car_models')
-            ->create([
-                'car_model' => $this->faker->unique()->text(90)
-            ]);
-        $this->modelId = $repo->lastSavedId();
+        $this->brandId = ConfigDatabase::setUpBrands();
+        $this->locationId = ConfigDatabase::setUpLocations();
+        $this->modelId = ConfigDatabase::setUpCarModels();
     }
 
     protected function tearDown(): void
     {
         $this->repository = null;
         $this->faker = null;
-        (new BaseRepository())->query("DELETE FROM vehicles");
-        (new BaseRepository())->query("DELETE FROM car_brands");
+        DBCleanup::cleanCarFeatures();
+        DBCleanup::cleanVehicles();
+        DBCleanup::cleanbrands();
+        DBCleanup::cleanLocations();
+        DBCleanup::cleanCarModels();
         $this->brandId = null;
-
-        (new BaseRepository())->query("DELETE FROM car_locations");
         $this->locationId = null;
-
-        (new BaseRepository())->query("DELETE FROM car_models");
         $this->modelId = null;
     }
 

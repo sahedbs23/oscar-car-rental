@@ -8,6 +8,7 @@ abstract class AbstractDatabaseConnection
 {
     public array $config;
 
+    //TODO:: Make connection protected.
     public ?PDO $connection;
 
     /**
