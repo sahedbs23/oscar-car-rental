@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\RecordNotFoundException;
 use App\Helpers\Arr;
 use App\Models\Vehicle;
 use App\Repositories\VehicleBrandRepository;
@@ -105,11 +106,17 @@ class VehicleService
 
     /**
      * @param int $id
-     * @return array|null
+     * @return array|false
+     * @throws RecordNotFoundException
      */
-    public function find(int $id): ?array
+    public function find(int $id): array|false
     {
-        return $this->repository->findById($id);
+        $response =  $this->repository->findById($id);
+
+        if (!$response){
+            throw new RecordNotFoundException(sprintf('Record not found in the database with id %d.', $id));
+        }
+        return $response;
     }
 
     /**

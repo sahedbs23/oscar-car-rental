@@ -6,7 +6,8 @@ use App\App;
 use App\Http\Controller\CarController;
 use App\Exceptions\MethodNotAllowedException;
 use App\Exceptions\RouteNotFoundException;
-use App\Exceptions\ValidationExceptions ;
+use App\Exceptions\ValidationExceptions;
+use App\Exceptions\RecordNotFoundException;
 use App\Lib\Response;
 use App\Services\VehicleImportService;
 use App\Services\VehicleService;
@@ -34,7 +35,7 @@ try {
     // Import cars from data source.
     $app->post('/write-files', function ($request, $response) {
         (new VehicleImportService())->importDatFromSource('');
-        $cars = (new VehicleService())->searchCar([],30);
+        $cars = (new VehicleService())->searchCar([], 30);
         $response->setContent(json_encode($cars, JSON_THROW_ON_ERROR))
             ->setHeaders([
                 'Content-type' => 'application/json'
@@ -58,6 +59,19 @@ try {
     });
 
     $app->resolve();
+} catch (RecordNotFoundException $recordNotFoundException) {
+    (new Response())
+        ->setContent(
+            json_encode([
+                'message' => $recordNotFoundException->getMessage(),
+                'code' => Response::HTTP_NOT_FOUND,
+            ],)
+        )
+        ->setHeaders([
+            'Content-type' => 'application/json',
+        ])
+        ->setStatusCode(Response::HTTP_NOT_FOUND)
+        ->send(true);
 } catch (ValidationExceptions $validationExceptions) {
     (new Response())
         ->setContent(

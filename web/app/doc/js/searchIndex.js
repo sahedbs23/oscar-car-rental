@@ -1196,6 +1196,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Validation-Validator.html#property_validator"
         },                {
+            "fqsen": "\\App\\Exceptions\\RecordNotFoundException",
+            "name": "RecordNotFoundException",
+            "summary": "",
+            "url": "classes/App-Exceptions-RecordNotFoundException.html"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",

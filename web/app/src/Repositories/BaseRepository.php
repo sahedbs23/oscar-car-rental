@@ -110,7 +110,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * Find a single record.
      *
      * @param $data
-     * @return mixed
+     * @return false|array
      */
     public function findOne($data)
     {
@@ -123,7 +123,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * Find by PK.
      *
      * @param $id
-     * @return mixed
+     * @return false|array
      */
     public function findById($id)
     {
@@ -134,7 +134,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * Check whether a record exists.
      *
      * @param $id
-     * @return mixed
+     * @return false|array
      */
     public function exists($id)
     {
