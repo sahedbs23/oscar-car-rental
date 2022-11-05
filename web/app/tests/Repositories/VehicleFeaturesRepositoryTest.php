@@ -11,7 +11,13 @@ use PHPUnit\Framework\TestCase;
 
 class VehicleFeaturesRepositoryTest extends TestCase
 {
+    /**
+     * @var VehicleFeaturesRepository|null
+     */
     public ?VehicleFeaturesRepository $repository;
+    /**
+     * @var Generator|null
+     */
     public ?Generator $faker;
 
     protected function setUp(): void
@@ -46,7 +52,18 @@ class VehicleFeaturesRepositoryTest extends TestCase
         $carFeatureId = $this->repository->saveCarFeatures($features);
         $this->assertIsInt($carFeatureId);
 
-        $res = $this->repository->saveCarFeatures($features, true);
+    }
+
+    public function testFindOrCarFeatures(): void
+    {
+        $vehicle_id = ConfigDatabase::setupVehicle();
+        $features = [
+            'vehicle_id' => $vehicle_id,
+            'inside_height' => $this->faker->randomFloat(),
+            'inside_length' => $this->faker->optional()->randomFloat(),
+            'inside_width' => $this->faker->optional()->randomFloat()
+        ];
+        $res = $this->repository->findOrCarFeatures($features);
         $this->assertIsArray($res);
         $this->assertArrayHasKey('vehicle_id', $res);
     }

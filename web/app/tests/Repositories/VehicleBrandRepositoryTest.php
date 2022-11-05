@@ -2,6 +2,7 @@
 
 namespace Repositories;
 
+use App\Helpers\DBCleanup;
 use App\Repositories\VehicleBrandRepository;
 use Faker\Factory;
 use Faker\Generator;
@@ -28,6 +29,7 @@ class VehicleBrandRepositoryTest extends TestCase
     {
         $this->repository = null;
         $this->faker = null;
+        DBCleanup::cleanbrands();
     }
 
     /**
@@ -38,11 +40,16 @@ class VehicleBrandRepositoryTest extends TestCase
         $brandName = $this->faker->text(90);
         $brandId = $this->repository->createBrand($brandName);
         $this->assertIsInt($brandId);
+    }
 
-        $res = $this->repository->createBrand($brandName, true);
+    /**
+     * @return void
+     */
+    public function testFindOrCreateBrand(): void
+    {
+        $brandName = $this->faker->text(90);
+        $res = $this->repository->findOrCreateBrand($brandName);
         $this->assertIsArray($res);
         $this->assertArrayHasKey('brand_name', $res);
-
-        $this->assertTrue($this->repository->delete(['id' => $brandId]));
     }
 }

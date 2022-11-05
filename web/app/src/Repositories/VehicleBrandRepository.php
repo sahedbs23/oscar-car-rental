@@ -17,21 +17,39 @@ class VehicleBrandRepository extends BaseRepository
 
     /**
      * @param string $brand_name
-     * @param bool $returnFull
-     * @return array|int|false
+     * @return int|false
      */
-    public function createBrand(string $brand_name, bool $returnFull = false): array|int|false
+    public function createBrand(string $brand_name): int|false
     {
         try {
             $input = ['brand_name' => $brand_name];
             if ($brandObject = $this->findOne($input)) {
-                return $returnFull ? $brandObject : $brandObject[self::PK];
+                return $brandObject[self::PK];
             }
             $brand = $this->create($input);
             if ($brand) {
-                if (!$returnFull) {
-                    return $this->lastSavedId();
-                }
+                return $this->lastSavedId();
+            }
+        } catch (\Exception $exception) {
+            // Do Nothing.
+        }
+        return false;
+    }
+
+
+    /**
+     * @param string $brand_name
+     * @return array|false
+     */
+    public function findOrCreateBrand(string $brand_name): array|false
+    {
+        try {
+            $input = ['brand_name' => $brand_name];
+            if ($brandObject = $this->findOne($input)) {
+                return $brandObject;
+            }
+            $brand = $this->create($input);
+            if ($brand) {
                 return $this->findById($this->lastSavedId());
             }
         } catch (\Exception $exception) {

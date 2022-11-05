@@ -19,28 +19,39 @@ class VehicleFeaturesRepository extends BaseRepository
      * save vehicle features.
      *
      * @param array $input
-     * @param bool $returnFull
-     * @return false|int|array
+     * @return false|int
      */
-    public function saveCarFeatures(array $input, bool $returnFull = false): false|int|array
+    public function saveCarFeatures(array $input): false|int
     {
         if ($exists = $this->findOne(['vehicle_id' => $input['vehicle_id']])) {
-            $lastId = $exists[self::PK];
+            $input[self::PK] = $exists[self::PK];
+            $this->update($input);
+            return $exists[self::PK];
+        }
+
+        $this->create($input);
+        return $this->lastSavedId();
+    }
+
+
+    /**
+     * save vehicle features.
+     *
+     * @param array $input
+     * @return false|array
+     */
+    public function findOrCarFeatures(array $input): false|array
+    {
+        if ($exists = $this->findOne(['vehicle_id' => $input['vehicle_id']])) {
             $input[self::PK] = $exists[self::PK];
             $feature = $this->update($input);
-        } else {
-            $feature = $this->create($input);
-            $lastId = $this->lastSavedId();
+            return $this->findById($exists[self::PK]);
         }
 
-        if ($feature && $returnFull) {
-            return $this->findById($lastId);
-        }
+        $this->create($input);
+        $lastId = $this->lastSavedId();
 
-        if ($feature) {
-            return $lastId;
-        }
-        return false;
+        return $this->findById($lastId);
     }
 
 }
