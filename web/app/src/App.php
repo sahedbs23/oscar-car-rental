@@ -18,14 +18,16 @@ class App
      */
     private Response $response;
 
-
     public function __construct()
     {
-        $this->request  = new Request();
-        $this->response  = new Response();
+        $this->request = new Request();
+        $this->response = new Response();
     }
 
-    public static function run() :Router
+    /**
+     * @return Router
+     */
+    public static function run(): Router
     {
         $app = new self();
         return new Router($app->request, $app->response);

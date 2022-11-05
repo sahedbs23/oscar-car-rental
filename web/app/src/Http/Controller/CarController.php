@@ -7,6 +7,7 @@ use App\Lib\Request;
 use App\Lib\Response;
 use App\Services\VehicleService;
 use App\Validation\Validator;
+use JsonException;
 
 class CarController
 {
@@ -28,7 +29,7 @@ class CarController
      * @param Response $response
      * @param mixed $id
      * @return void
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function view(Request $request, Response $response, mixed $id)
     {
@@ -45,7 +46,7 @@ class CarController
      * @param Response $response
      * @return void
      * @throws ValidationExceptions
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function save(Request $request, Response $response)
     {
@@ -66,14 +67,14 @@ class CarController
             'car_type' => ['required', 'string'],
         ];
 
-        if (array_key_exists('inside_height', $input) && !empty($input['inside_height'])){
+        if (array_key_exists('inside_height', $input) && !empty($input['inside_height'])) {
             $rules['inside_height'] = ['numeric'];
         }
 
-        if (array_key_exists('inside_length', $input) && !empty($input['inside_length'])){
+        if (array_key_exists('inside_length', $input) && !empty($input['inside_length'])) {
             $rules['inside_length'] = ['numeric'];
         }
-        if (array_key_exists('inside_width', $input) && !empty($input['inside_width'])){
+        if (array_key_exists('inside_width', $input) && !empty($input['inside_width'])) {
             $rules['inside_width'] = ['numeric'];
         }
 
@@ -102,7 +103,7 @@ class CarController
      * @param array $headers
      * @return void
      */
-    public function sendResponse(Response $response, int $code, string $content, array $headers=[])
+    public function sendResponse(Response $response, int $code, string $content, array $headers = [])
     {
         $response
             ->setStatusCode($code)

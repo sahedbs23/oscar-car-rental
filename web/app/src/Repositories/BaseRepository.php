@@ -180,7 +180,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $data
      * @return bool
      */
-    public function save($data) :bool
+    public function save($data): bool
     {
         if (array_key_exists($this->pk, $data)) {
             $exists = $this->findOne([$this->pk => $data[$this->pk]]);
@@ -202,7 +202,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @return bool
      * @throws \PDOException
      */
-    public function update($data):bool
+    public function update($data): bool
     {
         if (!array_key_exists($this->pk, $data)) {
             return false;
@@ -224,7 +224,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @return bool
      * @throws \PDOException
      */
-    public function create($data) :bool
+    public function create($data): bool
     {
         $this->data = $data;
 
@@ -301,7 +301,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $separator
      * @return string
      */
-    private function conditions($separator):string
+    private function conditions($separator): string
     {
         $param = [];
         foreach ($this->data['conditions'] as $k => $v) {
@@ -314,7 +314,7 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return string
      */
-    private function where():string
+    private function where(): string
     {
         return $this->where = (isset($this->data['conditions']))
             ? 'WHERE ' . $this->conditions(' AND ')
@@ -324,14 +324,14 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return $this
      */
-    private function find():self
+    private function find(): self
     {
-        $orderBy= $this->orderBy();
+        $orderBy = $this->orderBy();
         $limit = $this->limit();
         $offset = $this->offset();
 
-        $sql = "SELECT " . $this->fields() . " FROM {$this->table} " . $this->where() . " ". $orderBy
-            . " ". $limit. " ". $offset;
+        $sql = "SELECT " . $this->fields() . " FROM {$this->table} " . $this->where() . " " . $orderBy
+            . " " . $limit . " " . $offset;
 
         $this->stmt = $this->connection->prepare($sql);
 
@@ -352,11 +352,10 @@ class BaseRepository extends MysqlDatabaseConnection
     }
 
 
-
     /**
      * @return string
      */
-    private function values():string
+    private function values(): string
     {
         foreach ($this->data as $k => $v) {
             $values[] = ":{$k}";
@@ -370,7 +369,7 @@ class BaseRepository extends MysqlDatabaseConnection
      *
      * @return string
      */
-    private function insertQueryString():string
+    private function insertQueryString(): string
     {
         $fields = $this->fields($this->data);
         $values = $this->values();
@@ -383,7 +382,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $data
      * @return string
      */
-    private function updateWhere(&$data):string
+    private function updateWhere(&$data): string
     {
         $this->data['conditions'] = [$this->pk => $data[$this->pk]];
         $where = 'WHERE ' . $this->conditions('');
@@ -396,7 +395,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $data
      * @return string
      */
-    private function updateQueryString($data):string
+    private function updateQueryString($data): string
     {
         $this->data['conditions'] = $data;
         $fields = $this->conditions(',');
@@ -406,9 +405,9 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return string
      */
-    private function orderBy():string
+    private function orderBy(): string
     {
-        return  (isset($this->data['order']))
+        return (isset($this->data['order']))
             ? 'ORDER BY ' . $this->data['order']
             : '';
     }
@@ -416,18 +415,19 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return string
      */
-    private function limit():string
+    private function limit(): string
     {
-        return  (isset($this->data['limit']))
+        return (isset($this->data['limit']))
             ? 'LIMIT :limit'
             : '';
     }
+
     /**
      * @return string
      */
-    private function offset():string
+    private function offset(): string
     {
-        return  (isset($this->data['offset']))
+        return (isset($this->data['offset']))
             ? 'OFFSET :offset'
             : '';
     }

@@ -131,16 +131,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/App-Factory-FileReaderFactory.html#method_create"
         },                {
-            "fqsen": "\\App\\Foo",
-            "name": "Foo",
-            "summary": "I\u0020belong\u0020to\u0020a\u0020class",
-            "url": "classes/App-Foo.html"
-        },                {
-            "fqsen": "\\App\\Foo\u003A\u003AgetName\u0028\u0029",
-            "name": "getName",
-            "summary": "Gets\u0020the\u0020name\u0020of\u0020the\u0020application.",
-            "url": "classes/App-Foo.html#method_getName"
-        },                {
             "fqsen": "\\App\\Helpers\\Arr",
             "name": "Arr",
             "summary": "",

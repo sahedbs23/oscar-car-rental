@@ -18,8 +18,8 @@ class CarControllerTest extends TestCase
 
     public function setUp(): void
     {
-       $this->faker = Factory::create();
-       $this->controller = new CarController();
+        $this->faker = Factory::create();
+        $this->controller = new CarController();
     }
 
     protected function tearDown(): void
@@ -35,14 +35,14 @@ class CarControllerTest extends TestCase
             ->method('getBody')
             ->willReturn(
                 [
-                    'location' =>   $this->faker->city(),
+                    'location' => $this->faker->city(),
                     'car_brand' => $this->faker->randomLetter(),
                     'car_model' => $this->faker->randomLetter(),
                     'license_plate' => $this->faker->unique()->text(10),
                     'car_year' => $this->faker->optional()->numberBetween(1950, 2022),
                     'number_of_doors' => $this->faker->optional()->randomNumber(2),
                     'number_of_seats' => $this->faker->optional()->randomNumber(1),
-                    'car_km' => $this->faker->optional()->numberBetween(0,1000000),
+                    'car_km' => $this->faker->optional()->numberBetween(0, 1000000),
                     'fuel_type' => $this->faker->optional()->text(6),
                     'transmission' => $this->faker->optional()->text(6),
                     'car_type_group' => $this->faker->optional()->text(6),
@@ -65,14 +65,14 @@ class CarControllerTest extends TestCase
             ->method('getBody')
             ->willReturn(
                 [
-                    'location' =>   $this->faker->city(),
+                    'location' => $this->faker->city(),
                     'car_brand' => $this->faker->text(6),
-                    'car_model' =>$this->faker->text(6),
+                    'car_model' => $this->faker->text(6),
                     'license_plate' => $this->faker->unique()->text(10),
                     'car_year' => $this->faker->numberBetween(1950, 2022),
                     'number_of_doors' => $this->faker->randomNumber(2),
                     'number_of_seats' => $this->faker->randomNumber(1),
-                    'car_km' => $this->faker->numberBetween(0,1000000),
+                    'car_km' => $this->faker->numberBetween(0, 1000000),
                     'fuel_type' => $this->faker->text(6),
                     'transmission' => $this->faker->text(6),
                     'car_type_group' => $this->faker->text(6),
@@ -88,6 +88,6 @@ class CarControllerTest extends TestCase
             ->method('send')
             ->with(true);
 
-       $this->assertNull($this->controller->save($request, $response));
+        $this->assertNull($this->controller->save($request, $response));
     }
 }

@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class RequestTest extends TestCase
 {
 
-    public function test__construct():void
+    public function test__construct(): void
     {
         $_SERVER['REQUEST_METHOD'] = 'PUT';
         $request = new Request();

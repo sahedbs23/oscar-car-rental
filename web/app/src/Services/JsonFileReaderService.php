@@ -50,7 +50,7 @@ class JsonFileReaderService implements FileReaderInterface
 
     public function transform(): array
     {
-        foreach ($this->data as  $row):
+        foreach ($this->data as $row):
             $collection[] = $this->toObject($row);
         endforeach;
         return $collection ?? [];
@@ -58,7 +58,7 @@ class JsonFileReaderService implements FileReaderInterface
 
     public function toObject(array $row): object
     {
-        $obj = (object) $this->fieldTemplate;
+        $obj = (object)$this->fieldTemplate;
 
         foreach ($row as $key => $value):
             $obj->{strtolower(str_replace(" ", "_", trim($key)))} = $value;

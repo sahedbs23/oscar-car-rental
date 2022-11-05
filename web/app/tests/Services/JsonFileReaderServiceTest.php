@@ -7,13 +7,22 @@ use PHPUnit\Framework\TestCase;
 
 class JsonFileReaderServiceTest extends TestCase
 {
+    /**
+     * @var JsonFileReaderService|null
+     */
     public ?JsonFileReaderService $jsonFileReaderService;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         $this->jsonFileReaderService = new JsonFileReaderService();
     }
 
+    /**
+     * @return void
+     */
     public function tearDown(): void
     {
         $this->jsonFileReaderService = null;
@@ -52,6 +61,7 @@ class JsonFileReaderServiceTest extends TestCase
         $this->assertInstanceOf(JsonFileReaderService::class, $source);
         $this->assertNotEmpty($this->jsonFileReaderService->getData());
     }
+
     /**
      * @dataProvider invalidCsvFileWithCarsData
      * @param $filepath

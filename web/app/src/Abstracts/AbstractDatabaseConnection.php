@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Abstracts;
 
 use PDO;
@@ -61,12 +62,12 @@ abstract class AbstractDatabaseConnection
         string $charset,
         string $port,
         array $options = []
-    ):?PDO;
+    ): ?PDO;
 
     /**
      * provide database connection configurations
      *
      * @return array
      */
-    abstract protected function getConfig():array;
+    abstract protected function getConfig(): array;
 }

@@ -13,7 +13,7 @@ class FileReaderFactory
      * @param string $fileExtension
      * @return FileReaderInterface
      */
-    public function create(string $fileExtension):FileReaderInterface
+    public function create(string $fileExtension): FileReaderInterface
     {
         return match (strtolower($fileExtension)) {
             'csv' => new CsvFileReaderService(),

@@ -9,7 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 class VehicleModelRepositoryTest extends TestCase
 {
+    /**
+     * @var VehicleModelRepository|null
+     */
     public ?VehicleModelRepository $repository;
+    /**
+     * @var Generator|null
+     */
     public ?Generator $faker;
 
     protected function setUp(): void
@@ -27,7 +33,7 @@ class VehicleModelRepositoryTest extends TestCase
     /**
      * @return void
      */
-    public function testCreateModel():void
+    public function testCreateModel(): void
     {
         $modelName = $this->faker->text(90);
         $model = $this->repository->createModel($modelName, true);
@@ -37,7 +43,6 @@ class VehicleModelRepositoryTest extends TestCase
         $modelId = $this->repository->createModel($modelName);
         $this->assertIsInt($modelId);
 
-        $this->assertTrue($this->repository->delete(['id'=>$modelId]));
-
+        $this->assertTrue($this->repository->delete(['id' => $modelId]));
     }
 }

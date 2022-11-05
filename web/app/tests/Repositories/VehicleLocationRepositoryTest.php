@@ -9,7 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 class VehicleLocationRepositoryTest extends TestCase
 {
+    /**
+     * @var VehicleLocationRepository|null
+     */
     public ?VehicleLocationRepository $repository;
+    /**
+     * @var Generator|null
+     */
     public ?Generator $faker;
 
     protected function setUp(): void
@@ -27,7 +33,7 @@ class VehicleLocationRepositoryTest extends TestCase
     /**
      * @return void
      */
-    public function testCreateCarLocation():void
+    public function testCreateCarLocation(): void
     {
         $locationName = $this->faker->text(90);
         $brandId = $this->repository->createCarLocation($locationName);
@@ -37,11 +43,9 @@ class VehicleLocationRepositoryTest extends TestCase
         $this->assertIsArray($res);
         $this->assertArrayHasKey('location', $res);
 
-        $this->assertTrue($this->repository->delete(['id'=>$brandId]));
-
+        $this->assertTrue($this->repository->delete(['id' => $brandId]));
 
         $res = $this->repository->createCarLocation($this->faker->realTextBetween(120, 150));
         $this->assertFalse($res);
-
     }
 }

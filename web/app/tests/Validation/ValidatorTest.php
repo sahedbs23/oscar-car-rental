@@ -10,17 +10,31 @@ use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {
+    /**
+     * @var Generator|null
+     */
     public ?Generator $faker;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         $this->faker = Factory::create();
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         $this->faker = null;
     }
+
+    /**
+     * @return void
+     * @throws InvalidRuleException
+     */
     public function test__construct()
     {
         $validator = Validator::vlaidate([], []);
@@ -29,8 +43,9 @@ class ValidatorTest extends TestCase
 
     /**
      * @return void
+     * @throws InvalidRuleException
      */
-    public function testFailsAndMessage():void
+    public function testFailsAndMessage(): void
     {
         $rules = [
             'location' => ['required', 'string'],
@@ -41,7 +56,7 @@ class ValidatorTest extends TestCase
         ];
 
         $input = [
-            'location' =>   $this->faker->city(),
+            'location' => $this->faker->city(),
             'license_plate' => $this->faker->unique()->text(10),
             'car_year' => $this->faker->numberBetween(1950, 2022),
             'number_of_doors' => $this->faker->randomNumber(2),
@@ -56,8 +71,9 @@ class ValidatorTest extends TestCase
 
     /**
      * @return void
+     * @throws InvalidRuleException
      */
-    public function testFailsAndMessageWithInvalidData():void
+    public function testFailsAndMessageWithInvalidData(): void
     {
         $rules = [
             'car_brand' => ['required', 'string'],
@@ -70,22 +86,20 @@ class ValidatorTest extends TestCase
         $input = [
             'car_brand' => $this->faker->randomDigit(),
             'car_year' => $this->faker->optional()->text(),
-            'car_km' => $this->faker->numberBetween(0,1000000),
+            'car_km' => $this->faker->numberBetween(0, 1000000),
             'car_type_group' => $this->faker->optional()->text(),
             'car_type' => $this->faker->optional()->text()
         ];
         $validator = Validator::vlaidate($input, $rules);
-        $this->assertTrue( $validator->fails());
-        $this->assertIsArray( $validator->message());
+        $this->assertTrue($validator->fails());
+        $this->assertIsArray($validator->message());
         $this->assertArrayHasKey('car_brand', $validator->message());
     }
-
-
 
     /**
      * @return void
      */
-    public function testInvalidRuleException():void
+    public function testInvalidRuleException(): void
     {
         $rules = [
             'car_type' => ['nullable'],

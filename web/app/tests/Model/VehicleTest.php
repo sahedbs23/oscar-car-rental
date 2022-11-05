@@ -11,14 +11,14 @@ class VehicleTest extends TestCase
 {
     private Generator $faker;
 
-    public function setUp():void
+    public function setUp(): void
     {
         $this->faker = Factory::create();
     }
 
     public function test__construct(): void
     {
-        $vehicle =  new Vehicle(
+        $vehicle = new Vehicle(
             $this->faker->city(),
             $this->faker->randomLetter(),
             $this->faker->randomLetter(),
@@ -30,7 +30,7 @@ class VehicleTest extends TestCase
             $this->faker->optional()->text(6),
             $this->faker->optional()->text(5),
             $this->faker->optional()->text(8),
-            $this->faker->numberBetween(0,1000000),
+            $this->faker->numberBetween(0, 1000000),
             $this->faker->optional()->randomFloat(),
             $this->faker->optional()->randomFloat(),
             $this->faker->optional()->randomFloat()

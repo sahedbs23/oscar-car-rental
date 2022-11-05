@@ -34,14 +34,14 @@ class VehicleFeaturesRepositoryTest extends TestCase
     /**
      * @return void
      */
-    public function testSaveCarFeatures():void
+    public function testSaveCarFeatures(): void
     {
         $vehicle_id = ConfigDatabase::setupVehicle();
         $features = [
             'vehicle_id' => $vehicle_id,
-            'inside_height' =>$this->faker->randomFloat(),
-            'inside_length' =>$this->faker->optional()->randomFloat(),
-            'inside_width' =>$this->faker->optional()->randomFloat()
+            'inside_height' => $this->faker->randomFloat(),
+            'inside_length' => $this->faker->optional()->randomFloat(),
+            'inside_width' => $this->faker->optional()->randomFloat()
         ];
         $carFeatureId = $this->repository->saveCarFeatures($features);
         $this->assertIsInt($carFeatureId);

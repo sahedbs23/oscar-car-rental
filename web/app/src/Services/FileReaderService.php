@@ -34,12 +34,12 @@ class FileReaderService
      * @param string $directory
      * @return string[]
      */
-    public  function listFiles(string $directory): iterable
+    public function listFiles(string $directory): iterable
     {
         return [
-            __DIR__.'/../../data_source/source-1.csv',
-            __DIR__.'/../../data_source/source-2.json',
-            __DIR__.'/../../data_source/source-3.json',
+            __DIR__ . '/../../data_source/source-1.csv',
+            __DIR__ . '/../../data_source/source-2.json',
+            __DIR__ . '/../../data_source/source-3.json',
         ];
     }
 

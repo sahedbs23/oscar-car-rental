@@ -7,13 +7,22 @@ use PHPUnit\Framework\TestCase;
 
 class CsvFileReaderServiceTest extends TestCase
 {
+    /**
+     * @var CsvFileReaderService|null
+     */
     public ?CsvFileReaderService $csvFileReaderService;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         $this->csvFileReaderService = new CsvFileReaderService();
     }
 
+    /**
+     * @return void
+     */
     public function tearDown(): void
     {
         $this->csvFileReaderService = null;
@@ -50,6 +59,7 @@ class CsvFileReaderServiceTest extends TestCase
         $this->assertInstanceOf(CsvFileReaderService::class, $source);
         $this->assertNotEmpty($this->csvFileReaderService->getData());
     }
+
     /**
      * @dataProvider invalidCsvFileWithCarsData
      * @param $filepath

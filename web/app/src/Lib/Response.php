@@ -119,7 +119,7 @@ class Response implements ResponseInterface
      * @param string|bool $replace Whether to replace existing value for the header
      * @return  Response
      */
-    public function setHeaders(array $headers, bool $replace = true) : self
+    public function setHeaders(array $headers, bool $replace = true): self
     {
         foreach ($headers as $key => $value) {
             $this->setHeader($key, $value, $replace);
@@ -127,6 +127,7 @@ class Response implements ResponseInterface
 
         return $this;
     }
+
     /**
      * Adds a header
      *
@@ -135,7 +136,7 @@ class Response implements ResponseInterface
      * @param string|bool $replace Whether to replace existing value for the header
      * @return  Response
      */
-    public function setHeader(string $name, string $value, bool $replace = true) :self
+    public function setHeader(string $name, string $value, bool $replace = true): self
     {
         if ($replace) {
             $this->headers[$name] = $value;
@@ -149,7 +150,7 @@ class Response implements ResponseInterface
     /**
      * @inheritDoc
      */
-    public function send(bool $send_headers = false) :void
+    public function send(bool $send_headers = false): void
     {
         $content = $this->__toString();
 
@@ -174,11 +175,11 @@ class Response implements ResponseInterface
             header($this->stringifyStatus());
             foreach ($this->headers as $name => $value) {
                 // Create the header
-               $value = $this->stringifyHeader($name, $value);
+                $value = $this->stringifyHeader($name, $value);
 
                 // Send it
                 if ($value) {
-                    header($value, true) ;
+                    header($value, true);
                 }
             }
             return true;
@@ -203,8 +204,8 @@ class Response implements ResponseInterface
      */
     public function stringifyStatus()
     {
-        return 'HTTP/'.$this->getProtocolVersion() . ' ' . $this->getStatusCode(
-        ) . ' ' . static::$statusTexts[$this->getStatusCode()];
+        return 'HTTP/' . $this->getProtocolVersion() . ' ' . $this->getStatusCode(
+            ) . ' ' . static::$statusTexts[$this->getStatusCode()];
     }
 
     /**
@@ -214,6 +215,6 @@ class Response implements ResponseInterface
      */
     public function __toString(): string
     {
-        return (string) $this->content;
+        return (string)$this->content;
     }
 }

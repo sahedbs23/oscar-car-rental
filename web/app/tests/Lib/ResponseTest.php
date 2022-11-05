@@ -15,21 +15,25 @@ class ResponseTest extends TestCase
         ];
     }
 
-    public function headerProvider():array
+    public function headerProvider(): array
     {
-        return[
-            ['Content-type' , 'text/html', "Content-type: text/html"],
-            ['Pragma' , 'no-cache', "Pragma: no-cache"],
-            ['Cache-Control' , 'no-cache, no-store, max-age=0, must-revalidate', "Cache-Control: no-cache, no-store, max-age=0, must-revalidate"]
+        return [
+            ['Content-type', 'text/html', "Content-type: text/html"],
+            ['Pragma', 'no-cache', "Pragma: no-cache"],
+            [
+                'Cache-Control',
+                'no-cache, no-store, max-age=0, must-revalidate',
+                "Cache-Control: no-cache, no-store, max-age=0, must-revalidate"
+            ]
         ];
     }
 
-    public function statusTextProvider() :array
+    public function statusTextProvider(): array
     {
-        return[
-            [1.1 , Response::HTTP_OK, "HTTP/1.1 200 OK"],
-            [2.1 , Response::HTTP_CREATED, "HTTP/2.1 201 Created"],
-            [3.1 , Response::HTTP_NOT_FOUND, "HTTP/3.1 404 Not Found"],
+        return [
+            [1.1, Response::HTTP_OK, "HTTP/1.1 200 OK"],
+            [2.1, Response::HTTP_CREATED, "HTTP/2.1 201 Created"],
+            [3.1, Response::HTTP_NOT_FOUND, "HTTP/3.1 404 Not Found"],
         ];
     }
 
@@ -66,7 +70,7 @@ class ResponseTest extends TestCase
      * @param string $expected
      * @return void
      */
-    public function test_stringifyStatus(float $version,int $statusCode, string $expected) :void
+    public function test_stringifyStatus(float $version, int $statusCode, string $expected): void
     {
         $response = (new Response())->setProtocolVersion($version)->setStatusCode($statusCode);
         $this->assertEquals($expected, $response->stringifyStatus());
@@ -75,7 +79,7 @@ class ResponseTest extends TestCase
     /**
      * @return void
      */
-    public function test__toString() :void
+    public function test__toString(): void
     {
         $content = 'Hello';
         $response = new Response($content);
@@ -109,7 +113,7 @@ class ResponseTest extends TestCase
         $this->assertEquals(Response::HTTP_NOT_FOUND, $response->getStatusCode());
     }
 
-    public function testProtocolVersion():void
+    public function testProtocolVersion(): void
     {
         $response = new Response();
         $response->setProtocolVersion(1.1);

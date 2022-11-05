@@ -8,44 +8,61 @@ use PHPUnit\Framework\TestCase;
 
 class FileReaderServiceTest extends TestCase
 {
+    /**
+     * @var FileReaderService|null
+     */
     public ?FileReaderService $fileReaderService;
 
-    public function setUp() :void
+    /**
+     * @return void
+     */
+    public function setUp(): void
     {
         $this->fileReaderService = new FileReaderService();
     }
 
-    public function tearDown() :void
+    public function tearDown(): void
     {
         $this->fileReaderService = null;
     }
 
-
-    public function listFilesWithExtension():array
+    /**
+     * @return string[][]
+     */
+    public function listFilesWithExtension(): array
     {
         return [
-            [__DIR__.'/../../data_source/source-1.csv', 'csv'],
-            [__DIR__.'/../../data_source/source-2.json', 'json'],
-           [ __DIR__.'/../../data_source/source-3.json', 'json'],
+            [__DIR__ . '/../../data_source/source-1.csv', 'csv'],
+            [__DIR__ . '/../../data_source/source-2.json', 'json'],
+            [__DIR__ . '/../../data_source/source-3.json', 'json'],
         ];
     }
 
-    public function listFiles():array
+    /**
+     * @return array[]
+     */
+    public function listFiles(): array
     {
         return [
-            [__DIR__.'/../../data_source/source-1.csv', true],
-            [__DIR__.'/../../data_source/source-2.json', true],
-           [ __DIR__.'/../../data_source/source-3.json', true],
-           [ __DIR__.'/../../data_source/source-33.json', false],
+            [__DIR__ . '/../../data_source/source-1.csv', true],
+            [__DIR__ . '/../../data_source/source-2.json', true],
+            [__DIR__ . '/../../data_source/source-3.json', true],
+            [__DIR__ . '/../../data_source/source-33.json', false],
         ];
     }
 
-    public function test__construct() : void
+    /**
+     * @return void
+     */
+    public function test__construct(): void
     {
         $this->assertInstanceOf(FileReaderFactory::class, $this->fileReaderService->fileFactory);
     }
 
-    public function test_listFiles() : void
+    /**
+     * @return void
+     */
+    public function test_listFiles(): void
     {
         $this->assertIsArray($this->fileReaderService->listFiles(''));
     }
@@ -56,7 +73,7 @@ class FileReaderServiceTest extends TestCase
      * @param string $extension
      * @return void
      */
-    public function test_find_file_extension(string $filePath, string $extension) : void
+    public function test_find_file_extension(string $filePath, string $extension): void
     {
         $this->assertEquals($this->fileReaderService->findFileExtension($filePath), $extension);
     }
@@ -67,7 +84,7 @@ class FileReaderServiceTest extends TestCase
      * @param bool $readable
      * @return void
      */
-    public function test_fileReadable(string $filePath, bool $readable) : void
+    public function test_fileReadable(string $filePath, bool $readable): void
     {
         $this->assertEquals($this->fileReaderService->fileReadable($filePath), $readable);
     }
@@ -78,7 +95,7 @@ class FileReaderServiceTest extends TestCase
      * @param string $extension
      * @return void
      */
-    public function testReadFileContent(string $filePath, string $extension) : void
+    public function testReadFileContent(string $filePath, string $extension): void
     {
         $this->assertIsArray($this->fileReaderService->readFileContent($extension, $filePath));
     }

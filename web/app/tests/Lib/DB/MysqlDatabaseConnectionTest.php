@@ -55,7 +55,7 @@ class MysqlDatabaseConnectionTest extends TestCase
             'charset' => 'utf8mb4'
         ];
         $this->expectException(\PDOException::class);
-       $pdo =  new MysqlDatabaseConnection($config);
+        $pdo = new MysqlDatabaseConnection($config);
     }
 
 }

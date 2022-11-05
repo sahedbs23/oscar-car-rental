@@ -10,5 +10,5 @@ interface ResponseInterface
      * @param bool $send_headers Whether or not to send the defined HTTP headers
      * @return  void
      */
-    public function send(bool $send_headers = false ) :void;
+    public function send(bool $send_headers = false): void;
 }

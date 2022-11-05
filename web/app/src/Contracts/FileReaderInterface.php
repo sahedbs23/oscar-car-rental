@@ -17,5 +17,5 @@ interface FileReaderInterface
      *
      * @return array
      */
-    public function transform() : array;
+    public function transform(): array;
 }

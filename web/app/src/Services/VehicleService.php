@@ -98,7 +98,7 @@ class VehicleService
      * @param int $offset
      * @return array|null
      */
-    public function searchCar(array $params = [], int $limit=10, int $offset=0): ?array
+    public function searchCar(array $params = [], int $limit = 10, int $offset = 0): ?array
     {
         return $this->repository->findVehicles($params, $limit, $offset);
     }
@@ -125,7 +125,7 @@ class VehicleService
             !empty($input['inside_width'])
         ) {
             $inputs = Arr::only($input, ['inside_height', 'inside_length', 'inside_width']);
-            $inputs = array_filter($inputs, static function ($item){
+            $inputs = array_filter($inputs, static function ($item) {
                 return !empty($item);
             });
 

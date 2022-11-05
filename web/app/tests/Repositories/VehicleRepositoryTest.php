@@ -10,13 +10,22 @@ use PHPUnit\Framework\TestCase;
 
 class VehicleRepositoryTest extends TestCase
 {
+    /**
+     * @var VehicleRepository|null
+     */
     public ?VehicleRepository $repository;
 
+    /**
+     * @return void
+     */
     protected function setUp(): void
     {
         $this->repository = new VehicleRepository();
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         $this->repository = null;
@@ -48,11 +57,14 @@ class VehicleRepositoryTest extends TestCase
         $this->repository->createVehicle($input);
     }
 
+    /**
+     * @return void
+     */
     public function testFindVehicles()
     {
         $input1 = ConfigDatabase::vehicleInput();
         $this->repository->createVehicle($input1);
-        $this->repository->createVehicle( ConfigDatabase::vehicleInput());
+        $this->repository->createVehicle(ConfigDatabase::vehicleInput());
         $response = $this->repository->findVehicles(Arr::only($input1, 'car_brand'));
         $this->assertIsArray($response);
     }

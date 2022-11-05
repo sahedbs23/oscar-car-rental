@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 class Vehicle
@@ -41,19 +42,18 @@ class Vehicle
         string $car_brand,
         string $car_model,
         string $license_plate,
-        int    $car_year,
-        int    $number_of_door,
-        int    $number_of_seat,
+        int $car_year,
+        int $number_of_door,
+        int $number_of_seat,
         string $fuel_type,
         string $transmission = null,
         string $car_group = null,
         string $car_type = null,
-        int    $car_km = 0,
-        float  $inside_height = null,
-        float  $inside_length = null,
-        float  $inside_width = null
-    )
-    {
+        int $car_km = 0,
+        float $inside_height = null,
+        float $inside_length = null,
+        float $inside_width = null
+    ) {
         $this->location = $location;
         $this->car_brand = $car_brand;
         $this->car_model = $car_model;

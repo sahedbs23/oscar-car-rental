@@ -2,8 +2,8 @@
 
 namespace App\Exceptions;
 
-use App\Lib\Response;
-use \Throwable;
+use JsonException;
+use Throwable;
 
 class ValidationExceptions extends \Exception
 {
@@ -11,7 +11,7 @@ class ValidationExceptions extends \Exception
      * @param array $messages
      * @param $code
      * @param Throwable|null $previous
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function __construct(array $messages, $code = 404, ?Throwable $previous = null)
     {

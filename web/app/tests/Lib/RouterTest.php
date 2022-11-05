@@ -28,7 +28,7 @@ class RouterTest extends TestCase
         $this->response = null;
     }
 
-    public function test__construct():void
+    public function test__construct(): void
     {
         $router = new Router($this->request, $this->response);
         $this->assertInstanceOf(Router::class, $router);
@@ -39,15 +39,16 @@ class RouterTest extends TestCase
      *
      * @return void
      */
-    public function test__call():void
+    public function test__call(): void
     {
         $router = new Router($this->request, $this->response);
-        $router->get('/welcome', static function (){});
+        $router->get('/welcome', static function () {
+        });
         $this->assertObjectHasAttribute('get', $router);
         $this->assertIsArray($router->get);
         $this->expectException(MethodNotAllowedException::class);
-        $router->PATCH('/welcome', static function (){});
-
+        $router->patch('/welcome', static function () {
+        });
     }
 
     /**
@@ -59,7 +60,8 @@ class RouterTest extends TestCase
         $this->request->requestMethod = 'GET';
         $this->request->requestUri = '/';
         $router = new Router($this->request, $this->response);
-        $router->get('/welcome', static function (){});
+        $router->get('/welcome', static function () {
+        });
         $this->expectException(RouteNotFoundException::class);
         $router->resolve();
     }
@@ -73,7 +75,7 @@ class RouterTest extends TestCase
         $this->request->requestMethod = 'GET';
         $this->request->requestUri = '/welcome';
         $router = new Router($this->request, $this->response);
-        $res = $router->get('/welcome', function ($request, $response){
+        $res = $router->get('/welcome', function ($request, $response) {
             $this->assertInstanceOf(RequestInterface::class, $request);
             $this->assertInstanceOf(ResponseInterface::class, $response);
         });
@@ -91,7 +93,7 @@ class RouterTest extends TestCase
         $this->request->requestMethod = 'GET';
         $this->request->requestUri = '/welcome/123';
         $router = new Router($this->request, $this->response);
-        $res = $router->get('/welcome/:num', function ($request, $response, $id){
+        $res = $router->get('/welcome/:num', function ($request, $response, $id) {
             $this->assertInstanceOf(RequestInterface::class, $request);
             $this->assertInstanceOf(ResponseInterface::class, $response);
             $this->assertEquals(123, $id);

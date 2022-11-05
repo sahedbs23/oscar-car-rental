@@ -26,7 +26,7 @@ class CsvFileReaderService implements FileReaderInterface
         'car_km' => 0,
         'inside_height' => null,
         'inside_length' => null,
-        'inside_width'=> null
+        'inside_width' => null
     ];
 
     /**
@@ -35,14 +35,11 @@ class CsvFileReaderService implements FileReaderInterface
      * @param string $filePath full path of the file.
      * @return CsvFileReaderService list of records
      */
-    public function read(string $filePath):static
+    public function read(string $filePath): static
     {
         $records = [];
-        if (($open = fopen($filePath, 'rb')) !== FALSE)
-        {
-
-            while (($data = fgetcsv($open, 1000, ",")) !== FALSE)
-            {
+        if (($open = fopen($filePath, 'rb')) !== false) {
+            while (($data = fgetcsv($open, 1000, ",")) !== false) {
                 $records[] = $data;
             }
 
@@ -59,10 +56,10 @@ class CsvFileReaderService implements FileReaderInterface
     public function transform(): array
     {
         foreach ($this->data as $index => $value):
-           if ($index === 0){
-               continue;
-           }
-           $output[] = (object) $this->transformToArray($value);
+            if ($index === 0) {
+                continue;
+            }
+            $output[] = (object)$this->transformToArray($value);
         endforeach;
         return $output ?? [];
     }

@@ -98,7 +98,7 @@ class VehicleImportService
      * @param array $input
      * @return array
      */
-    private function removeEmptyValueFromArray(array $input):array
+    private function removeEmptyValueFromArray(array $input): array
     {
         return array_filter($input, static function ($item) {
             return !empty($item);

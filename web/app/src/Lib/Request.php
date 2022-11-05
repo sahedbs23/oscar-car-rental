@@ -17,7 +17,7 @@ class Request implements RequestInterface
     /**
      * @inheritDoc
      */
-    public function getParams():array
+    public function getParams(): array
     {
         if ($this->requestMethod !== 'GET') {
             return [];
@@ -27,13 +27,12 @@ class Request implements RequestInterface
             $input[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
         endforeach;
         return $input;
-
     }
 
     /**
      * @inheritDoc
      */
-    public function getBody():array
+    public function getBody(): array
     {
         if ($this->requestMethod !== 'POST') {
             return [];
@@ -52,7 +51,7 @@ class Request implements RequestInterface
      *
      * @return void
      */
-    private function bootstrapSelf() : void
+    private function bootstrapSelf(): void
     {
         foreach ($_SERVER as $key => $value):
             $this->{$this->toCamelCase($key)} = $value;

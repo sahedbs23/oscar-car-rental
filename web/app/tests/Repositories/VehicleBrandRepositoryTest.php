@@ -9,7 +9,13 @@ use PHPUnit\Framework\TestCase;
 
 class VehicleBrandRepositoryTest extends TestCase
 {
+    /**
+     * @var VehicleBrandRepository|null
+     */
     public ?VehicleBrandRepository $repository;
+    /**
+     * @var Generator|null
+     */
     public ?Generator $faker;
 
     protected function setUp(): void
@@ -27,7 +33,7 @@ class VehicleBrandRepositoryTest extends TestCase
     /**
      * @return void
      */
-    public function testCreateBrand():void
+    public function testCreateBrand(): void
     {
         $brandName = $this->faker->text(90);
         $brandId = $this->repository->createBrand($brandName);
@@ -37,7 +43,6 @@ class VehicleBrandRepositoryTest extends TestCase
         $this->assertIsArray($res);
         $this->assertArrayHasKey('brand_name', $res);
 
-        $this->assertTrue($this->repository->delete(['id'=>$brandId]));
-
+        $this->assertTrue($this->repository->delete(['id' => $brandId]));
     }
 }

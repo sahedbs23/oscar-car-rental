@@ -270,10 +270,10 @@ docker run --rm -v $(pwd)/web/app:/app composer require symfony/yaml
 docker run --rm -v $(pwd)/web/app:/app composer update
 ```
 
-### Generating PHP API documentation
+### Read PHP API documentation
 
 ```sh
-docker run --rm -v $(pwd):/data phpdoc/phpdoc -i=vendor/ -d /data/web/app/src -t /data/web/app/doc
+open /web/app/doc/index.html
 ```
 
 ### Testing PHP application with PHPUnit
