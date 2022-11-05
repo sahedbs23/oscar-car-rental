@@ -17,23 +17,37 @@ class VehicleLocationRepository extends BaseRepository
 
     /**
      * @param string $locationName
-     * @param bool $returnFull
-     * @return array|int|false
+     * @return int|false
      */
-    public function createCarLocation(string $locationName, bool $returnFull = false): array|int|false
+    public function createCarLocation(string $locationName): int|false
     {
         try {
             $input = ['location' => $locationName];
-            if ($locationObject = $this->findOne($input)) {
-                return $returnFull ? $locationObject : $locationObject[self::PK];
+            if ($exists = $this->findOne($input)) {
+                return $exists[self::PK];
             }
-            $location = $this->create($input);
-            if ($location) {
-                if (!$returnFull) {
-                    return $this->lastSavedId();
-                }
-                return $this->findById($this->lastSavedId());
+            $this->create($input);
+            return $this->lastSavedId();
+        } catch (\Exception $exception) {
+            // Do Nothing.
+        }
+        return false;
+    }
+
+
+    /**
+     * @param string $locationName
+     * @return array|false
+     */
+    public function updateOrCreate(string $locationName): array|false
+    {
+        try {
+            $input = ['location' => $locationName];
+            if ($exists = $this->findOne($input)) {
+                return $exists;
             }
+            $this->create($input);
+            return $this->findById($this->lastSavedId());
         } catch (\Exception $exception) {
             // Do Nothing.
         }

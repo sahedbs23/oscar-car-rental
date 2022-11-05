@@ -2,6 +2,7 @@
 
 namespace Repositories;
 
+use App\Helpers\DBCleanup;
 use App\Repositories\VehicleLocationRepository;
 use Faker\Factory;
 use Faker\Generator;
@@ -28,6 +29,7 @@ class VehicleLocationRepositoryTest extends TestCase
     {
         $this->repository = null;
         $this->faker = null;
+        DBCleanup::cleanLocations();
     }
 
     /**
@@ -38,13 +40,24 @@ class VehicleLocationRepositoryTest extends TestCase
         $locationName = $this->faker->text(90);
         $brandId = $this->repository->createCarLocation($locationName);
         $this->assertIsInt($brandId);
+    }
 
-        $res = $this->repository->createCarLocation($locationName, true);
+    /**
+     * @return void
+     */
+    public function testUpdateOrCreate(): void
+    {
+        $locationName = $this->faker->text(90);
+        $res = $this->repository->updateOrCreate($locationName);
         $this->assertIsArray($res);
         $this->assertArrayHasKey('location', $res);
+    }
 
-        $this->assertTrue($this->repository->delete(['id' => $brandId]));
-
+    /**
+     * @return void
+     */
+    public function testCreateCarLocationException(): void
+    {
         $res = $this->repository->createCarLocation($this->faker->realTextBetween(120, 150));
         $this->assertFalse($res);
     }
