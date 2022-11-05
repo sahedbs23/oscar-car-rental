@@ -10,38 +10,38 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @var \PDOStatement|bool
      */
-    protected \PDOStatement|bool $stmt;
+    private \PDOStatement|bool $stmt;
     /**
      * @var array
      */
-    protected array $data = array();
-    protected $sql;
+    private array $data = array();
+    private $sql;
     /**
      * @var string|null
      */
-    protected null|string $where;
+    private null|string $where;
     /**
      * @var string|null
      */
-    protected null|string $fields;
+    private null|string $fields;
     /**
      * @var int|null
      */
-    protected null|int $count;
+    private null|int $count;
 
 
     /**
      * @var mixed
      */
-    protected mixed $fetch;
+    private mixed $fetch;
     /**
      * @var int
      */
-    protected int $lastId;
+    private int $lastId;
 
-    protected string $table;
+    private string $table;
 
-    protected string $pk;
+    private string $pk;
 
     public function __construct()
     {
@@ -96,7 +96,7 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * Find list of records.
      *
-     * @param $data
+     * @param array $data
      * @return array|false
      */
     public function findAll(array $data)
@@ -150,6 +150,9 @@ class BaseRepository extends MysqlDatabaseConnection
         return $this->fetch;
     }
 
+    /**
+     * @return false|int|string
+     */
     public function lastSavedId()
     {
         $id = $this->connection->lastInsertId();
@@ -258,7 +261,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $data
      * @return void
      */
-    protected function param($data = null)
+    private function param($data = null)
     {
         if (empty($data)) {
             $data = $this->data['conditions'];
@@ -276,7 +279,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $data
      * @return string
      */
-    protected function fields($data = null)
+    private function fields($data = null)
     {
         if (empty($data) && isset($this->data['fields'])) {
             return implode(',', $this->data['fields']);
@@ -296,7 +299,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $separator
      * @return string
      */
-    protected function conditions($separator)
+    private function conditions($separator):string
     {
         $param = [];
         foreach ($this->data['conditions'] as $k => $v) {
@@ -309,7 +312,7 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return string
      */
-    protected function where()
+    private function where():string
     {
         return $this->where = (isset($this->data['conditions']))
             ? 'WHERE ' . $this->conditions(' AND ')
@@ -319,7 +322,7 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return $this
      */
-    protected function find()
+    private function find():self
     {
         $orderBy= $this->orderBy();
         $limit = $this->limit();
@@ -351,7 +354,7 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return string
      */
-    protected function values()
+    private function values():string
     {
         foreach ($this->data as $k => $v) {
             $values[] = ":{$k}";
@@ -365,7 +368,7 @@ class BaseRepository extends MysqlDatabaseConnection
      *
      * @return string
      */
-    protected function insertQueryString():string
+    private function insertQueryString():string
     {
         $fields = $this->fields($this->data);
         $values = $this->values();
@@ -378,7 +381,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $data
      * @return string
      */
-    protected function updateWhere(&$data):string
+    private function updateWhere(&$data):string
     {
         $this->data['conditions'] = [$this->pk => $data[$this->pk]];
         $where = 'WHERE ' . $this->conditions('');
@@ -391,7 +394,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $data
      * @return string
      */
-    protected function updateQueryString($data):string
+    private function updateQueryString($data):string
     {
         $this->data['conditions'] = $data;
         $fields = $this->conditions(',');
@@ -401,13 +404,18 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return string
      */
-    protected function orderBy() {
+    private function orderBy():string
+    {
         return  (isset($this->data['order']))
             ? 'ORDER BY ' . $this->data['order']
             : '';
     }
 
-    protected function limit() {
+    /**
+     * @return string
+     */
+    private function limit():string
+    {
         return  (isset($this->data['limit']))
             ? 'LIMIT :limit'
             : '';
@@ -415,7 +423,8 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return string
      */
-    protected function offset() {
+    private function offset():string
+    {
         return  (isset($this->data['offset']))
             ? 'OFFSET :offset'
             : '';

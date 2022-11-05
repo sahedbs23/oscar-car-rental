@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Models\Vehicle;
+use App\Repositories\VehicleBrandRepository;
+use App\Repositories\VehicleLocationRepository;
+use App\Repositories\VehicleModelRepository;
 use App\Repositories\VehicleRepository;
 
 class vehicleService
@@ -11,10 +14,25 @@ class vehicleService
      * @var VehicleRepository
      */
     private VehicleRepository $repository;
+    /**
+     * @var VehicleBrandRepository
+     */
+    private VehicleBrandRepository $brandRepository;
+    /**
+     * @var VehicleLocationRepository
+     */
+    private VehicleLocationRepository $locationRepository;
+    /**
+     * @var VehicleModelRepository
+     */
+    private VehicleModelRepository $modelRepository;
 
     public function __construct()
     {
-        $repository = new VehicleRepository();
+        $this->repository = new VehicleRepository();
+        $this->brandRepository = new VehicleBrandRepository();
+        $this->modelRepository = new VehicleModelRepository();
+        $this->locationRepository = new VehicleLocationRepository();
     }
 
     /**
@@ -23,6 +41,7 @@ class vehicleService
      */
     public function storeCar(array $input) :bool
     {
+
         return $this->repository->create($input);
     }
 
@@ -32,7 +51,7 @@ class vehicleService
      */
     public function searchCar(array $params = []) :?array
     {
-        return $this->repository->findMany($params);
+        return $this->repository->findVehicles($params);
     }
 
     /**

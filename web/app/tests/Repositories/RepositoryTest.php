@@ -13,7 +13,6 @@ class RepositoryTest extends TestCase
     public null|int $brandId ;
     public null|int $locationId ;
     public null|int $modelId ;
-    public null|int $vehicleId ;
     public ?BaseRepository $repository;
 
     public ?Generator $faker;
@@ -50,6 +49,15 @@ class RepositoryTest extends TestCase
     {
         $this->repository = null;
         $this->faker = null;
+        (new BaseRepository())->query("DELETE FROM vehicles");
+        (new BaseRepository())->query("DELETE FROM car_brands");
+        $this->brandId = null;
+
+        (new BaseRepository())->query("DELETE FROM car_locations");
+        $this->locationId = null;
+
+        (new BaseRepository())->query("DELETE FROM car_models");
+        $this->modelId = null;
     }
 
     public function test__construct():void
@@ -74,7 +82,6 @@ class RepositoryTest extends TestCase
            ]
        );
         $this->assertTrue($res);
-        $this->vehicleId = $this->repository->lastSavedId();
     }
 
     /**
@@ -145,16 +152,44 @@ class RepositoryTest extends TestCase
         );
         $this->assertIsArray($res);
     }
-//
-//    /**
-//     * @depends testCreate
-//     * @return void
-//     */
-//    public function testDeelte()
-//    {
-//        $res = $this->repository->setTable(VehicleRepository::TABLE_NAME)->delete([
-//                'id' => $this->vehicleId
-//        ]);
-//        $this->assertTrue($res);
-//    }
+
+
+    /**
+     * @return void
+     */
+    public function testUpdate()
+    {
+        $repo = new BaseRepository();
+        $res = $repo->setTable('car_brands')->save(
+            [
+                'id' => $this->brandId,
+                'brand_name' => $this->faker->unique()->text(90)
+            ]
+        );
+        $this->assertTrue($res);
+        $this->assertEquals( 1, $repo->getCount());
+    }
+
+    /**
+     * @depends testCreate
+     * @return void
+     */
+    public function testDeelte()
+    {
+        $repo = new BaseRepository();
+        $repo->setTable(VehicleRepository::TABLE_NAME)
+            ->save(
+                [
+                    'location' => $this->locationId,
+                    'car_brand' =>$this->brandId,
+                    'car_model' => $this->modelId,
+                    'license_plate' => $this->faker->optional()->text(10),
+                ]
+            );
+        $vehicleId = $repo->lastSavedId();
+        $res = $this->repository->setTable(VehicleRepository::TABLE_NAME)->delete([
+                'id' => $vehicleId
+        ]);
+        $this->assertTrue($res);
+    }
 }

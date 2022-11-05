@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Repositories\BaseRepository;
-use App\Models\Vehicle;
 
 class VehicleRepository extends BaseRepository
 {
@@ -19,77 +18,41 @@ class VehicleRepository extends BaseRepository
     }
 
     /**
-     * @return null|Vehicle
+     * @param int $vehicleId
+     * @return mixed
      */
-    public function findVehicle() :?Vehicle
+    public function findVehicle(int $vehicleId) :mixed
     {
-        return null;
+        return $this->findById($vehicleId);
     }
 
     /**
-     * @return Vehicle[]
+     * @param array $search
+     * @param int $limit
+     * @param int $offset
+     * @return array|false
      */
-    public function findVehicles() : array
+    public function findVehicles(array $search = [], int $limit = 10, int $offset=0) : array|false
     {
-//        $vehicles = $this->connection
-//            ->query('SELECT * FROM vehicles');
-//        $collection = [];
-//        foreach ($vehicles as $vehicle):
-//            $collection[] = $this->toVehicle($vehicle);
-//        endforeach;
-//        return $collection;
-        return [];
+        $searchCriteria['limit']  = $limit;
+        $searchCriteria['offset']  = $offset;
+        if (is_array($search)  && !empty($search)){
+            $searchCriteria['conditions'] = $search;
+        }
+        return $this->findAll($searchCriteria);
     }
 
     /**
      * @param array $input
-     * @return bool
+     * @return mixed
      */
-    public function createVehicle(array $input):bool
+    public function createVehicle(array $input):mixed
     {
-        return true;
-
+        $status =  $this->create($input);
+        if ($status){
+            return $this->findById($this->lastSavedId());
+        }
+        return null;
     }
 
-    /**
-     * @param array $record
-     * @return Vehicle
-     */
-    private function toVehicle(array $record): Vehicle
-    {
-        [
-            $location,
-            $car_brand,
-            $car_model,
-            $license_plate,
-            $car_year,
-            $number_of_door,
-            $number_of_seat,
-            $fuel_type,
-            $transmission,
-            $car_group,
-            $car_type,
-            $car_km,
-            $inside_height,
-            $inside_length,
-            $inside_width
-        ] = $record;
-        return new Vehicle(
-            $location,
-            $car_brand,
-            $car_model,
-            $license_plate,
-            $car_year,
-            $number_of_door,
-            $number_of_seat,
-            $fuel_type,
-            $transmission,
-            $car_group,
-            $car_type,
-            $car_km,
-            $inside_height,
-            $inside_length,
-            $inside_width
-        );
-    }
 }

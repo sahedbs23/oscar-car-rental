@@ -35,7 +35,7 @@ CREATE TABLE `car_models`
 
 CREATE TABLE `car_features` (
                                 `id` bigint PRIMARY KEY AUTO_INCREMENT,
-                                `vehicle_id` bigint,
+                                `vehicle_id` bigint unique ,
                                 `inside_height` float DEFAULT null,
                                 `inside_length` float DEFAULT null,
                                 `inside_width` float DEFAULT null
