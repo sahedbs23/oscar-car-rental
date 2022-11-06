@@ -48,12 +48,6 @@ Check Docker Compose compatibility :
 
 * [Compose file version 3 reference](https://docs.docker.com/compose/compose-file/)
 
-The following is optional but makes life more enjoyable :
-
-```sh
-which make
-```
-
 On Ubuntu and Debian these are available in the meta-package build-essential. On other distributions, you may need to install the GNU C++ compiler separately.
 
 ```sh
@@ -67,7 +61,6 @@ sudo apt install build-essential
 * [PHP-FPM](https://hub.docker.com/r/nanoninja/php-fpm/)
 * [Composer](https://hub.docker.com/_/composer/)
 * [PHPMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
-* [Generate Certificate](https://hub.docker.com/r/jacoelho/generate-certificate/)
 
 You should be careful when installing third party web servers such as MySQL or Nginx.
 
@@ -78,7 +71,6 @@ This project use the following ports :
 | MySQL      | 8989 |
 | PHPMyAdmin | 8080 |
 | Nginx      | 8000 |
-| Nginx SSL  | 3000 |
 
 ___
 
@@ -144,7 +136,6 @@ cd oscar-car-rental
 2. Open your favorite browser :
 
     * [http://localhost:8000](http://localhost:8000/)
-    * [https://localhost:3000](https://localhost:3000/) ([HTTPS](#configure-nginx-with-ssl-certificates) not configured by default)
     * [http://localhost:8080](http://localhost:8080/) PHPMyAdmin (username: dev, password: dev)
 
 3. Stop and clear services
