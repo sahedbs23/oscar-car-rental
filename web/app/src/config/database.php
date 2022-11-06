@@ -8,7 +8,7 @@ return [
         'mysql' => [
             'host' => 'mysql',
 
-            'database' => 'test',
+            'database' => 'oscar',
 
             'port' => '3306',
 

@@ -13,7 +13,7 @@ class MysqlDatabaseConnectionTest extends TestCase
     {
         $config = [
             'host' => 'mysql',
-            'database' => 'test',
+            'database' => 'oscar',
             'port' => '3306',
             'user' => 'root',
             'pass' => 'root',
@@ -48,7 +48,7 @@ class MysqlDatabaseConnectionTest extends TestCase
     {
         $config = [
             'host' => 'mysql',
-            'database' => 'oscar',
+            'database' => 'test',
             'port' => '3306',
             'user' => 'root',
             'pass' => 'root',
