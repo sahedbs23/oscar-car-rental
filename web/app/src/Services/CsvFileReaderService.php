@@ -55,13 +55,14 @@ class CsvFileReaderService implements FileReaderInterface
      */
     public function transform(): array
     {
+        $output = [];
         foreach ($this->data as $index => $value):
             if ($index === 0) {
                 continue;
             }
             $output[] = (object)$this->transformToArray($value);
         endforeach;
-        return $output ?? [];
+        return $output ;
     }
 
     /**

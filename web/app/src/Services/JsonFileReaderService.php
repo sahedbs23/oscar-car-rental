@@ -50,10 +50,11 @@ class JsonFileReaderService implements FileReaderInterface
 
     public function transform(): array
     {
+        $lists = [];
         foreach ($this->data as $row):
-            $collection[] = $this->toObject($row);
+            $lists[] = $this->toObject($row);
         endforeach;
-        return $collection ?? [];
+        return $lists;
     }
 
     public function toObject(array $row): object

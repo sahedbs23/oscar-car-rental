@@ -45,7 +45,6 @@ class Validator
      * @return Validator
      * @throws InvalidRuleException
      */
-
     public static function vlaidate(array $input, array $rules)
     {
         $instance = new self($input, $rules);
@@ -55,7 +54,6 @@ class Validator
             if ($fail) {
                 break;
             }
-
         endforeach;
 
         return $instance;

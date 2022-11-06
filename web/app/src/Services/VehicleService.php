@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Exceptions\RecordNotFoundException;
 use App\Helpers\Arr;
-use App\Models\Vehicle;
 use App\Repositories\VehicleBrandRepository;
 use App\Repositories\VehicleFeaturesRepository;
 use App\Repositories\VehicleLocationRepository;
@@ -45,10 +44,9 @@ class VehicleService
 
     /**
      * @param array $input
-     * @param bool $idOnly
-     * @return int|false|array
+     * @return false|int
      */
-    public function storeCar(array $input, bool $idOnly = true): mixed
+    public function storeCar(array $input)
     {
         $modelId = $this->modelRepository->createModel($input['car_model']);
         $brandId = $this->brandRepository->createBrand($input['car_brand']);
@@ -58,7 +56,7 @@ class VehicleService
         $input['car_brand'] = $brandId;
         $input['location'] = $locationId;
 
-        $res = $this->repository->create(
+        $this->repository->create(
             Arr::only(
                 $input,
                 [
@@ -82,15 +80,7 @@ class VehicleService
 
         $this->saveCarFeatures($input, $vehicleId);
 
-        if ($res && $idOnly) {
-            return $vehicleId;
-        }
-
-        if ($res) {
-            return $this->repository->findById($this->repository->lastSavedId());
-        }
-
-        return false;
+        return $vehicleId;
     }
 
     /**
@@ -111,9 +101,9 @@ class VehicleService
      */
     public function find(int $id): array|false
     {
-        $response =  $this->repository->findById($id);
+        $response = $this->repository->findById($id);
 
-        if (!$response){
+        if (!$response) {
             throw new RecordNotFoundException(sprintf('Record not found in the database with id %d.', $id));
         }
         return $response;
@@ -123,6 +113,7 @@ class VehicleService
      * @param array $input
      * @param int $vehicleId
      * @return bool
+     * @throws \PDOException
      */
     public function saveCarFeatures(array $input, int $vehicleId): bool
     {

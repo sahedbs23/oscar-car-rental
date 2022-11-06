@@ -8,6 +8,8 @@ use App\Lib\Response;
 use App\Services\VehicleService;
 use App\Validation\Validator;
 use JsonException;
+use App\Exceptions\InvalidRuleException;
+use App\Exceptions\RecordNotFoundException;
 
 class CarController
 {
@@ -45,8 +47,10 @@ class CarController
      * @param Request $request
      * @param Response $response
      * @return void
-     * @throws ValidationExceptions
      * @throws JsonException
+     * @throws ValidationExceptions
+     * @throws InvalidRuleException
+     * @throws RecordNotFoundException
      */
     public function save(Request $request, Response $response)
     {
@@ -84,7 +88,8 @@ class CarController
             throw new ValidationExceptions($validator->message(), Response::BAD_REQUEST);
         }
 
-        $content = $this->service->storeCar($input, false);
+        $carId = $this->service->storeCar($input);
+        $content = $this->service->find($carId);
 
         $this->sendResponse(
             $response,
