@@ -16,20 +16,23 @@ class VehicleBrandRepository extends BaseRepository
     }
 
     /**
-     * @param string $brand_name
+     * @param string $brandName
      * @return int|false
      */
-    public function createBrand(string $brand_name): int|false
+    public function createBrand(string $brandName): int|false
     {
         try {
-            $input = ['brand_name' => $brand_name];
-            if ($brandObject = $this->findOne($input)) {
-                return $brandObject[self::PK];
+            $input = ['brand_name' => $brandName];
+
+            $exists = $this->findOne($input);
+
+            if ($exists) {
+                return $exists[self::PK];
             }
-            $brand = $this->create($input);
-            if ($brand) {
-                return $this->lastSavedId();
-            }
+
+            $this->create($input);
+
+            return $this->lastSavedId();
         } catch (\Exception $exception) {
             // Do Nothing.
         }

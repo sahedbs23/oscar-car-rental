@@ -23,10 +23,15 @@ class VehicleLocationRepository extends BaseRepository
     {
         try {
             $input = ['location' => $locationName];
-            if ($exists = $this->findOne($input)) {
+
+            $exists = $this->findOne($input);
+
+            if ($exists) {
                 return $exists[self::PK];
             }
+
             $this->create($input);
+
             return $this->lastSavedId();
         } catch (\Exception $exception) {
             // Do Nothing.

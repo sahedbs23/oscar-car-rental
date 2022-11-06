@@ -39,7 +39,7 @@ class CsvFileReaderService implements FileReaderInterface
     {
         $records = [];
         if (($open = fopen($filePath, 'rb')) !== false) {
-            while (($data = fgetcsv($open, 1000, ",")) !== false) {
+            while (($data = fgetcsv($open, 1000)) !== false) {
                 $records[] = $data;
             }
 

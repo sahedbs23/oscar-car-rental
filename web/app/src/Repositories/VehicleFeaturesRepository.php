@@ -11,7 +11,9 @@ class VehicleFeaturesRepository extends BaseRepository
     public function __construct()
     {
         parent::__construct();
+
         $this->setPrimaryKey(self::PK);
+
         $this->setTable(self::TABLE_NAME);
     }
 
@@ -23,13 +25,18 @@ class VehicleFeaturesRepository extends BaseRepository
      */
     public function saveCarFeatures(array $input): false|int
     {
-        if ($exists = $this->findOne(['vehicle_id' => $input['vehicle_id']])) {
+        $exists = $this->findOne(['vehicle_id' => $input['vehicle_id']]);
+
+        if ($exists) {
             $input[self::PK] = $exists[self::PK];
+
             $this->update($input);
+
             return $exists[self::PK];
         }
 
         $this->create($input);
+
         return $this->lastSavedId();
     }
 

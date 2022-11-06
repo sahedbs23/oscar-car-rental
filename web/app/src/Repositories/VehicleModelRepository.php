@@ -16,16 +16,20 @@ class VehicleModelRepository extends BaseRepository
     }
 
     /**
-     * @param string $car_model
+     * @param string $carModel
      * @return int|false
      */
-    public function createModel(string $car_model): int|false
+    public function createModel(string $carModel): int|false
     {
         try {
-            $input = ['car_model' => $car_model];
-            if ($modelObject = $this->findOne($input)) {
-                return $modelObject[self::PK];
+            $input = ['car_model' => $carModel];
+
+            $exists = $this->findOne($input);
+
+            if ($exists) {
+                return $exists[self::PK];
             }
+
             $this->create($input);
 
             return $this->lastSavedId();

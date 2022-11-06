@@ -71,6 +71,7 @@ class VehicleRepository extends BaseRepository
      */
     public function findVehicles(array $search = [], int $limit = 10, int $offset = 0): array|false
     {
+        $searchCriteria = [];
         $searchCriteria['fields'] = self::FIELDS;
         $searchCriteria['limit'] = $limit;
         $searchCriteria['offset'] = $offset;
