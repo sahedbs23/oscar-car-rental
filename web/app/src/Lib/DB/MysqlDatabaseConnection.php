@@ -23,7 +23,7 @@ class MysqlDatabaseConnection extends AbstractDatabaseConnection
         $emulate = false
     ) {
         $this->configArr = $config;
-        parent::__construct($config, $errorMode, $fetchMode, $emulate);
+        parent::__construct($errorMode, $fetchMode, $emulate);
     }
 
     /**

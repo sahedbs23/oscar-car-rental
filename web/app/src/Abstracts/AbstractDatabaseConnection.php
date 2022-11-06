@@ -13,13 +13,11 @@ abstract class AbstractDatabaseConnection
     public ?PDO $connection;
 
     /**
-     * @param array $config
      * @param int $errorMode
      * @param int $fetchMode
      * @param bool $emulate
      */
     public function __construct(
-        array $config = [],
         int $errorMode = PDO::ERRMODE_EXCEPTION,
         int $fetchMode = PDO::FETCH_ASSOC,
         bool $emulate = false
