@@ -51,10 +51,13 @@ class VehicleFeaturesRepositoryTest extends TestCase
         ];
         $carFeatureId = $this->repository->saveCarFeatures($features);
         $this->assertIsInt($carFeatureId);
-
     }
 
-    public function testFindOrCarFeatures(): void
+
+    /**
+     * @return void
+     */
+    public function testUpdateCarFeatures(): void
     {
         $vehicle_id = ConfigDatabase::setupVehicle();
         $features = [
@@ -63,8 +66,26 @@ class VehicleFeaturesRepositoryTest extends TestCase
             'inside_length' => $this->faker->optional()->randomFloat(),
             'inside_width' => $this->faker->optional()->randomFloat()
         ];
-        $res = $this->repository->findOrCarFeatures($features);
+        $carFeatureId = $this->repository->saveCarFeatures($features);
+        $carFeatureId2 = $this->repository->saveCarFeatures($features);
+        $this->assertEquals($carFeatureId, $carFeatureId2);
+    }
+
+    public function testFindCarFeatureById(): void
+    {
+        $vehicle_id = ConfigDatabase::setupVehicle();
+        $features = [
+            'vehicle_id' => $vehicle_id,
+            'inside_height' => $this->faker->randomFloat(),
+            'inside_length' => $this->faker->optional()->randomFloat(),
+            'inside_width' => $this->faker->optional()->randomFloat()
+        ];
+        $carFeatureId = $this->repository->saveCarFeatures($features);
+        $res = $this->repository->findCarFeatureById($carFeatureId);
         $this->assertIsArray($res);
         $this->assertArrayHasKey('vehicle_id', $res);
+        $this->assertArrayHasKey('inside_height', $res);
+        $this->assertArrayHasKey('inside_length', $res);
+        $this->assertArrayHasKey('inside_width', $res);
     }
 }

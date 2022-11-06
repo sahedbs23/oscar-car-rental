@@ -35,23 +35,14 @@ class VehicleFeaturesRepository extends BaseRepository
 
 
     /**
-     * save vehicle features.
+     * Find a vehicle feature details
      *
-     * @param array $input
+     * @param int $featureId
      * @return false|array
      */
-    public function findOrCarFeatures(array $input): false|array
+    public function findCarFeatureById(int $featureId): false|array
     {
-        if ($exists = $this->findOne(['vehicle_id' => $input['vehicle_id']])) {
-            $input[self::PK] = $exists[self::PK];
-            $feature = $this->update($input);
-            return $this->findById($exists[self::PK]);
-        }
-
-        $this->create($input);
-        $lastId = $this->lastSavedId();
-
-        return $this->findById($lastId);
+        return $this->findById($featureId);
     }
 
 }
