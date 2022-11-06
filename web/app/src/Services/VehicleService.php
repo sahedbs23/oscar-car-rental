@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Exceptions\RecordNotFoundException;
 use App\Helpers\Arr;
-use App\Repositories\BaseRepository;
 use App\Repositories\VehicleBrandRepository;
 use App\Repositories\VehicleFeaturesRepository;
 use App\Repositories\VehicleLocationRepository;

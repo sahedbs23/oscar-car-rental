@@ -38,23 +38,11 @@ class VehicleBrandRepository extends BaseRepository
 
 
     /**
-     * @param string $brand_name
+     * @param int $brandId
      * @return array|false
      */
-    public function findOrCreateBrand(string $brand_name): array|false
+    public function findBranById(int $brandId): array|false
     {
-        try {
-            $input = ['brand_name' => $brand_name];
-            if ($brandObject = $this->findOne($input)) {
-                return $brandObject;
-            }
-            $brand = $this->create($input);
-            if ($brand) {
-                return $this->findById($this->lastSavedId());
-            }
-        } catch (\Exception $exception) {
-            // Do Nothing.
-        }
-        return false;
+        return $this->findById($brandId);
     }
 }

@@ -29,6 +29,8 @@ class VehicleBrandRepositoryTest extends TestCase
     {
         $this->repository = null;
         $this->faker = null;
+        DBCleanup::cleanCarFeatures();
+        DBCleanup::cleanVehicles();
         DBCleanup::cleanbrands();
     }
 
@@ -37,19 +39,48 @@ class VehicleBrandRepositoryTest extends TestCase
      */
     public function testCreateBrand(): void
     {
-        $brandName = $this->faker->text(90);
-        $brandId = $this->repository->createBrand($brandName);
+        $brandId = $this->createBrand();
         $this->assertIsInt($brandId);
     }
 
     /**
      * @return void
      */
-    public function testFindOrCreateBrand(): void
+    public function testCreateBrandFail(): void
     {
-        $brandName = $this->faker->text(90);
-        $res = $this->repository->findOrCreateBrand($brandName);
+        $brandName = $this->faker->realTextBetween(120, 150) . time();
+        $brandId = $this->repository->createBrand($brandName);
+        $this->assertFalse($brandId);
+    }
+
+    /**
+     * @return void
+     */
+    public function testReturnExistingId(): void
+    {
+        $brandName = $this->faker->realTextBetween(6, 10) . time();
+        $brandId = $this->repository->createBrand($brandName);
+        $brandIdExisting = $this->repository->createBrand($brandName);
+        $this->assertEquals($brandId, $brandIdExisting);
+    }
+
+    /**
+     * @return void
+     */
+    public function testFindBranById(): void
+    {
+        $brandId = $this->createBrand();
+        $res = $this->repository->findBranById($brandId);
         $this->assertIsArray($res);
         $this->assertArrayHasKey('brand_name', $res);
+    }
+
+    /**
+     * @return false|int
+     */
+    private function createBrand(): int|false
+    {
+        $brandName = $this->faker->realTextBetween(6, 10) . time();
+        return $this->repository->createBrand($brandName);
     }
 }
