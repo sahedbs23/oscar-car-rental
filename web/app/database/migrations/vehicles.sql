@@ -6,11 +6,11 @@ CREATE TABLE `vehicles`
     `car_model`      bigint,
     `license_plate`  varchar(50) UNIQUE DEFAULT null,
     `car_year`       int                DEFAULT 0,
-    `number_of_door` int                DEFAULT 0,
-    `number_of_seat` int                DEFAULT 0,
+    `number_of_doors` int                DEFAULT 0,
+    `number_of_seats` int                DEFAULT 0,
     `fuel_type`      varchar(100)       DEFAULT null,
     `transmission`   varchar(100)       DEFAULT null,
-    `car_group`      varchar(100)       DEFAULT null,
+    `car_type_group`      varchar(100)       DEFAULT null,
     `car_type`       varchar(100)       DEFAULT null,
     `car_km`         float              DEFAULT 0
 );

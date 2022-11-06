@@ -15,11 +15,11 @@ class VehicleRepository extends BaseRepository
         'cm.car_model as car_model',
         'v.license_plate',
         'v.car_year',
-        'v.number_of_door',
-        'v.number_of_seat',
+        'v.number_of_doors',
+        'v.number_of_seats',
         'v.fuel_type',
         'v.transmission',
-        'v.car_group',
+        'v.car_type_group',
         'v.car_type',
         'v.car_km',
         'cf.inside_height',
@@ -41,14 +41,16 @@ class VehicleRepository extends BaseRepository
     public function findVehicle(int $vehicleId): array|false
     {
         $searchCriteria['fields'] = self::FIELDS;
-        $searchCriteria['id'] = $vehicleId;
+        $searchCriteria['v.id'] = $vehicleId;
         $records =  $this->setTable(
             'vehicles as v 
         left join car_brands as cb on v.car_brand = cb.id
         left join car_models as cm on v.car_model = cm.id
         left join car_locations as l on v.location = l.id
         left join car_features as cf on cf.vehicle_id = v.id'
-        )->findAll($searchCriteria);
+        )->findOne($searchCriteria);
+        print_r($records);
+        die;
         if (count($records)){
             return $records[0];
         }
