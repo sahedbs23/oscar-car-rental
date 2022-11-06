@@ -48,6 +48,8 @@ class VehicleService
      */
     public function storeCar(array $input)
     {
+        //TODO:: Implement DB transaction/Rollback/Commit Here.
+
         $modelId = $this->modelRepository->createModel($input['car_model']);
         $brandId = $this->brandRepository->createBrand($input['car_brand']);
         $locationId = $this->locationRepository->createCarLocation($input['location']);
