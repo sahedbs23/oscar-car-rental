@@ -19,7 +19,7 @@ Docker running Nginx, PHP-FPM, Composer, MySQL and PHPMyAdmin.
 4. [Use Docker Commands](#use-docker-commands)
 
     When running, you can use docker commands for doing recurrent operations.
-
+5. [Test Application](#postman)
 ___
 
 ## Install prerequisites
@@ -119,7 +119,7 @@ cd oscar-car-rental
         └── index.php
 ```
 
-## Run the application
+
 
 1. Start the application :
 
@@ -220,3 +220,20 @@ source .env && docker exec $(docker-compose ps -q mysqldb) mysqldump -u"$MYSQL_R
 ```sh
 source .env && docker exec -i $(docker-compose ps -q mysqldb) mysql -u"$MYSQL_ROOT_USER" -p"$MYSQL_ROOT_PASSWORD" < "data/db/dumps/YOUR_DB_NAME_dump.sql"
 ```
+
+## Run the application
+
+### The Application exposed a few API endpoints
+
+```
+Import postman collection from api-doc/postman_collection.json
+Import postman enviornment from api-doc/postman_environment.json
+```
+
+**`Notice:`** A car license is Unique at the Database level. You can import the content from the file just once.
+
+* GET [http://localhost:8000/cars](http://localhost:8000/cars) for list and search car collections.
+* GET [http://localhost:8000/cars/{car id}](http://localhost:8000/cars/{car-id}) to read details about a car.
+* POST [http://localhost:8000/cars](http://localhost:8000/cars) to Create a new car.
+* Get [http://localhost:8000/read-files](http://localhost:8000/read-files) to read CSV and JSON file contents.
+* POST [http://localhost:8000/write-files](http://localhost:8000/write-files) to import CSV and JSON file contents to the Database. 

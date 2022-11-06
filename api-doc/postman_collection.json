@@ -1,0 +1,617 @@
+{
+	"info": {
+		"_postman_id": "57aa564a-8a4b-489f-9e20-06910398031b",
+		"name": "Oscar Car Rental",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20517044"
+	},
+	"item": [
+		{
+			"name": "List Cars (with search options)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{DEV_HOST}}/cars?limit=30&offset=0",
+					"host": [
+						"{{DEV_HOST}}"
+					],
+					"path": [
+						"cars"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "30"
+						},
+						{
+							"key": "car_model",
+							"value": "Punto",
+							"disabled": true
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "car_brand",
+							"value": "Fiat",
+							"disabled": true
+						},
+						{
+							"key": "location",
+							"value": "Calahonda",
+							"disabled": true
+						},
+						{
+							"key": "license_plate",
+							"value": "6048 KDM",
+							"disabled": true
+						},
+						{
+							"key": "fuel_type",
+							"value": "Petrol",
+							"disabled": true
+						},
+						{
+							"key": "transmission",
+							"value": "Manual",
+							"disabled": true
+						},
+						{
+							"key": "car_type",
+							"value": "Small car",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List Cars",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV_HOST}}/cars?limit=30&offset=0",
+							"host": [
+								"{{DEV_HOST}}"
+							],
+							"path": [
+								"cars"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "30"
+								},
+								{
+									"key": "car_model",
+									"value": "Punto",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "car_brand",
+									"value": "Fiat",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "Calahonda",
+									"disabled": true
+								},
+								{
+									"key": "license_plate",
+									"value": "6048 KDM",
+									"disabled": true
+								},
+								{
+									"key": "fuel_type",
+									"value": "Petrol",
+									"disabled": true
+								},
+								{
+									"key": "transmission",
+									"value": "Manual",
+									"disabled": true
+								},
+								{
+									"key": "car_type",
+									"value": "Small car",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.2"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Nov 2022 08:42:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 148,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Panda\",\n        \"license_plate\": \"K9DH 223\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 89,\n        \"inside_height\": 8,\n        \"inside_length\": 5.6,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 149,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Panda\",\n        \"license_plate\": \"4379 KDH\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 150,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"500C\",\n        \"license_plate\": \"1677 KGX\",\n        \"car_year\": 2018,\n        \"number_of_doors\": 3,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 151,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Hyundai\",\n        \"car_model\": \"i10\",\n        \"license_plate\": \"0186  KDN\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 152,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"500X\",\n        \"license_plate\": \"7515 KGX\",\n        \"car_year\": 2018,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Large car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 153,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6046 KDM\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Midsize car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 154,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Peugeot\",\n        \"car_model\": \"308\",\n        \"license_plate\": \"2296 GWD\",\n        \"car_year\": 2009,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 155,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"New Beetle\",\n        \"license_plate\": \"7272 GHM\",\n        \"car_year\": 2008,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 156,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"New Beetle\",\n        \"license_plate\": \"8085 KDN\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 157,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6047 KDM\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 158,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6048 KDM\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 159,\n        \"location\": \"Ede West\",\n        \"car_brand\": \"Ford\",\n        \"car_model\": \"Transit Connect\",\n        \"license_plate\": null,\n        \"car_year\": 2015,\n        \"number_of_doors\": 3,\n        \"number_of_seats\": 3,\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 160402,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 160,\n        \"location\": \"Ede West\",\n        \"car_brand\": \"Witteveen\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": null,\n        \"car_year\": 2014,\n        \"number_of_doors\": -1,\n        \"number_of_seats\": -1,\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 1,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 161,\n        \"location\": \"Ede West\",\n        \"car_brand\": \"Skoda\",\n        \"car_model\": \"Fabia\",\n        \"license_plate\": null,\n        \"car_year\": 2011,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 116577,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 162,\n        \"location\": \"Ede West\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Golf Plus\",\n        \"license_plate\": null,\n        \"car_year\": 2007,\n        \"number_of_doors\": -5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 137431,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 163,\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Up!\",\n        \"license_plate\": null,\n        \"car_year\": 2013,\n        \"number_of_doors\": 4,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 81595,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 164,\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Up!\",\n        \"license_plate\": null,\n        \"car_year\": 2013,\n        \"number_of_doors\": 4,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 120609,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 165,\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Up!\",\n        \"license_plate\": null,\n        \"car_year\": 2013,\n        \"number_of_doors\": 4,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 132395,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 166,\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Transporter\",\n        \"license_plate\": null,\n        \"car_year\": 2009,\n        \"number_of_doors\": 4,\n        \"number_of_seats\": 2,\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 191553,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 167,\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"Mercedes Benz\",\n        \"car_model\": \"Citan\",\n        \"license_plate\": null,\n        \"car_year\": 2013,\n        \"number_of_doors\": 4,\n        \"number_of_seats\": 2,\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 199808,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 168,\n        \"location\": \"Holten\",\n        \"car_brand\": \"Peugeot\",\n        \"car_model\": \"108\",\n        \"license_plate\": null,\n        \"car_year\": 2015,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 52175,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 169,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Renault\",\n        \"car_model\": \"Clio\",\n        \"license_plate\": \"AZ 49 013\",\n        \"car_year\": 2015,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 170,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Brenderup\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": \"MS 66 29\",\n        \"car_year\": 2006,\n        \"number_of_doors\": 0,\n        \"number_of_seats\": 0,\n        \"fuel_type\": null,\n        \"transmission\": null,\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": 2.04,\n        \"inside_width\": 1.28\n    },\n    {\n        \"id\": 171,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Brenderup\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": \"MB 74 70\",\n        \"car_year\": 2005,\n        \"number_of_doors\": 0,\n        \"number_of_seats\": 0,\n        \"fuel_type\": null,\n        \"transmission\": null,\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": 2.53,\n        \"inside_width\": 1.75\n    },\n    {\n        \"id\": 172,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Citroën\",\n        \"car_model\": \"Jumper\",\n        \"license_plate\": \"AK 70 894\",\n        \"car_year\": 2014,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 3,\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": 2.15,\n        \"inside_length\": 4.15,\n        \"inside_width\": 2.18\n    },\n    {\n        \"id\": 173,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Skoda\",\n        \"car_model\": \"Citigo\",\n        \"license_plate\": \"CH 58 961\",\n        \"car_year\": 2019,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 174,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Peugeot\",\n        \"car_model\": \"Boxer\",\n        \"license_plate\": \"CK 84 433\",\n        \"car_year\": 2018,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 3,\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": 2.15,\n        \"inside_length\": 4.3,\n        \"inside_width\": 2.18\n    },\n    {\n        \"id\": 175,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Ford\",\n        \"car_model\": \"Focus\",\n        \"license_plate\": \"CK 49 059\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 176,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Brenderup\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": \"BM 44 34\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 0,\n        \"number_of_seats\": 0,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": 0.8,\n        \"inside_length\": 2.04,\n        \"inside_width\": 1.28\n    },\n    {\n        \"id\": 177,\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Citroën\",\n        \"car_model\": \"Jumper\",\n        \"license_plate\": \"BB 80 307\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 3,\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": null,\n        \"car_type\": null,\n        \"car_km\": 0,\n        \"inside_height\": 1.93,\n        \"inside_length\": 3.12,\n        \"inside_width\": 1.87\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "View a car",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{DEV_HOST}}/cars/209",
+					"host": [
+						"{{DEV_HOST}}"
+					],
+					"path": [
+						"cars",
+						"209"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "View a car",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV_HOST}}/cars/148",
+							"host": [
+								"{{DEV_HOST}}"
+							],
+							"path": [
+								"cars",
+								"148"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.2"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Nov 2022 08:47:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 148,\n    \"location\": {\n        \"id\": 123,\n        \"location\": \"Calahonda\"\n    },\n    \"car_brand\": {\n        \"id\": 141,\n        \"brand_name\": \"Fiat\"\n    },\n    \"car_model\": {\n        \"id\": 162,\n        \"car_model\": \"Panda\"\n    },\n    \"license_plate\": \"K9DH 223\",\n    \"car_year\": 2017,\n    \"number_of_doors\": 5,\n    \"number_of_seats\": 5,\n    \"fuel_type\": \"Petrol\",\n    \"transmission\": \"Manual\",\n    \"car_type_group\": \"Car\",\n    \"car_type\": \"Small car\",\n    \"car_km\": 89,\n    \"features\": {\n        \"id\": 35,\n        \"vehicle_id\": 148,\n        \"inside_height\": 8,\n        \"inside_length\": 5.6,\n        \"inside_width\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create a Car",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "location",
+							"value": "Calahonda",
+							"description": "Data Type:  ['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "car_brand",
+							"value": "Fiat",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "car_model",
+							"value": "Panda",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "license_plate",
+							"value": "K9DH 223",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "car_year",
+							"value": "2017",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "number_of_doors",
+							"value": "5",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "number_of_seats",
+							"value": "5",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "fuel_type",
+							"value": "Petrol",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "transmission",
+							"value": "Manual",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "car_type_group",
+							"value": "Car",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "car_type",
+							"value": "Small car",
+							"description": "['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "car_km",
+							"value": " 089",
+							"description": "Data Type:  ['required', 'string']",
+							"type": "text"
+						},
+						{
+							"key": "inside_height",
+							"value": "8",
+							"description": "Data Type:  [optional, numeric]",
+							"type": "text"
+						},
+						{
+							"key": "inside_length",
+							"value": "5.6",
+							"description": "Data Type:  [optional, numeric]",
+							"type": "text"
+						},
+						{
+							"key": "inside_width",
+							"value": "",
+							"description": "Data Type: [optional, numeric]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{DEV_HOST}}/cars",
+					"host": [
+						"{{DEV_HOST}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a Car",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "location",
+									"value": "Calahonda",
+									"type": "text"
+								},
+								{
+									"key": "car_brand",
+									"value": "Fiat",
+									"type": "text"
+								},
+								{
+									"key": "car_model",
+									"value": "Panda",
+									"type": "text"
+								},
+								{
+									"key": "license_plate",
+									"value": "K9DH 223",
+									"type": "text"
+								},
+								{
+									"key": "car_year",
+									"value": "2017",
+									"type": "text"
+								},
+								{
+									"key": "number_of_doors",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "number_of_seats",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "fuel_type",
+									"value": "Petrol",
+									"type": "text"
+								},
+								{
+									"key": "transmission",
+									"value": "Manual",
+									"type": "text"
+								},
+								{
+									"key": "car_type_group",
+									"value": "Car",
+									"type": "text"
+								},
+								{
+									"key": "car_type",
+									"value": "Small car",
+									"type": "text"
+								},
+								{
+									"key": "car_km",
+									"value": " 089",
+									"type": "text"
+								},
+								{
+									"key": "inside_height",
+									"value": "8",
+									"type": "text"
+								},
+								{
+									"key": "inside_length",
+									"value": "5.6",
+									"type": "text"
+								},
+								{
+									"key": "inside_width",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{DEV_HOST}}/cars",
+							"host": [
+								"{{DEV_HOST}}"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.2"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Nov 2022 08:41:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 148,\n    \"location\": {\n        \"id\": 123,\n        \"location\": \"Calahonda\"\n    },\n    \"car_brand\": {\n        \"id\": 141,\n        \"brand_name\": \"Fiat\"\n    },\n    \"car_model\": {\n        \"id\": 162,\n        \"car_model\": \"Panda\"\n    },\n    \"license_plate\": \"K9DH 223\",\n    \"car_year\": 2017,\n    \"number_of_doors\": 5,\n    \"number_of_seats\": 5,\n    \"fuel_type\": \"Petrol\",\n    \"transmission\": \"Manual\",\n    \"car_type_group\": \"Car\",\n    \"car_type\": \"Small car\",\n    \"car_km\": 89,\n    \"features\": {\n        \"id\": 35,\n        \"vehicle_id\": 148,\n        \"inside_height\": 8,\n        \"inside_length\": 5.6,\n        \"inside_width\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Read Data Source",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set('nullable_value', null)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{DEV_HOST}}/read-files",
+					"host": [
+						"{{DEV_HOST}}"
+					],
+					"path": [
+						"read-files"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Read Data Source",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DEV_HOST}}/read-files",
+							"host": [
+								"{{DEV_HOST}}"
+							],
+							"path": [
+								"read-files"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.2"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Nov 2022 07:47:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						},
+						{
+							"key": "Additional-header",
+							"value": "Bla-bla"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Panda\",\n        \"license_plate\": \"4379 KDH\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"500C\",\n        \"license_plate\": \"1677 KGX\",\n        \"car_year\": \"2018\",\n        \"number_of_doors\": \"3\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Hyundai\",\n        \"car_model\": \"i10\",\n        \"license_plate\": \"0186  KDN\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"500X\",\n        \"license_plate\": \"7515 KGX\",\n        \"car_year\": \"2018\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Large car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6046 KDM\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Midsize car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Peugeot\",\n        \"car_model\": \"308\",\n        \"license_plate\": \"2296 GWD\",\n        \"car_year\": \"2009\",\n        \"number_of_doors\": \"2\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"New Beetle\",\n        \"license_plate\": \"7272 GHM\",\n        \"car_year\": \"2008\",\n        \"number_of_doors\": \"2\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"New Beetle\",\n        \"license_plate\": \"8085 KDN\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"2\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6047 KDM\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6048 KDM\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Ede West\",\n        \"car_brand\": \"Ford\",\n        \"car_model\": \"Transit Connect\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2015\",\n        \"number_of_doors\": \"3\",\n        \"number_of_seats\": \"3\",\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"160402\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Ede West\",\n        \"car_brand\": \"Witteveen\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2014\",\n        \"number_of_doors\": \"-1\",\n        \"number_of_seats\": \"-1\",\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"1\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Ede West\",\n        \"car_brand\": \"Skoda\",\n        \"car_model\": \"Fabia\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2011\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"116577\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Ede West\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Golf Plus\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2007\",\n        \"number_of_doors\": \"-5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"137431\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Up!\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2013\",\n        \"number_of_doors\": \"4\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"81595\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Up!\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2013\",\n        \"number_of_doors\": \"4\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"120609\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Up!\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2013\",\n        \"number_of_doors\": \"4\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"132395\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"Transporter\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2009\",\n        \"number_of_doors\": \"4\",\n        \"number_of_seats\": \"2\",\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"191553\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Scherpenzeel\",\n        \"car_brand\": \"Mercedes Benz\",\n        \"car_model\": \"Citan\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2013\",\n        \"number_of_doors\": \"4\",\n        \"number_of_seats\": \"2\",\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"199808\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Holten\",\n        \"car_brand\": \"Peugeot\",\n        \"car_model\": \"108\",\n        \"license_plate\": \"\",\n        \"car_year\": \"2015\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": \"52175\",\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Renault\",\n        \"car_model\": \"Clio\",\n        \"license_plate\": \"AZ 49 013\",\n        \"car_year\": \"2015\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Brenderup\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": \"MS 66 29\",\n        \"car_year\": \"2006\",\n        \"number_of_doors\": null,\n        \"number_of_seats\": null,\n        \"fuel_type\": null,\n        \"transmission\": null,\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": \"2.04\",\n        \"inside_width\": \"1.28\"\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Brenderup\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": \"MB 74 70\",\n        \"car_year\": \"2005\",\n        \"number_of_doors\": null,\n        \"number_of_seats\": null,\n        \"fuel_type\": null,\n        \"transmission\": null,\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": \"2.53\",\n        \"inside_width\": \"1.75\"\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Citroën\",\n        \"car_model\": \"Jumper\",\n        \"license_plate\": \"AK 70 894\",\n        \"car_year\": \"2014\",\n        \"number_of_doors\": \"2\",\n        \"number_of_seats\": \"3\",\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": \"2.15\",\n        \"inside_length\": \"4.15\",\n        \"inside_width\": \"2.18\"\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Skoda\",\n        \"car_model\": \"Citigo\",\n        \"license_plate\": \"CH 58 961\",\n        \"car_year\": \"2019\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Peugeot\",\n        \"car_model\": \"Boxer\",\n        \"license_plate\": \"CK 84 433\",\n        \"car_year\": \"2018\",\n        \"number_of_doors\": \"2\",\n        \"number_of_seats\": \"3\",\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": \"2.15\",\n        \"inside_length\": \"4.30\",\n        \"inside_width\": \"2.18\"\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Ford\",\n        \"car_model\": \"Focus\",\n        \"license_plate\": \"CK 49 059\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"5\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Brenderup\",\n        \"car_model\": \"Trailer\",\n        \"license_plate\": \"BM 44 34\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": null,\n        \"number_of_seats\": null,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": \"0.80\",\n        \"inside_length\": \"2.04\",\n        \"inside_width\": \"1.28\"\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Citroën\",\n        \"car_model\": \"Jumper\",\n        \"license_plate\": \"BB 80 307\",\n        \"car_year\": \"2017\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"3\",\n        \"fuel_type\": \"Diesel\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": \"1.93\",\n        \"inside_length\": \"3.12\",\n        \"inside_width\": \"1.87\"\n    },\n    {\n        \"location\": \"Rønde\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Panda\",\n        \"license_plate\": \"EF 28 411\",\n        \"car_year\": \"2011\",\n        \"number_of_doors\": \"5\",\n        \"number_of_seats\": \"4\",\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"\",\n        \"car_type\": \"\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Import Cars",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{DEV_HOST}}/write-files",
+					"host": [
+						"{{DEV_HOST}}"
+					],
+					"path": [
+						"write-files"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Import Cars",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{DEV_HOST}}/write-files",
+							"host": [
+								"{{DEV_HOST}}"
+							],
+							"path": [
+								"write-files"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.2"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Nov 2022 08:42:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.1.4"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 148,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Panda\",\n        \"license_plate\": \"K9DH 223\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 89,\n        \"inside_height\": 8,\n        \"inside_length\": 5.6,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 149,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Panda\",\n        \"license_plate\": \"4379 KDH\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 150,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"500C\",\n        \"license_plate\": \"1677 KGX\",\n        \"car_year\": 2018,\n        \"number_of_doors\": 3,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 151,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Hyundai\",\n        \"car_model\": \"i10\",\n        \"license_plate\": \"0186  KDN\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 152,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"500X\",\n        \"license_plate\": \"7515 KGX\",\n        \"car_year\": 2018,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Large car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 153,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6046 KDM\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Midsize car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 154,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Peugeot\",\n        \"car_model\": \"308\",\n        \"license_plate\": \"2296 GWD\",\n        \"car_year\": 2009,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 5,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 155,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"New Beetle\",\n        \"license_plate\": \"7272 GHM\",\n        \"car_year\": 2008,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 156,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"VW\",\n        \"car_model\": \"New Beetle\",\n        \"license_plate\": \"8085 KDN\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 2,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Automatic\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Luxury car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    },\n    {\n        \"id\": 157,\n        \"location\": \"Calahonda\",\n        \"car_brand\": \"Fiat\",\n        \"car_model\": \"Punto\",\n        \"license_plate\": \"6047 KDM\",\n        \"car_year\": 2017,\n        \"number_of_doors\": 5,\n        \"number_of_seats\": 4,\n        \"fuel_type\": \"Petrol\",\n        \"transmission\": \"Manual\",\n        \"car_type_group\": \"Car\",\n        \"car_type\": \"Small car\",\n        \"car_km\": 0,\n        \"inside_height\": null,\n        \"inside_length\": null,\n        \"inside_width\": null\n    }\n]"
+				}
+			]
+		}
+	]
+}
