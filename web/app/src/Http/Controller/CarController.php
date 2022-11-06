@@ -13,13 +13,23 @@ use App\Exceptions\RecordNotFoundException;
 
 class CarController
 {
+    /**
+     * @var VehicleService
+     */
     public VehicleService $service;
+
 
     public function __construct()
     {
         $this->service = new VehicleService();
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return void
+     * @throws JsonException
+     */
     public function index(Request $request, Response $response)
     {
         $res = $this->service->searchCar($request->getParams());
@@ -36,6 +46,7 @@ class CarController
      * @param mixed $id
      * @return void
      * @throws JsonException
+     * @throws RecordNotFoundException
      */
     public function view(Request $request, Response $response, mixed $id)
     {
@@ -90,6 +101,11 @@ class CarController
 
         if ($validator->fails()) {
             throw new ValidationExceptions($validator->message(), Response::BAD_REQUEST);
+        }
+
+        if ($this->service->checkDuplicateLicense($input['license_plate'])) {
+            throw new ValidationExceptions(['license_plate' => 'Record Exists. Vehicle license should be unique.'],
+                Response::BAD_REQUEST);
         }
 
         $carId = $this->service->storeCar($input);

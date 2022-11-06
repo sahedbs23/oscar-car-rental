@@ -129,6 +129,15 @@ class VehicleService
     }
 
     /**
+     * @param $license
+     * @return array|false
+     */
+    public function checkDuplicateLicense($license)
+    {
+        return $this->repository->findOne(['license_plate' =>$license]);
+    }
+
+    /**
      * @param array $input
      * @param int $vehicleId
      * @return bool

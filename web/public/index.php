@@ -96,7 +96,7 @@ try {
         ->setHeaders([
             'Content-type' => 'application/json',
         ])
-        ->setStatusCode(\App\Lib\Response::METHOD_NOT_ALLOWED)
+        ->setStatusCode(Response::METHOD_NOT_ALLOWED)
         ->send(true);
 } catch (RouteNotFoundException $routeNotFoundException) {
     (new Response())
@@ -104,7 +104,7 @@ try {
             json_encode([
                 'message' => $routeNotFoundException->getMessage(),
                 'code' => $routeNotFoundException->getCode(),
-            ],)
+            ])
         )
         ->setHeaders([
             'Content-type' => 'application/json',
@@ -117,7 +117,7 @@ try {
             json_encode([
                 'message' => $exception->getMessage(),
                 'code' => $exception->getCode(),
-            ],)
+            ])
         )
         ->setHeaders([
             'Content-type' => 'application/json',
