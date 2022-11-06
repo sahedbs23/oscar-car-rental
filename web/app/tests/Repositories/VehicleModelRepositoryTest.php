@@ -2,6 +2,7 @@
 
 namespace Repositories;
 
+use App\Helpers\DBCleanup;
 use App\Repositories\VehicleModelRepository;
 use Faker\Factory;
 use Faker\Generator;
@@ -28,6 +29,9 @@ class VehicleModelRepositoryTest extends TestCase
     {
         $this->repository = null;
         $this->faker = null;
+        DBCleanup::cleanCarFeatures();
+        DBCleanup::cleanVehicles();
+        DBCleanup::cleanCarModels();
     }
 
     /**
@@ -35,14 +39,44 @@ class VehicleModelRepositoryTest extends TestCase
      */
     public function testCreateModel(): void
     {
-        $modelName = $this->faker->text(90);
-        $model = $this->repository->createModel($modelName, true);
-        $this->assertIsArray($model);
-        $this->assertArrayHasKey('car_model', $model);
-
+        $modelName = $this->faker->text(10).time();
         $modelId = $this->repository->createModel($modelName);
         $this->assertIsInt($modelId);
+    }
 
-        $this->assertTrue($this->repository->delete(['id' => $modelId]));
+   /**
+     * @return void
+     */
+    public function testReturnExistingOne(): void
+    {
+        $modelName = $this->faker->text(10).time();
+        $createdId = $this->repository->createModel($modelName);
+        $updatedId = $this->repository->createModel($modelName);
+        $this->assertEquals($createdId, $updatedId);
+    }
+
+
+  /**
+     * @return void
+     */
+    public function testCreateModelFail(): void
+    {
+        $modelName = $this->faker->realTextBetween(120, 150);
+        $result = $this->repository->createModel($modelName);
+        $this->assertFalse($result);
+    }
+
+
+
+    /**
+     * @return void
+     */
+    public function testFindCarModelById(): void
+    {
+        $modelName = $this->faker->realTextBetween(10, 20).time();
+        $carModelId = $this->repository->createModel($modelName);
+        $carModel = $this->repository->findCarModelById($carModelId);
+        $this->assertIsArray($carModel);
+        $this->assertArrayHasKey('car_model', $carModel);
     }
 }

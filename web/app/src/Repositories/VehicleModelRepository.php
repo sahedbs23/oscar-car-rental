@@ -17,26 +17,30 @@ class VehicleModelRepository extends BaseRepository
 
     /**
      * @param string $car_model
-     * @param bool $returnFull
-     * @return array|int|false
+     * @return int|false
      */
-    public function createModel(string $car_model, bool $returnFull = false): array|int|false
+    public function createModel(string $car_model): int|false
     {
         try {
             $input = ['car_model' => $car_model];
             if ($modelObject = $this->findOne($input)) {
-                return $returnFull ? $modelObject : $modelObject[self::PK];
+                return $modelObject[self::PK];
             }
-            $model = $this->create($input);
-            if ($model) {
-                if (!$returnFull) {
-                    return $this->lastSavedId();
-                }
-                return $this->findById($this->lastSavedId());
-            }
+            $this->create($input);
+
+            return $this->lastSavedId();
         } catch (\Exception $exception) {
             // Do Nothing.
         }
         return false;
+    }
+
+    /**
+     * @param int $modelId
+     * @return array|false
+     */
+    public function findCarModelById(int $modelId): array|false
+    {
+        return $this->findById($modelId);
     }
 }
