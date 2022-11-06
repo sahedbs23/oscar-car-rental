@@ -19,7 +19,7 @@ Docker running Nginx, PHP-FPM, Composer, MySQL and PHPMyAdmin.
 4. [Use Docker Commands](#use-docker-commands)
 
     When running, you can use docker commands for doing recurrent operations.
-5. [Test Application](#test-application)
+5. [Test Application](#run-the-application)
 ___
 
 ## Install prerequisites
