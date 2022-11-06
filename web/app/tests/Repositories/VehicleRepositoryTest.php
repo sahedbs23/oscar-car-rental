@@ -40,8 +40,8 @@ class VehicleRepositoryTest extends TestCase
      */
     public function testCreateSuccesfull()
     {
-        $vehicleId = $this->repository->createVehicle(ConfigDatabase::vehicleInput(), true);
-        $this->assertIsArray($vehicleId);
+        $vehicleId = $this->repository->createVehicle(ConfigDatabase::vehicleInput());
+        $this->assertIsInt($vehicleId);
     }
 
     /**
@@ -51,8 +51,7 @@ class VehicleRepositoryTest extends TestCase
     {
         $input = ConfigDatabase::vehicleInput();
         $input['license_plate'] = 'Dhaka-KHA-512';
-        $vehicleId = $this->repository->createVehicle($input, true);
-        $this->assertIsArray($vehicleId);
+        $this->repository->createVehicle($input);
         $this->expectException(\PDOException::class);
         $this->repository->createVehicle($input);
     }
@@ -62,10 +61,10 @@ class VehicleRepositoryTest extends TestCase
      */
     public function testFindVehicles()
     {
-        $input1 = ConfigDatabase::vehicleInput();
-        $this->repository->createVehicle($input1);
+        $vehicleInput = ConfigDatabase::vehicleInput();
+        $this->repository->createVehicle($vehicleInput);
         $this->repository->createVehicle(ConfigDatabase::vehicleInput());
-        $response = $this->repository->findVehicles(Arr::only($input1, 'car_brand'));
+        $response = $this->repository->findVehicles(Arr::only($vehicleInput, 'car_brand'));
         $this->assertIsArray($response);
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use PDOException;
+
 class VehicleRepository extends BaseRepository
 {
     public const TABLE_NAME = 'vehicles';
@@ -40,21 +42,25 @@ class VehicleRepository extends BaseRepository
      */
     public function findVehicle(int $vehicleId): array|false
     {
-        $searchCriteria['fields'] = self::FIELDS;
-        $searchCriteria['v.id'] = $vehicleId;
-        $records =  $this->setTable(
-            'vehicles as v 
-        left join car_brands as cb on v.car_brand = cb.id
-        left join car_models as cm on v.car_model = cm.id
-        left join car_locations as l on v.location = l.id
-        left join car_features as cf on cf.vehicle_id = v.id'
-        )->findOne($searchCriteria);
-        print_r($records);
-        die;
-        if (count($records)){
-            return $records[0];
+        $vehicle = $this->findById($vehicleId);
+        if (is_array($vehicle) && array_key_exists('car_brand', $vehicle)) {
+            $vehicle['car_brand'] = (new VehicleBrandRepository())->findById($vehicle['car_brand']);
         }
-        return false;
+
+        if (is_array($vehicle) && array_key_exists('car_model', $vehicle)) {
+            $vehicle['car_model'] = (new VehicleModelRepository())->findById($vehicle['car_model']);
+        }
+
+        if (is_array($vehicle) && array_key_exists('location', $vehicle)) {
+            $vehicle['location'] = (new VehicleLocationRepository())->findById($vehicle['location']);
+        }
+
+        if (!empty($vehicle)) {
+            $features = (new VehicleFeaturesRepository())->findOne(['vehicle_id' => $vehicle['id']]);
+            $vehicle['features'] = empty($features) ? [] : $features;
+        }
+
+        return $vehicle;
     }
 
     /**
@@ -70,18 +76,17 @@ class VehicleRepository extends BaseRepository
         $searchCriteria['offset'] = $offset;
 
         if (is_array($search) && !empty($search)) {
-
-            if (array_key_exists('car_brand', $search)){
+            if (array_key_exists('car_brand', $search)) {
                 $search['cb.brand_name'] = $search['car_brand'];
                 unset($search['car_brand']);
             }
 
-            if (array_key_exists('location', $search)){
+            if (array_key_exists('location', $search)) {
                 $search['l.location'] = $search['location'];
                 unset($search['location']);
             }
 
-            if (array_key_exists('car_model', $search)){
+            if (array_key_exists('car_model', $search)) {
                 $search['cm.car_model'] = $search['car_model'];
                 unset($search['car_model']);
             }
@@ -101,16 +106,12 @@ class VehicleRepository extends BaseRepository
      * create a new Vehicle.
      *
      * @param array $input
-     * @param bool $returnFull
-     * @return int|array
-     * @throws \PDOException
+     * @return int
+     * @throws PDOException
      */
-    public function createVehicle(array $input, bool $returnFull = false): int|array
+    public function createVehicle(array $input): int
     {
         $this->create($input);
-        if ($returnFull) {
-            return $this->findVehicle($this->lastSavedId());
-        }
         return $this->lastSavedId();
     }
 
