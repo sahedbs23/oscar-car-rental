@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /var/www/html/app/src/Repositories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">/var/www/html/app/src</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Repositories</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="VehicleRepository.php.html#7">App\Repositories\VehicleRepository</a></td><td class="text-right">9%</td></tr>
+       <tr><td><a href="VehicleFeaturesRepository.php.html#5">App\Repositories\VehicleFeaturesRepository</a></td><td class="text-right">18%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#8">App\Repositories\BaseRepository</a></td><td class="text-right">58%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="BaseRepository.php.html#8">App\Repositories\BaseRepository</a></td><td class="text-right">263</td></tr>
+       <tr><td><a href="VehicleRepository.php.html#7">App\Repositories\VehicleRepository</a></td><td class="text-right">232</td></tr>
+       <tr><td><a href="VehicleFeaturesRepository.php.html#5">App\Repositories\VehicleFeaturesRepository</a></td><td class="text-right">18</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="BaseRepository.php.html#55"><abbr title="App\Repositories\BaseRepository::getTable">getTable</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#63"><abbr title="App\Repositories\BaseRepository::getPk">getPk</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#71"><abbr title="App\Repositories\BaseRepository::getCount">getCount</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#102"><abbr title="App\Repositories\BaseRepository::findAll">findAll</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#139"><abbr title="App\Repositories\BaseRepository::exists">exists</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#148"><abbr title="App\Repositories\BaseRepository::fetch">fetch</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#183"><abbr title="App\Repositories\BaseRepository::save">save</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#205"><abbr title="App\Repositories\BaseRepository::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#244"><abbr title="App\Repositories\BaseRepository::delete">delete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#385"><abbr title="App\Repositories\BaseRepository::updateWhere">updateWhere</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#398"><abbr title="App\Repositories\BaseRepository::updateQueryString">updateQueryString</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VehicleFeaturesRepository.php.html#24"><abbr title="App\Repositories\VehicleFeaturesRepository::saveCarFeatures">saveCarFeatures</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VehicleFeaturesRepository.php.html#43"><abbr title="App\Repositories\VehicleFeaturesRepository::findOrCarFeatures">findOrCarFeatures</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VehicleRepository.php.html#43"><abbr title="App\Repositories\VehicleRepository::findVehicle">findVehicle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VehicleRepository.php.html#72"><abbr title="App\Repositories\VehicleRepository::findVehicles">findVehicles</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="VehicleRepository.php.html#112"><abbr title="App\Repositories\VehicleRepository::createVehicle">createVehicle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#408"><abbr title="App\Repositories\BaseRepository::orderBy">orderBy</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#418"><abbr title="App\Repositories\BaseRepository::limit">limit</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#428"><abbr title="App\Repositories\BaseRepository::offset">offset</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#327"><abbr title="App\Repositories\BaseRepository::find">find</abbr></a></td><td class="text-right">84%</td></tr>
+       <tr><td><a href="BaseRepository.php.html#284"><abbr title="App\Repositories\BaseRepository::fields">fields</abbr></a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="VehicleRepository.php.html#43"><abbr title="App\Repositories\VehicleRepository::findVehicle">findVehicle</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="VehicleRepository.php.html#72"><abbr title="App\Repositories\VehicleRepository::findVehicles">findVehicles</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="BaseRepository.php.html#183"><abbr title="App\Repositories\BaseRepository::save">save</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="BaseRepository.php.html#139"><abbr title="App\Repositories\BaseRepository::exists">exists</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="BaseRepository.php.html#205"><abbr title="App\Repositories\BaseRepository::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="BaseRepository.php.html#244"><abbr title="App\Repositories\BaseRepository::delete">delete</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="VehicleFeaturesRepository.php.html#24"><abbr title="App\Repositories\VehicleFeaturesRepository::saveCarFeatures">saveCarFeatures</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="VehicleFeaturesRepository.php.html#43"><abbr title="App\Repositories\VehicleFeaturesRepository::findOrCarFeatures">findOrCarFeatures</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="BaseRepository.php.html#327"><abbr title="App\Repositories\BaseRepository::find">find</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="BaseRepository.php.html#284"><abbr title="App\Repositories\BaseRepository::fields">fields</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="BaseRepository.php.html#408"><abbr title="App\Repositories\BaseRepository::orderBy">orderBy</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="BaseRepository.php.html#418"><abbr title="App\Repositories\BaseRepository::limit">limit</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="BaseRepository.php.html#428"><abbr title="App\Repositories\BaseRepository::offset">offset</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.18</a> using <a href="https://secure.php.net/" target="_top">PHP 8.1.4</a> and <a href="https://phpunit.de/">PHPUnit 9.5.26</a> at Sun Nov 6 12:06:00 UTC 2022.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/jquery.min.js" type="text/javascript"></script>
+  <script src="../_js/d3.min.js" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([0,1,1,0,0,0,1,0,0,0,0,1], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([16,0,0,0,0,0,0,3,0,2,0,19], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[58.4070796460177,54,"<a href=\"BaseRepository.php.html#8\">App\\Repositories\\BaseRepository<\/a>"],[18.75,5,"<a href=\"VehicleFeaturesRepository.php.html#5\">App\\Repositories\\VehicleFeaturesRepository<\/a>"],[100,5,"<a href=\"VehicleLocationRepository.php.html#5\">App\\Repositories\\VehicleLocationRepository<\/a>"],[9.375,17,"<a href=\"VehicleRepository.php.html#7\">App\\Repositories\\VehicleRepository<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[100,1,"<a href=\"BaseRepository.php.html#46\">App\\Repositories\\BaseRepository::__construct<\/a>"],[0,1,"<a href=\"BaseRepository.php.html#55\">App\\Repositories\\BaseRepository::getTable<\/a>"],[0,1,"<a href=\"BaseRepository.php.html#63\">App\\Repositories\\BaseRepository::getPk<\/a>"],[0,1,"<a href=\"BaseRepository.php.html#71\">App\\Repositories\\BaseRepository::getCount<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#80\">App\\Repositories\\BaseRepository::setTable<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#90\">App\\Repositories\\BaseRepository::setPrimaryKey<\/a>"],[0,1,"<a href=\"BaseRepository.php.html#102\">App\\Repositories\\BaseRepository::findAll<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#115\">App\\Repositories\\BaseRepository::findOne<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#128\">App\\Repositories\\BaseRepository::findById<\/a>"],[0,2,"<a href=\"BaseRepository.php.html#139\">App\\Repositories\\BaseRepository::exists<\/a>"],[0,1,"<a href=\"BaseRepository.php.html#148\">App\\Repositories\\BaseRepository::fetch<\/a>"],[100,2,"<a href=\"BaseRepository.php.html#156\">App\\Repositories\\BaseRepository::lastSavedId<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#167\">App\\Repositories\\BaseRepository::query<\/a>"],[0,4,"<a href=\"BaseRepository.php.html#183\">App\\Repositories\\BaseRepository::save<\/a>"],[0,2,"<a href=\"BaseRepository.php.html#205\">App\\Repositories\\BaseRepository::update<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#227\">App\\Repositories\\BaseRepository::create<\/a>"],[0,2,"<a href=\"BaseRepository.php.html#244\">App\\Repositories\\BaseRepository::delete<\/a>"],[100,4,"<a href=\"BaseRepository.php.html#266\">App\\Repositories\\BaseRepository::param<\/a>"],[85.71428571428571,5,"<a href=\"BaseRepository.php.html#284\">App\\Repositories\\BaseRepository::fields<\/a>"],[100,2,"<a href=\"BaseRepository.php.html#304\">App\\Repositories\\BaseRepository::conditions<\/a>"],[100,2,"<a href=\"BaseRepository.php.html#317\">App\\Repositories\\BaseRepository::where<\/a>"],[84.61538461538461,5,"<a href=\"BaseRepository.php.html#327\">App\\Repositories\\BaseRepository::find<\/a>"],[100,2,"<a href=\"BaseRepository.php.html#358\">App\\Repositories\\BaseRepository::values<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#372\">App\\Repositories\\BaseRepository::insertQueryString<\/a>"],[0,1,"<a href=\"BaseRepository.php.html#385\">App\\Repositories\\BaseRepository::updateWhere<\/a>"],[0,1,"<a href=\"BaseRepository.php.html#398\">App\\Repositories\\BaseRepository::updateQueryString<\/a>"],[66.66666666666666,2,"<a href=\"BaseRepository.php.html#408\">App\\Repositories\\BaseRepository::orderBy<\/a>"],[66.66666666666666,2,"<a href=\"BaseRepository.php.html#418\">App\\Repositories\\BaseRepository::limit<\/a>"],[66.66666666666666,2,"<a href=\"BaseRepository.php.html#428\">App\\Repositories\\BaseRepository::offset<\/a>"],[100,1,"<a href=\"BaseRepository.php.html#439\">App\\Repositories\\BaseRepository::fixPDOParam<\/a>"],[100,1,"<a href=\"VehicleFeaturesRepository.php.html#11\">App\\Repositories\\VehicleFeaturesRepository::__construct<\/a>"],[0,2,"<a href=\"VehicleFeaturesRepository.php.html#24\">App\\Repositories\\VehicleFeaturesRepository::saveCarFeatures<\/a>"],[0,2,"<a href=\"VehicleFeaturesRepository.php.html#43\">App\\Repositories\\VehicleFeaturesRepository::findOrCarFeatures<\/a>"],[100,1,"<a href=\"VehicleLocationRepository.php.html#11\">App\\Repositories\\VehicleLocationRepository::__construct<\/a>"],[100,3,"<a href=\"VehicleLocationRepository.php.html#22\">App\\Repositories\\VehicleLocationRepository::createCarLocation<\/a>"],[100,1,"<a href=\"VehicleLocationRepository.php.html#44\">App\\Repositories\\VehicleLocationRepository::findLocationById<\/a>"],[100,1,"<a href=\"VehicleRepository.php.html#32\">App\\Repositories\\VehicleRepository::__construct<\/a>"],[0,9,"<a href=\"VehicleRepository.php.html#43\">App\\Repositories\\VehicleRepository::findVehicle<\/a>"],[0,6,"<a href=\"VehicleRepository.php.html#72\">App\\Repositories\\VehicleRepository::findVehicles<\/a>"],[0,1,"<a href=\"VehicleRepository.php.html#112\">App\\Repositories\\VehicleRepository::createVehicle<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

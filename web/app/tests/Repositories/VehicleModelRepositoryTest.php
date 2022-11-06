@@ -39,24 +39,23 @@ class VehicleModelRepositoryTest extends TestCase
      */
     public function testCreateModel(): void
     {
-        $modelName = $this->faker->text(10).time();
+        $modelName = $this->faker->text(10) . time();
         $modelId = $this->repository->createModel($modelName);
         $this->assertIsInt($modelId);
     }
 
-   /**
+    /**
      * @return void
      */
     public function testReturnExistingOne(): void
     {
-        $modelName = $this->faker->text(10).time();
+        $modelName = $this->faker->text(10) . time();
         $createdId = $this->repository->createModel($modelName);
         $updatedId = $this->repository->createModel($modelName);
         $this->assertEquals($createdId, $updatedId);
     }
 
-
-  /**
+    /**
      * @return void
      */
     public function testCreateModelFail(): void
@@ -66,14 +65,12 @@ class VehicleModelRepositoryTest extends TestCase
         $this->assertFalse($result);
     }
 
-
-
     /**
      * @return void
      */
     public function testFindCarModelById(): void
     {
-        $modelName = $this->faker->realTextBetween(10, 20).time();
+        $modelName = $this->faker->realTextBetween(10, 20) . time();
         $carModelId = $this->repository->createModel($modelName);
         $carModel = $this->repository->findCarModelById($carModelId);
         $this->assertIsArray($carModel);

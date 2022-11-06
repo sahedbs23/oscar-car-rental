@@ -25,10 +25,15 @@ class VehicleLocationRepositoryTest extends TestCase
         $this->faker = Factory::create();
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         $this->repository = null;
         $this->faker = null;
+        DBCleanup::cleanCarFeatures();
+        DBCleanup::cleanVehicles();
         DBCleanup::cleanLocations();
     }
 
@@ -37,9 +42,20 @@ class VehicleLocationRepositoryTest extends TestCase
      */
     public function testCreateCarLocation(): void
     {
-        $locationName = $this->faker->text(90);
-        $brandId = $this->repository->createCarLocation($locationName);
-        $this->assertIsInt($brandId);
+        $locationName = $this->faker->realTextBetween(5, 10) . time();
+        $locationID = $this->repository->createCarLocation($locationName);
+        $this->assertIsInt($locationID);
+    }
+
+    /**
+     * @return void
+     */
+    public function testReturnExistingOne(): void
+    {
+        $locationName = $this->faker->realTextBetween(5, 10) . time();
+        $locationID = $this->repository->createCarLocation($locationName);
+        $locationExisting = $this->repository->createCarLocation($locationName);
+        $this->assertEquals($locationID, $locationExisting);
     }
 
     /**
@@ -47,8 +63,9 @@ class VehicleLocationRepositoryTest extends TestCase
      */
     public function testUpdateOrCreate(): void
     {
-        $locationName = $this->faker->text(90);
-        $res = $this->repository->updateOrCreate($locationName);
+        $locationName = $this->faker->realTextBetween(5, 10) . time();
+        $locationID = $this->repository->createCarLocation($locationName);
+        $res = $this->repository->findLocationById($locationID);
         $this->assertIsArray($res);
         $this->assertArrayHasKey('location', $res);
     }

@@ -36,21 +36,13 @@ class VehicleLocationRepository extends BaseRepository
 
 
     /**
-     * @param string $locationName
+     * Find a location Details.
+     *
+     * @param string $locationId
      * @return array|false
      */
-    public function updateOrCreate(string $locationName): array|false
+    public function findLocationById(string $locationId): array|false
     {
-        try {
-            $input = ['location' => $locationName];
-            if ($exists = $this->findOne($input)) {
-                return $exists;
-            }
-            $this->create($input);
-            return $this->findById($this->lastSavedId());
-        } catch (\Exception $exception) {
-            // Do Nothing.
-        }
-        return false;
+        return $this->findById($locationId);
     }
 }
