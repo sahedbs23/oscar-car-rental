@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\RecordNotFoundException;
 use App\Helpers\Arr;
+use App\Repositories\BaseRepository;
 use App\Repositories\VehicleBrandRepository;
 use App\Repositories\VehicleFeaturesRepository;
 use App\Repositories\VehicleLocationRepository;
@@ -85,13 +86,31 @@ class VehicleService
 
     /**
      * @param array $params
-     * @param int $limit
-     * @param int $offset
      * @return array|null
      */
-    public function searchCar(array $params = [], int $limit = 10, int $offset = 0): ?array
+    public function searchCar(array $params = []): ?array
     {
-        return $this->repository->findVehicles($params, $limit, $offset);
+        $conditions = Arr::only($params, [
+                'car_model',
+                'car_brand',
+                'location',
+                'license_plate',
+                'fuel_type',
+                'transmission',
+                'car_type'
+            ]
+        );
+        if (array_key_exists('limit', $params)) {
+            $limit = $params['limit'];
+            unset($params['limit']);
+        }
+
+        if (array_key_exists('offset', $params)) {
+            $offset = $params['offset'];
+            unset($params['offset']);
+        }
+
+        return $this->repository->findVehicles($conditions, $limit ?? 10, $offset ?? 0);
     }
 
     /**
@@ -101,7 +120,7 @@ class VehicleService
      */
     public function find(int $id): array|false
     {
-        $response = $this->repository->findById($id);
+        $response = $this->repository->findVehicle($id);
 
         if (!$response) {
             throw new RecordNotFoundException(sprintf('Record not found in the database with id %d.', $id));

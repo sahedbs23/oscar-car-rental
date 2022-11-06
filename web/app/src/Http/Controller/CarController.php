@@ -22,8 +22,12 @@ class CarController
 
     public function index(Request $request, Response $response)
     {
-        $content = json_encode($request->getParams(), JSON_THROW_ON_ERROR);
-        $response->setContent($content)->send(true);
+        $res = $this->service->searchCar($request->getParams());
+        $response->setContent(json_encode($res, JSON_THROW_ON_ERROR))
+            ->setHeaders([
+                'Content-type' => 'application/json'
+            ])
+            ->send(true);
     }
 
     /**

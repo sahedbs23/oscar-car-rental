@@ -271,7 +271,7 @@ class BaseRepository extends MysqlDatabaseConnection
 
         foreach ($data as $k => $v) {
             $tipo = is_numeric($v) ? PDO::PARAM_INT : PDO::PARAM_STR;
-            $this->stmt->bindValue(":{$k}", $v, $tipo);
+            $this->stmt->bindValue(":{$this->fixPDOParam($k)}", $v, $tipo);
         }
     }
 
@@ -305,7 +305,7 @@ class BaseRepository extends MysqlDatabaseConnection
     {
         $param = [];
         foreach ($this->data['conditions'] as $k => $v) {
-            $param[] = "{$k} = :{$k}";
+            $param[] = "{$k} = :{$this->fixPDOParam($k)}";
         }
 
         return implode($separator, $param);
@@ -430,6 +430,15 @@ class BaseRepository extends MysqlDatabaseConnection
         return (isset($this->data['offset']))
             ? 'OFFSET :offset'
             : '';
+    }
+
+    /**
+     * @param string $param
+     * @return string
+     */
+    private function fixPDOParam(string $param)
+    {
+        return str_replace('.', '_',$param);
     }
 
 }
