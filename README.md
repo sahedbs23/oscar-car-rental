@@ -99,13 +99,13 @@ ___
 To install [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), download it and install following the instructions :
 
 ```sh
-git clone https://github.com/nanoninja/docker-nginx-php-mysql.git
+git clone https://github.com/sahedbs23/oscar-car-rental.git
 ```
 
 Go to the project directory :
 
 ```sh
-cd docker-nginx-php-mysql
+cd oscar-car-rental
 ```
 
 ### Project tree
@@ -132,9 +132,8 @@ cd docker-nginx-php-mysql
     │   ├── composer.json.dist
     │   ├── phpunit.xml.dist
     │   ├── src
-    │   │   └── Foo.php
+    │   │   └── App.php
     │   └── test
-    │       ├── FooTest.php
     │       └── bootstrap.php
     └── public
         └── index.php
@@ -270,28 +269,10 @@ docker run --rm -v $(pwd)/web/app:/app composer require symfony/yaml
 docker run --rm -v $(pwd)/web/app:/app composer update
 ```
 
-### Read PHP API documentation
-
-```sh
-open /web/app/doc/index.html
-```
-
 ### Testing PHP application with PHPUnit
 
 ```sh
 docker-compose exec -T php ./app/vendor/bin/phpunit --colors=always --configuration ./app
-```
-
-### Fixing standard code with [PSR2](http://www.php-fig.org/psr/psr-2/)
-
-```sh
-docker-compose exec -T php ./app/vendor/bin/phpcbf -v --standard=PSR2 ./app/src
-```
-
-### Checking the standard code with [PSR2](http://www.php-fig.org/psr/psr-2/)
-
-```sh
-docker-compose exec -T php ./app/vendor/bin/phpcs -v --standard=PSR2 ./app/src
 ```
 
 ### Analyzing source code with [PHP Mess Detector](https://phpmd.org/)
@@ -365,7 +346,3 @@ source .env && docker exec -i $(docker-compose ps -q mysqldb) mysql -u"$MYSQL_RO
 ```
 
 ___
-
-## Help us
-
-Any thought, feedback or (hopefully not!)
