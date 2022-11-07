@@ -5,7 +5,6 @@
 # Application
 web/app/composer.lock
 web/app/vendor/
-data/
 
 # PHPStorm
 .idea/**/workspace.xml
