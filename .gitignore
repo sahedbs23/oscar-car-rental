@@ -6,7 +6,6 @@
 web/app/composer.lock
 web/app/vendor/
 data/
-!data/db/mysql/oscar
 
 # PHPStorm
 .idea/**/workspace.xml
