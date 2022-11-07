@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `car_brands` (
                               `id` bigint NOT NULL,
-                              `brand_name` varchar(100) DEFAULT NULL
+                              `brand_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -40,7 +40,7 @@ CREATE TABLE `car_brands` (
 
 CREATE TABLE `car_features` (
                                 `id` bigint NOT NULL,
-                                `vehicle_id` bigint DEFAULT NULL,
+                                `vehicle_id` bigint NOT NULL,
                                 `inside_height` float DEFAULT NULL,
                                 `inside_length` float DEFAULT NULL,
                                 `inside_width` float DEFAULT NULL
@@ -54,7 +54,7 @@ CREATE TABLE `car_features` (
 
 CREATE TABLE `car_locations` (
                                  `id` bigint NOT NULL,
-                                 `location` varchar(100) DEFAULT NULL
+                                 `location` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -65,7 +65,7 @@ CREATE TABLE `car_locations` (
 
 CREATE TABLE `car_models` (
                               `id` bigint NOT NULL,
-                              `car_model` varchar(100) DEFAULT NULL
+                              `car_model` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -76,7 +76,7 @@ CREATE TABLE `car_models` (
 
 CREATE TABLE `fuels` (
                          `id` bigint NOT NULL,
-                         `name` varchar(100) DEFAULT NULL
+                         `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -98,9 +98,9 @@ CREATE TABLE `fuel_vehicle` (
 
 CREATE TABLE `vehicles` (
                             `id` bigint NOT NULL,
-                            `location` bigint DEFAULT NULL,
-                            `car_brand` bigint DEFAULT NULL,
-                            `car_model` bigint DEFAULT NULL,
+                            `location` bigint NOT NULL,
+                            `car_brand` bigint NOT NULL,
+                            `car_model` bigint NOT NULL,
                             `license_plate` varchar(50) DEFAULT NULL,
                             `car_year` int DEFAULT '0',
                             `number_of_doors` int DEFAULT '0',
