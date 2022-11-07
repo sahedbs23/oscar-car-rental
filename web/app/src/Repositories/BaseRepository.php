@@ -15,7 +15,6 @@ class BaseRepository extends MysqlDatabaseConnection
      * @var array
      */
     private array $data = array();
-    private $sql;
     /**
      * @var string|null
      */
@@ -155,7 +154,7 @@ class BaseRepository extends MysqlDatabaseConnection
      */
     public function lastSavedId()
     {
-        $id = $this->connection->lastInsertId();
+        $id = $this->getConnection()->lastInsertId();
         return ($id) ?: $this->lastId;
     }
 
@@ -166,7 +165,7 @@ class BaseRepository extends MysqlDatabaseConnection
      */
     public function query($sql)
     {
-        $this->stmt = $this->connection->prepare($sql);
+        $this->stmt = $this->getConnection()->prepare($sql);
         $this->stmt->execute();
         $result = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
         $this->count = count($result);
@@ -210,7 +209,7 @@ class BaseRepository extends MysqlDatabaseConnection
 
         $param = $data;
         $this->where = $this->updateWhere($data);
-        $this->stmt = $this->connection->prepare($this->updateQueryString($data));
+        $this->stmt = $this->getConnection()->prepare($this->updateQueryString($data));
         $this->param($param);
         $response = $this->stmt->execute();
         $this->count = $this->stmt->rowCount();
@@ -228,12 +227,12 @@ class BaseRepository extends MysqlDatabaseConnection
     {
         $this->data = $data;
 
-        $this->stmt = $this->connection->prepare($this->insertQueryString());
+        $this->stmt = $this->getConnection()->prepare($this->insertQueryString());
         $this->param($data);
 
         $executed = $this->stmt->execute();
         $this->count = $this->stmt->rowCount();
-        $this->lastId = $this->connection->lastInsertId();
+        $this->lastId = $this->getConnection()->lastInsertId();
         return $executed;
     }
 
@@ -246,7 +245,7 @@ class BaseRepository extends MysqlDatabaseConnection
         $this->data['conditions'] = $data;
 
         $sql = "DELETE FROM {$this->table} " . $this->where();
-        $this->stmt = $this->connection->prepare($sql);
+        $this->stmt = $this->getConnection()->prepare($sql);
 
         if (!empty($this->where)) {
             $this->param();
@@ -333,7 +332,7 @@ class BaseRepository extends MysqlDatabaseConnection
         $sql = "SELECT " . $this->fields() . " FROM {$this->table} " . $this->where() . " " . $orderBy
             . " " . $limit . " " . $offset;
 
-        $this->stmt = $this->connection->prepare($sql);
+        $this->stmt = $this->getConnection()->prepare($sql);
 
         if (!empty($this->where)) {
             $this->param();

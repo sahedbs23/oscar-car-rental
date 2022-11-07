@@ -150,7 +150,7 @@ class Response implements ResponseInterface
     /**
      * @inheritDoc
      */
-    public function send(bool $send_headers = false): void
+    public function send(bool $send_headers = true): void
     {
         $content = $this->__toString();
 

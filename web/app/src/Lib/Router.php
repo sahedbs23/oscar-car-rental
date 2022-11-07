@@ -9,9 +9,18 @@ use App\Exceptions\RouteNotFoundException;
 
 class Router
 {
+    /**
+     * @var RequestInterface
+     */
     private RequestInterface $request;
+    /**
+     * @var ResponseInterface
+     */
     private ResponseInterface $response;
 
+    /**
+     * @var array|string[]
+     */
     private array $supportedHttpMethods = array(
         "GET",
         "POST"
@@ -35,6 +44,7 @@ class Router
      * @param $name
      * @param $args
      * @return void
+     * @throws MethodNotAllowedException
      */
     public function __call($name, $args)
     {
@@ -50,7 +60,7 @@ class Router
      * Removes trailing forward slashes from the right of the route.
      * @param $route (string)
      */
-    private function formatRoute($route)
+    private function formatRoute($route): string
     {
         $result = rtrim($route, '/');
         if ($result === '') {
@@ -60,13 +70,17 @@ class Router
     }
 
     /**
-     * Resolves a route
+     * @return void
+     * @throws RouteNotFoundException
      */
     public function resolve(): void
     {
         $requestMethod = strtolower($this->request->requestMethod);
+
         $methodDictionary = property_exists($this, $requestMethod) ? $this->{$requestMethod} : [];
+
         $formatedRoute = strtok($this->formatRoute($this->request->requestUri), '?');
+
         $method = $methodDictionary[$formatedRoute] ?? null;
 
         if (is_null($method)) {
@@ -91,9 +105,9 @@ class Router
      *
      * @param string $url
      * @param $routeLists
-     * @return mixed|null
+     * @return string|null
      */
-    public function match(string $url, $routeLists)
+    public function match(string $url, $routeLists): string|null
     {
         foreach ($routeLists as $key => $route) :
             // deal with regex's groups
@@ -106,12 +120,16 @@ class Router
                 '[0-9]+',
                 '[a-zA-Z]+'
             ), $route);
+
             $pattern = str_replace('/', '\/', $route);
+
             preg_match("/$pattern/", $url, $matched, PREG_UNMATCHED_AS_NULL);
+
             if (array_key_exists(0, $matched) && $matched[0] === strtok($url, '?')) {
                 return $routeLists[$key];
             }
         endforeach;
+
         return null;
     }
 }

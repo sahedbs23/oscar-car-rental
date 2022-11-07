@@ -7,10 +7,7 @@ use PDOException;
 
 abstract class AbstractDatabaseConnection
 {
-    public array $config;
-
-    //TODO:: Make connection protected.
-    public ?PDO $connection;
+    private ?PDO $connection;
 
     /**
      * @param int $errorMode
@@ -22,21 +19,29 @@ abstract class AbstractDatabaseConnection
         int $fetchMode = PDO::FETCH_ASSOC,
         bool $emulate = false
     ) {
-        $this->config = $this->getconfig();
+        $config = $this->getconfig();
 
         $this->connection = $this->connect(
-            $this->config['user'],
-            $this->config['pass'],
-            $this->config['host'],
-            $this->config['database'],
-            $this->config['charset'],
-            $this->config['port'],
+            $config['user'],
+            $config['pass'],
+            $config['host'],
+            $config['database'],
+            $config['charset'],
+            $config['port'],
             [
                 PDO::ATTR_ERRMODE => $errorMode,
                 PDO::ATTR_DEFAULT_FETCH_MODE => $fetchMode,
                 PDO::ATTR_EMULATE_PREPARES => $emulate
             ]
         );
+    }
+
+    /**
+     * @return PDO|null
+     */
+    public function getConnection(): ?PDO
+    {
+        return $this->connection;
     }
 
     /**

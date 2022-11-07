@@ -11,7 +11,7 @@ class MysqlDatabaseConnection extends AbstractDatabaseConnection
     /**
      * @var array
      */
-    public array $configArr;
+    private array $configArr;
 
     /**
      * @inheritDoc

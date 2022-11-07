@@ -20,27 +20,13 @@ class MysqlDatabaseConnectionTest extends TestCase
             'charset' => 'utf8mb4'
         ];
         $connection = new MysqlDatabaseConnection($config);
-        $this->assertIsArray($connection->config);
-        $this->assertArrayHasKey('host', $connection->config);
-        $this->assertArrayHasKey('database', $connection->config);
-        $this->assertArrayHasKey('port', $connection->config);
-        $this->assertArrayHasKey('user', $connection->config);
-        $this->assertArrayHasKey('pass', $connection->config);
-        $this->assertArrayHasKey('charset', $connection->config);
-        $this->assertInstanceOf(PDO::class, $connection->connection);
+        $this->assertInstanceOf(PDO::class, $connection->getConnection());
     }
 
     public function testSuccessfulConnectionWithConfig(): void
     {
         $connection = new MysqlDatabaseConnection();
-        $this->assertIsArray($connection->config);
-        $this->assertArrayHasKey('host', $connection->config);
-        $this->assertArrayHasKey('database', $connection->config);
-        $this->assertArrayHasKey('port', $connection->config);
-        $this->assertArrayHasKey('user', $connection->config);
-        $this->assertArrayHasKey('pass', $connection->config);
-        $this->assertArrayHasKey('charset', $connection->config);
-        $this->assertInstanceOf(PDO::class, $connection->connection);
+        $this->assertInstanceOf(PDO::class, $connection->getConnection());
     }
 
 

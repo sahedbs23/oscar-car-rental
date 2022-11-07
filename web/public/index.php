@@ -32,18 +32,18 @@ try {
                 'Content-type' => 'application/json',
                 'Additional-header' => 'Bla-bla'
             ])
-            ->send(true);
+            ->send();
     });
 
     // Import cars from data source.
-    $app->post('/write-files', function ($request, $response) {
+    $app->post('/write-files', function (Request $request, Response $response) {
         (new VehicleImportService())->importDatFromSource('');
         $cars = (new VehicleService())->searchCar(['limit' => 30, 'offset' => 0]);
         $response->setContent(json_encode($cars, JSON_THROW_ON_ERROR))
             ->setHeaders([
                 'Content-type' => 'application/json'
             ])
-            ->send(true);
+            ->send();
     });
 
     // Search Cars
