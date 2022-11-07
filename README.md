@@ -225,10 +225,10 @@ source .env && docker exec -i $(docker-compose ps -q mysqldb) mysql -u"$MYSQL_RO
 
 ### The Application exposed a few API endpoints
 
-```
-Import postman collection from api-doc/postman_collection.json
-Import postman enviornment from api-doc/postman_environment.json
-```
+
+**`Notice:`** Import postman collection from api-doc/postman_collection.json
+
+**`Notice:`** Import postman environment from api-doc/postman_environment.json
 
 **`Notice:`** A car license is Unique at the Database level. You can import the content from the file just once.
 
