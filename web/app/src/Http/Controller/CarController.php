@@ -27,47 +27,43 @@ class CarController
     /**
      * @param Request $request
      * @param Response $response
-     * @return void
-     * @throws JsonException
+     * @return Response
      */
-    public function index(Request $request, Response $response)
+    public function index(Request $request, Response $response): Response
     {
         $res = $this->service->searchCar($request->getParams());
-        $response->setContent(json_encode($res, JSON_THROW_ON_ERROR))
+        $response->setContent(json_encode($res))
             ->setHeaders([
                 'Content-type' => 'application/json'
-            ])
-            ->send(true);
+            ]);
+        return $response;
     }
 
     /**
      * @param Request $request
      * @param Response $response
      * @param mixed $id
-     * @return void
-     * @throws JsonException
+     * @return Response
      * @throws RecordNotFoundException
      */
-    public function view(Request $request, Response $response, mixed $id)
+    public function view(Request $request, Response $response, mixed $id): Response
     {
         $res = $this->service->find($id);
-        $response->setContent(json_encode($res, JSON_THROW_ON_ERROR))
+        return $response->setContent(json_encode($res))
             ->setHeaders([
                 'Content-type' => 'application/json'
-            ])
-            ->send(true);
+            ]);
     }
 
     /**
      * @param Request $request
      * @param Response $response
-     * @return void
-     * @throws JsonException
+     * @return Response
      * @throws ValidationExceptions
      * @throws InvalidRuleException
      * @throws RecordNotFoundException
      */
-    public function save(Request $request, Response $response)
+    public function save(Request $request, Response $response): Response
     {
         $input = $request->getBody();
 
@@ -111,30 +107,11 @@ class CarController
         $carId = $this->service->storeCar($input);
         $content = $this->service->find($carId);
 
-        $this->sendResponse(
-            $response,
-            Response::HTTP_CREATED,
-            json_encode($content, JSON_THROW_ON_ERROR),
-            [
+        return $response
+            ->setStatusCode(Response::HTTP_CREATED)
+            ->setHeaders([
                 'Content-type' => 'application/json'
-            ]
-        );
+            ])
+            ->setContent(json_encode($content));
     }
-
-    /**
-     * @param Response $response
-     * @param int $code
-     * @param string $content
-     * @param array $headers
-     * @return void
-     */
-    public function sendResponse(Response $response, int $code, string $content, array $headers = [])
-    {
-        $response
-            ->setStatusCode($code)
-            ->setHeaders($headers)
-            ->setContent($content)
-            ->send(true);
-    }
-
 }

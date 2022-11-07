@@ -14,6 +14,7 @@ use App\Services\VehicleService;
 use Faker\Factory;
 use Faker\Generator;
 use PHPUnit\Framework\TestCase;
+use App\Exceptions\InvalidRuleException;
 
 class CarControllerTest extends TestCase
 {
@@ -21,12 +22,18 @@ class CarControllerTest extends TestCase
 
     public ?CarController $controller;
 
+    /**
+     * @return void
+     */
     public function setUp(): void
     {
         $this->faker = Factory::create();
         $this->controller = new CarController();
     }
 
+    /**
+     * @return void
+     */
     protected function tearDown(): void
     {
         $this->faker = null;
@@ -38,10 +45,16 @@ class CarControllerTest extends TestCase
         DBCleanup::cleanLocations();
     }
 
+    /**
+     * @return void
+     * @throws RecordNotFoundException
+     * @throws ValidationExceptions
+     * @throws InvalidRuleException
+     */
     public function testSaveWithInvalidData()
     {
         $request = $this->createMock(Request::class);
-        $request->expects($this->any())
+        $request->expects($this->once())
             ->method('getBody')
             ->willReturn(
                 [
@@ -68,10 +81,37 @@ class CarControllerTest extends TestCase
         $this->controller->save($request, $response);
     }
 
+    /**
+     * @return void
+     * @throws InvalidRuleException
+     * @throws RecordNotFoundException
+     * @throws ValidationExceptions
+     */
+    public function testSaveWithRecordExistsValidationException()
+    {
+        $input = $this->rawUserInput();
+        $request = $this->createMock(Request::class);
+        $request->expects($this->any())
+            ->method('getBody')
+            ->willReturn($input);
+
+        $response = $this->createMock(Response::class);
+        $res = $this->controller->save($request, $response);
+        $this->assertInstanceOf(Response::class, $res);
+        $this->expectException(ValidationExceptions::class);
+        $this->controller->save($request, $response);
+    }
+
+    /**
+     * @return void
+     * @throws InvalidRuleException
+     * @throws RecordNotFoundException
+     * @throws ValidationExceptions
+     */
     public function testSaveWithValidData()
     {
         $request = $this->createMock(Request::class);
-        $request->expects($this->any())
+        $request->expects($this->once())
             ->method('getBody')
             ->willReturn(
                 [
@@ -94,24 +134,20 @@ class CarControllerTest extends TestCase
             );
 
         $response = $this->createMock(Response::class);
-        $response->expects($this->any())
-            ->method('send')
-            ->with(true);
-
-        $this->assertNull($this->controller->save($request, $response));
+        $res = $this->controller->save($request, $response);
+        $this->assertInstanceOf(Response::class, $res);
     }
 
     /**
      * @return void
      * @throws RecordNotFoundException
-     * @throws \JsonException
      */
     public function testView(): void
     {
         $vehicleId = ConfigDatabase::setupVehicle();
         $request = $this->createMock(Request::class);
         $response = $this->createMock(Response::class);
-        $this->assertNull($this->controller->view($request, $response, $vehicleId));
+        $this->assertInstanceOf(Response::class, $this->controller->view($request, $response, $vehicleId));
     }
 
     /**
@@ -146,7 +182,7 @@ class CarControllerTest extends TestCase
             );
 
         $response = $this->createMock(Response::class);
-        $this->assertNull($this->controller->index($request, $response));
+        $this->assertInstanceOf(Response::class, $this->controller->index($request, $response));
     }
 
     /**

@@ -11,6 +11,7 @@ use App\Exceptions\RecordNotFoundException;
 use App\Lib\Response;
 use App\Services\VehicleImportService;
 use App\Services\VehicleService;
+use \App\Lib\Request;
 
 // Write Dedicated Error Handler.
 //TODO:: Register Global Error Handler
@@ -24,7 +25,7 @@ try {
     //TODO:: move to specif route.php file.
 
     // Read cars from Data source
-    $app->get('/read-files', function ($request, $response) {
+    $app->get('/read-files', function (Request $request, Response $response) {
         $cars = (new VehicleImportService())->readFiles('')->toJson();
         $response->setContent($cars)
             ->setHeaders([
@@ -37,7 +38,7 @@ try {
     // Import cars from data source.
     $app->post('/write-files', function ($request, $response) {
         (new VehicleImportService())->importDatFromSource('');
-        $cars = (new VehicleService())->searchCar([], 30);
+        $cars = (new VehicleService())->searchCar(['limit' => 30, 'offset' => 0]);
         $response->setContent(json_encode($cars, JSON_THROW_ON_ERROR))
             ->setHeaders([
                 'Content-type' => 'application/json'
@@ -46,18 +47,21 @@ try {
     });
 
     // Search Cars
-    $app->get('/cars', function ($request, $response) {
-        (new CarController())->index($request, $response);
+    $app->get('/cars', function (Request $request, Response $response) {
+        $result = (new CarController())->index($request, $response);
+        $result->send();
     });
 
     // Read a specific Car
-    $app->get('/cars/:num', function ($request, $response, $vehicleId) {
-        (new CarController())->view($request, $response, $vehicleId);
+    $app->get('/cars/:num', function (Request $request, Response $response, $vehicleId) {
+        $result = (new CarController())->view($request, $response, $vehicleId);
+        $result->send();
     });
 
     // Create a Vehicle.
     $app->post('/cars', function ($request, $response) {
-        (new CarController())->save($request, $response);
+        $result = (new CarController())->save($request, $response);
+        $result->send();
     });
 
     $app->resolve();
@@ -67,7 +71,7 @@ try {
             json_encode([
                 'message' => $recordNotFoundException->getMessage(),
                 'code' => Response::HTTP_NOT_FOUND,
-            ],)
+            ])
         )
         ->setHeaders([
             'Content-type' => 'application/json',
