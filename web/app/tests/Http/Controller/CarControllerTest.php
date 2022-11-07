@@ -51,7 +51,7 @@ class CarControllerTest extends TestCase
      * @throws ValidationExceptions
      * @throws InvalidRuleException
      */
-    public function testSaveWithInvalidData()
+    public function testSaveWithInvalidData(): void
     {
         $request = $this->createMock(Request::class);
         $request->expects($this->once())
@@ -87,7 +87,7 @@ class CarControllerTest extends TestCase
      * @throws RecordNotFoundException
      * @throws ValidationExceptions
      */
-    public function testSaveWithRecordExistsValidationException()
+    public function testSaveWithRecordExistsValidationException(): void
     {
         $input = $this->rawUserInput();
         $request = $this->createMock(Request::class);
@@ -108,7 +108,7 @@ class CarControllerTest extends TestCase
      * @throws RecordNotFoundException
      * @throws ValidationExceptions
      */
-    public function testSaveWithValidData()
+    public function testSaveWithValidData(): void
     {
         $request = $this->createMock(Request::class);
         $request->expects($this->once())
@@ -162,7 +162,7 @@ class CarControllerTest extends TestCase
         $this->controller->view($request, $response, -1);
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $input = $this->rawUserInput();
         (new VehicleService())->storeCar($input);
