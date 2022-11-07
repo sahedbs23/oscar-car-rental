@@ -18,7 +18,10 @@ class Response implements ResponseInterface
 
     public const HTTP_SERVER_ERROR = 500;
 
-    public static $statusTexts = [
+    /**
+     * @var string[]
+     */
+    public static array $statusTexts = [
         200 => 'OK',
         201 => 'Created',
         400 => 'Bad Request',
@@ -150,11 +153,11 @@ class Response implements ResponseInterface
     /**
      * @inheritDoc
      */
-    public function send(bool $send_headers = true): void
+    public function send(bool $sendHeaders = true): void
     {
         $content = $this->__toString();
 
-        if ($send_headers) {
+        if ($sendHeaders) {
             $this->sendHeaders();
         }
 
@@ -192,7 +195,7 @@ class Response implements ResponseInterface
      * @param $value
      * @return string|null
      */
-    public function stringifyHeader($key, $value)
+    public function stringifyHeader($key, $value):string|null
     {
         is_string($key) and $value = "{$key}: {$value}";
 
@@ -202,7 +205,7 @@ class Response implements ResponseInterface
     /**
      * @return string
      */
-    public function stringifyStatus()
+    public function stringifyStatus():string
     {
         return 'HTTP/' . $this->getProtocolVersion() . ' ' . $this->getStatusCode(
             ) . ' ' . static::$statusTexts[$this->getStatusCode()];

@@ -3,14 +3,15 @@
 namespace App\Repositories;
 
 use App\Lib\DB\MysqlDatabaseConnection;
-use \PDO;
+use PDO;
+use PDOStatement;
 
 class BaseRepository extends MysqlDatabaseConnection
 {
     /**
-     * @var \PDOStatement|bool
+     * @var PDOStatement|bool
      */
-    private \PDOStatement|bool $stmt;
+    private PDOStatement|bool $stmt;
     /**
      * @var array
      */
@@ -19,10 +20,6 @@ class BaseRepository extends MysqlDatabaseConnection
      * @var string|null
      */
     private null|string $where;
-    /**
-     * @var string|null
-     */
-    private null|string $fields;
     /**
      * @var int|null
      */
@@ -76,7 +73,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param string $table
      * @return $this
      */
-    public function setTable(string $table)
+    public function setTable(string $table): self
     {
         $this->table = strtolower($table);
         return $this;
@@ -86,7 +83,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param string $pk
      * @return $this
      */
-    public function setPrimaryKey(string $pk = 'id')
+    public function setPrimaryKey(string $pk = 'id'): self
     {
         $this->pk = $pk;
         return $this;
@@ -124,7 +121,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $id
      * @return false|array
      */
-    public function findById($id)
+    public function findById($id): array|false
     {
         return $this->findOne([$this->pk => $id]);
     }
@@ -135,7 +132,7 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param $id
      * @return false|array
      */
-    public function exists($id)
+    public function exists($id): false|array
     {
         if (is_array($id)) {
             return ($this->findOne($id));
@@ -144,6 +141,9 @@ class BaseRepository extends MysqlDatabaseConnection
         return ($this->findById($id));
     }
 
+    /**
+     * @return mixed
+     */
     public function fetch()
     {
         return $this->fetch;
@@ -152,9 +152,9 @@ class BaseRepository extends MysqlDatabaseConnection
     /**
      * @return false|int|string
      */
-    public function lastSavedId()
+    public function lastSavedId(): false|int|string
     {
-        $id = $this->getConnection()->lastInsertId();
+        $id = $this->getConnection()?->lastInsertId();
         return ($id) ?: $this->lastId;
     }
 
@@ -165,7 +165,7 @@ class BaseRepository extends MysqlDatabaseConnection
      */
     public function query($sql)
     {
-        $this->stmt = $this->getConnection()->prepare($sql);
+        $this->stmt = $this->getConnection()?->prepare($sql);
         $this->stmt->execute();
         $result = $this->stmt->fetchAll(PDO::FETCH_ASSOC);
         $this->count = count($result);
@@ -209,7 +209,7 @@ class BaseRepository extends MysqlDatabaseConnection
 
         $param = $data;
         $this->where = $this->updateWhere($data);
-        $this->stmt = $this->getConnection()->prepare($this->updateQueryString($data));
+        $this->stmt = $this->getConnection()?->prepare($this->updateQueryString($data));
         $this->param($param);
         $response = $this->stmt->execute();
         $this->count = $this->stmt->rowCount();
@@ -227,12 +227,12 @@ class BaseRepository extends MysqlDatabaseConnection
     {
         $this->data = $data;
 
-        $this->stmt = $this->getConnection()->prepare($this->insertQueryString());
+        $this->stmt = $this->getConnection()?->prepare($this->insertQueryString());
         $this->param($data);
 
         $executed = $this->stmt->execute();
         $this->count = $this->stmt->rowCount();
-        $this->lastId = $this->getConnection()->lastInsertId();
+        $this->lastId = $this->getConnection()?->lastInsertId();
         return $executed;
     }
 
@@ -245,7 +245,7 @@ class BaseRepository extends MysqlDatabaseConnection
         $this->data['conditions'] = $data;
 
         $sql = "DELETE FROM {$this->table} " . $this->where();
-        $this->stmt = $this->getConnection()->prepare($sql);
+        $this->stmt = $this->getConnection()?->prepare($sql);
 
         if (!empty($this->where)) {
             $this->param();
@@ -287,9 +287,12 @@ class BaseRepository extends MysqlDatabaseConnection
         }
 
         if (!empty($data)) {
+            $fields = [];
+
             foreach ($data as $k => $v) {
                 $fields[] = $k;
             }
+
             return implode(',', $fields);
         }
 
@@ -332,7 +335,7 @@ class BaseRepository extends MysqlDatabaseConnection
         $sql = "SELECT " . $this->fields() . " FROM {$this->table} " . $this->where() . " " . $orderBy
             . " " . $limit . " " . $offset;
 
-        $this->stmt = $this->getConnection()->prepare($sql);
+        $this->stmt = $this->getConnection()?->prepare($sql);
 
         if (!empty($this->where)) {
             $this->param();
@@ -356,6 +359,7 @@ class BaseRepository extends MysqlDatabaseConnection
      */
     private function values(): string
     {
+        $values = [];
         foreach ($this->data as $k => $v) {
             $values[] = ":{$k}";
         }
@@ -435,9 +439,9 @@ class BaseRepository extends MysqlDatabaseConnection
      * @param string $param
      * @return string
      */
-    private function fixPDOParam(string $param)
+    private function fixPDOParam(string $param): string
     {
-        return str_replace('.', '_',$param);
+        return str_replace('.', '_', $param);
     }
 
 }
