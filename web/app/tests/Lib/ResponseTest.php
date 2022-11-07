@@ -120,10 +120,9 @@ class ResponseTest extends TestCase
         $this->assertEquals(1.1, $response->getProtocolVersion());
     }
 
-    public function testContent()
+    public function testContent(): void
     {
         $response = new Response();
         $this->assertNull($response->getContent());
     }
-
 }
